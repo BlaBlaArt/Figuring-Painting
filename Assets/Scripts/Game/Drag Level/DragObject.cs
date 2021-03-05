@@ -15,12 +15,14 @@ public class DragObject : MonoBehaviour
     
     private Cell cell;
 
+    private Cell startCell;
     private Vector3 startPos;
 
     private void Start()
     {
         myData = GetComponent<CharacterData>();
         startPos = transform.position;
+        startCell = null;
     }
 
     private void OnMouseDown()
@@ -74,6 +76,9 @@ public class DragObject : MonoBehaviour
     {
         transform.position = cell.StartPos;
         startPos = cell.StartPos;
+        if(startCell != null)
+            startCell.OnObjectMove();
+        startCell = cell;
         OnSucssesfullSpawn();
         cell.OnGetObject(gameObject);
     }
@@ -119,6 +124,8 @@ public class DragObject : MonoBehaviour
     {
         colliderToTrigger.isTrigger = true;
         transform.position = startPos;
+        if(startCell != null)
+            startCell.OnGetObject(gameObject);
         this.WaitAndDoCoroutine(0.15f, () => colliderToTrigger.isTrigger = false);  
     }
 
