@@ -38,11 +38,14 @@ public class AssemblyController : MonoBehaviour
 
     void Start()
     {
+
+       
         foreach (var item in parts)
         {
             item.part.partID = item.id;
             item.partDummy.HideHighlight();
         }
+print("YGYGYG");
 
         PartController.onGrabStart.AddListener(OnGrabStartPartOfAssembly);
         PartController.onGrabStop.AddListener(OnGrabStopPartOfAssembly);
@@ -72,21 +75,23 @@ public class AssemblyController : MonoBehaviour
         foreach (var item in parts)
             item.part.TogglePhysics(true);
 
-      //  this.Invoke(0f, () => onPartNew.Invoke(parts[0].part));
-      //  this.Invoke(1f, parts[_currentStep].partDummy.ShowHighlight);
+        this.WaitAndDoCoroutine(0f, () => onPartNew.Invoke(parts[0].part));
+        this.WaitAndDoCoroutine(1f, parts[_currentStep].partDummy.ShowHighlight);
     }
 
     void OnGrabStartPartOfAssembly(PartController partC)
     {
         _currentPart = parts.First(x => x.id == partC.partID);
 
-        // if (partC == parts[_currentStep].part)
-        //     _currentPart.partDummy.ShowHighlight();
+         if (partC == parts[_currentStep].part) 
+             _currentPart.partDummy.ShowHighlight();
     }
 
     void OnGrabStopPartOfAssembly(PartController partC)
     {
-        // _currentPart.partDummy.HideHighlight();
+        print("STOP GRAB");
+       
+         _currentPart.partDummy.HideHighlight();
 
         CheckPlacement(partC);
         if (IfFullyAssembled())

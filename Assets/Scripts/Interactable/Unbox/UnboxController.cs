@@ -45,8 +45,6 @@ public class UnboxController : MonoBehaviour
 
     void Start()
     {
-     //   partPositions = partPositionsParent.GetChildren().ToList();
-        // partPositions.Shuffle();
 
         if (IsNumOfSteps)
             stepLength = 1f / steps;
