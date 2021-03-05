@@ -88,8 +88,6 @@ public class PartController : MonoBehaviour
             Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z),
                 new Vector3(_endPos.x, 0, _endPos.z)));
 
-        Debug.Log("Dist " + dist);
-        
         //Ray ray = InputController.inst.GetCameraRay();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -115,7 +113,7 @@ public class PartController : MonoBehaviour
     public void PlacementReady()
     {
         
-        transform.rotation = Quaternion.Euler(layMode == LayMode.Back ? -90f : 0f, Random.Range(-20f, 20f), layMode == LayMode.Side ? 90f : 180f);//rotating first coz meshRend.bounds is world based
+        //transform.rotation = Quaternion.Euler(layMode == LayMode.Back ? -90f : 0f, Random.Range(-20f, 20f), layMode == LayMode.Side ? 90f : 180f);//rotating first coz meshRend.bounds is world based
        // if (placementIndex > -1)
        //     transform.position = LevelController.inst.RequestPosition(placementIndex) + Vector3.up * meshRend.bounds.extents.y;
        // else
@@ -130,10 +128,6 @@ public class PartController : MonoBehaviour
         _targetPosition = _startPos;
 
         _startDist = Vector3.Distance(_startPos, _endPos);
-        
-
-        
-        Debug.Log("startDist " + _startDist);
         
     }
 

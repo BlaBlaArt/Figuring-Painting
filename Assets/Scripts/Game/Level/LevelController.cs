@@ -5,49 +5,66 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    public AssemblyController assemblyController;
+    public static LevelController Instance;
+
+    public AssemblyController[] assemblyControllers;
     public UnboxController unboxController;
 
+    private int assemblyCount;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
-        print("FYYUOHOU");
-
+        assemblyCount = 0;
+        
         PartController.onGrabStart = new UnityEngine.Events.UnityEvent<PartController>();
         PartController.onGrabStop = new UnityEngine.Events.UnityEvent<PartController>();
         
         if (unboxController)
         {
-            // assemblyController.gameObject.SetInactive();
-            // _ucStartPos = unboxController.transform.position.x;
             unboxController.onBoxOpen.AddListener(OnBoxOpen);
         }
         
-        // unboxController.transform.DOMoveX(0f, objectMoveTime).OnComplete(Help);
-        // void Help()
-        // {
-        //     assemblyController.gameObject.SetActive();
-        //     assemblyController.PartPlacement();
-        // }
-        
-        // assemblyController.onAssemblyFinished.AddListener(OnAssemblyFinished);
     }
     
     void OnBoxOpen()
     {
-        // unboxCam.Priority = 0;
-        // mainCam.Priority = 1;
-
-        // TutorialController.inst.ShowTutorialAssembly();
-        assemblyController.ReadyToAssemble();
-        this.WaitAndDoCoroutine(1.5f,() => assemblyController.PartPlacement());
-        // this.Invoke(unboxController.openAnimDelay, assemblyController.ReadyToAssemble);
+        foreach (var controller in assemblyControllers)
+        {
+            controller.ReadyToAssemble();
+            this.WaitAndDoCoroutine(1.5f,() =>
+            {
+                controller.PartPlacement();
+                unboxController.onBoxOpen.RemoveListener(OnBoxOpen);
+                Destroy(unboxController.gameObject);
+            });
+        }
     }
     
-    // void OnAssemblyFinished()
-    // {
-    //     targetController.MoveIn();
-    //
-    //     TutorialController.inst.ShowTutorialGunplay();
-    // }
+    public void OnAssemblyComplete()
+    {
+        assemblyCount++;
+        if (assemblyCount == assemblyControllers.Length)
+        {
+            OnStageComplete();
+            Debug.Log("StageComplete");
+        }
+    }
+
+    private void OnStageComplete()
+    {
+        CameraController.Instance.OnStageComplete();
+    }
+
 }

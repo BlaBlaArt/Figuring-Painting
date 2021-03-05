@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86faf1df71559304caa5b94b237caa3f, type: 3}
   m_Name: PartSettings
   m_EditorClassIdentifier: 
-  maxDistFromCam: 2
+  maxDistFromCam: 4
   floorMask:
     serializedVersion: 2
     m_Bits: 1

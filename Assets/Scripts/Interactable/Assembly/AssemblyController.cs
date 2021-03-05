@@ -34,12 +34,13 @@ public class AssemblyController : MonoBehaviour
 
    // int _currentStep;
 
+   [SerializeField] private Transform pointToMoveOnAssamble;
+
     Part _currentPart;
 
     void Start()
     {
 
-       
         foreach (var item in parts)
         {
             item.part.partID = item.id;
@@ -88,17 +89,31 @@ public class AssemblyController : MonoBehaviour
 
     void OnGrabStopPartOfAssembly(PartController partC)
     {
-        print("STOP GRAB");
        
          _currentPart.partDummy.HideHighlight();
 
         CheckPlacement(partC);
         if (IfFullyAssembled())
         {
-            parts[0].partDummy.transform.parent.SetInactive();
-        //    this.Invoke(.5f, Taptic.Medium);
-            onAssemblyFinished.Invoke();
+            OnFullyAssembeld();
         }
+    }
+
+    private void OnFullyAssembeld()
+    {
+
+       
+            
+        parts[0].partDummy.transform.parent.SetInactive();
+        this.WaitAndDoCoroutine(.5f, Taptic.Medium);
+        onAssemblyFinished.Invoke();
+            
+        PartController.onGrabStart.RemoveListener(OnGrabStartPartOfAssembly);
+        PartController.onGrabStop.RemoveListener(OnGrabStopPartOfAssembly);
+
+        this.WaitAndDoCoroutine(0.5f, () => transform.DOMove(pointToMoveOnAssamble.position, 0.5f));
+        this.WaitAndDoCoroutine(1.5f, () => Destroy(gameObject));
+        this.WaitAndDoCoroutine(1.5f, () => LevelController.Instance.OnAssemblyComplete());
     }
 
     void CheckPlacement(PartController partC)

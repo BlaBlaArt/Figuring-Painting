@@ -16,7 +16,7 @@ public class Cell : MonoBehaviour
 
     public void OnActivate()
     {
-        transform.position += Vector3.up * 0.5f;
+        transform.position += Vector3.up * 0.25f;
     }
 
     public void OnGetObject(GameObject Obj)
