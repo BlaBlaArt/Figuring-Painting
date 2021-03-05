@@ -32,7 +32,7 @@ public class AssemblyController : MonoBehaviour
     [Header("Debug")]
     [SerializeField] bool dontDisassemble;
 
-    int _currentStep;
+   // int _currentStep;
 
     Part _currentPart;
 
@@ -45,7 +45,6 @@ public class AssemblyController : MonoBehaviour
             item.part.partID = item.id;
             item.partDummy.HideHighlight();
         }
-print("YGYGYG");
 
         PartController.onGrabStart.AddListener(OnGrabStartPartOfAssembly);
         PartController.onGrabStop.AddListener(OnGrabStopPartOfAssembly);
@@ -75,16 +74,16 @@ print("YGYGYG");
         foreach (var item in parts)
             item.part.TogglePhysics(true);
 
-        this.WaitAndDoCoroutine(0f, () => onPartNew.Invoke(parts[0].part));
-        this.WaitAndDoCoroutine(1f, parts[_currentStep].partDummy.ShowHighlight);
+       // this.WaitAndDoCoroutine(0f, () => onPartNew.Invoke(parts[0].part));
+       // this.WaitAndDoCoroutine(1f, parts[_currentStep].partDummy.ShowHighlight);
     }
 
     void OnGrabStartPartOfAssembly(PartController partC)
     {
         _currentPart = parts.First(x => x.id == partC.partID);
 
-         if (partC == parts[_currentStep].part) 
-             _currentPart.partDummy.ShowHighlight();
+        // if (partC == parts[_currentStep].part) 
+           //  _currentPart.partDummy.ShowHighlight();
     }
 
     void OnGrabStopPartOfAssembly(PartController partC)
@@ -105,15 +104,15 @@ print("YGYGYG");
     void CheckPlacement(PartController partC)
     {
         float dist = Vector3.Distance(partC.transform.position, _currentPart.partDummy.transform.position);
-        if (dist < settings.distFromTargetPos && partC == parts[_currentStep].part)
+        if (dist < settings.distFromTargetPos /*&& partC == parts[_currentStep].part*/)
         {
             _currentPart.partDummy.HideHighlight();
             SetPlacement(partC, dist);
-            if (settings.stepAssembly)
-                if (_currentStep < parts.Count - 1)
-                    parts[++_currentStep].partDummy.ShowHighlight();
+            //if (settings.stepAssembly)
+               // if (_currentStep < parts.Count - 1)
+                 //   parts[++_currentStep].partDummy.ShowHighlight();
 
-            onPartNew.Invoke(parts[_currentStep].part);
+            //onPartNew.Invoke(parts[_currentStep].part);
         }
         else
         {

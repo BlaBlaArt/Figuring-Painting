@@ -37,6 +37,8 @@ public class PartController : MonoBehaviour
     [Space]
     [ReadOnly] public int partID;
 
+    [SerializeField] private HighlightControllerOutline myOutline;
+    
     public static UnityEvent<PartController> onGrabStart;
     public static UnityEvent<PartController> onGrabStop;
 
@@ -64,11 +66,14 @@ public class PartController : MonoBehaviour
 
     private void Start()
     {
+        myOutline.HideHighlight();
         transform.eulerAngles = new Vector3(0, 0, 90f);
     }
 
     void OnMouseDown()
     {
+        myOutline.ShowHighlight();
+        
         transform.DOKill();
 
         TogglePhysics(false);
@@ -103,12 +108,14 @@ public class PartController : MonoBehaviour
         TogglePhysics(true);
 
         onGrabStop.Invoke(this);
+        
+        myOutline.HideHighlight();
     }
 
     public void PlacementReady()
     {
         
-        //transform.rotation = Quaternion.Euler(layMode == LayMode.Back ? -90f : 0f, Random.Range(-20f, 20f), layMode == LayMode.Side ? 90f : 180f);//rotating first coz meshRend.bounds is world based
+        transform.rotation = Quaternion.Euler(layMode == LayMode.Back ? -90f : 0f, Random.Range(-20f, 20f), layMode == LayMode.Side ? 90f : 180f);//rotating first coz meshRend.bounds is world based
        // if (placementIndex > -1)
        //     transform.position = LevelController.inst.RequestPosition(placementIndex) + Vector3.up * meshRend.bounds.extents.y;
        // else

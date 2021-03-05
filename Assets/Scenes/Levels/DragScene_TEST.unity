@@ -405,6 +405,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1517742558142312616, guid: 5291a3e98f350674686a65e6848c710c,
+        type: 3}
+      propertyPath: myOutline
+      value: 
+      objectReference: {fileID: 485514372}
     - target: {fileID: 2652583779707692551, guid: 5291a3e98f350674686a65e6848c710c,
         type: 3}
       propertyPath: m_Name
@@ -468,7 +473,7 @@ PrefabInstance:
     - target: {fileID: 3423877320665005245, guid: 5291a3e98f350674686a65e6848c710c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.831
+      value: -11.742
       objectReference: {fileID: 0}
     - target: {fileID: 3423877320665005245, guid: 5291a3e98f350674686a65e6848c710c,
         type: 3}
@@ -510,6 +515,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5020721328157594119, guid: 5291a3e98f350674686a65e6848c710c,
+        type: 3}
+      propertyPath: myOutline
+      value: 
+      objectReference: {fileID: 510967286}
     - target: {fileID: 8134729972191033748, guid: 5291a3e98f350674686a65e6848c710c,
         type: 3}
       propertyPath: m_LocalPosition.x
