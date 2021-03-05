@@ -72,8 +72,8 @@ public class AssemblyController : MonoBehaviour
         foreach (var item in parts)
             item.part.TogglePhysics(true);
 
-       // this.Invoke(0f, () => onPartNew.Invoke(parts[0].part));
-       // this.Invoke(1f, parts[_currentStep].partDummy.ShowHighlight);
+      //  this.Invoke(0f, () => onPartNew.Invoke(parts[0].part));
+      //  this.Invoke(1f, parts[_currentStep].partDummy.ShowHighlight);
     }
 
     void OnGrabStartPartOfAssembly(PartController partC)

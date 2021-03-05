@@ -24,8 +24,8 @@ public class CurrentPartController : MonoBehaviour
 
     void Start()
     {
-        GameC.Instance.OnLevelStart += OnLevelLoad;
-        GameC.Instance.OnLevelUnload += Help;
+       // GameC.inst.onLevelLoad += OnLevelLoad;
+       // GameC.inst.onLevelUnload += Help;
 
         void Help()
         {
@@ -53,13 +53,13 @@ public class CurrentPartController : MonoBehaviour
         assemblyC.onAssemblyFinished.AddListener(OnAssemblyFinished);
         outline.enabled = true;
 
-      //  Timing.RunCoroutine(_Help());
-      //  IEnumerator<float> _Help()
-      //  {
-      //      yield return Timing.WaitForSeconds(assembleDelay);
-      //      gameObject.SetActive();
-      //      bg.SetActive();
-      //  }
+        //Timing.RunCoroutine(_Help());
+        //IEnumerator<float> _Help()
+        //{
+        //    yield return Timing.WaitForSeconds(assembleDelay);
+        //    gameObject.SetActive();
+        //    bg.SetActive();
+        //}
     }
 
     void OnAssemblyFinished()

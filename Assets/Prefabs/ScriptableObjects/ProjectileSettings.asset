@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e14a653642f0cc24dba5209628022169, type: 3}
+  m_Name: ProjectileSettings
+  m_EditorClassIdentifier: 
+  hitVfx: {fileID: 8867659653625519405, guid: 1e8dec05d19363b42ac7af3b04e3ebbe, type: 3}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 1
+  lifetime: 5
+  speed: 6

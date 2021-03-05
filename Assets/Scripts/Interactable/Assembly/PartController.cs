@@ -49,11 +49,11 @@ public class PartController : MonoBehaviour
 
     Vector3 _targetPosition;
 
-   // List<IMoveingPart> _moveingParts;
+    List<IMoveingPart> _moveingParts;
 
     void Awake()
     {
-      //  _moveingParts = GetComponentsInChildren<IMoveingPart>().ToList();
+        _moveingParts = GetComponentsInChildren<IMoveingPart>().ToList();
 
         _endPos = transform.position;
         _endRot = transform.rotation;
@@ -67,14 +67,14 @@ public class PartController : MonoBehaviour
         TogglePhysics(false);
 
         Taptic.Light();
-        onGrabStart.Invoke(this);
+      //  onGrabStart.Invoke(this);
     }
 
     void OnMouseDrag()
     {
         float dist = Mathf.InverseLerp(0, _startDist, Vector3.Distance(transform.position, _endPos));
 
-      //  Ray ray = InputController.inst.GetCameraRay();
+        //Ray ray = InputController.inst.GetCameraRay();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, settings.maxDistFromCam, settings.floorMask))
@@ -88,16 +88,16 @@ public class PartController : MonoBehaviour
     {
         TogglePhysics(true);
 
-        onGrabStop.Invoke(this);
+      //  onGrabStop.Invoke(this);
     }
 
     public void PlacementReady()
     {
         transform.rotation = Quaternion.Euler(layMode == LayMode.Back ? -90f : 0f, Random.Range(-20f, 20f), layMode == LayMode.Side ? 90f : 180f);//rotating first coz meshRend.bounds is world based
-      // if (placementIndex > -1)
-      //     transform.position = LevelController.inst.RequestPosition(placementIndex) + Vector3.up * meshRend.bounds.extents.y;
-      // else
-      //     transform.position = LevelController.inst.RequestPosition() + Vector3.up * meshRend.bounds.extents.y;
+       // if (placementIndex > -1)
+       //     transform.position = LevelController.inst.RequestPosition(placementIndex) + Vector3.up * meshRend.bounds.extents.y;
+       // else
+       //     transform.position = LevelController.inst.RequestPosition() + Vector3.up * meshRend.bounds.extents.y;
 
         _startPos = transform.position;
         _startRot = transform.rotation;
@@ -115,12 +115,18 @@ public class PartController : MonoBehaviour
 
             gameObject.layer = 2;
 
-           // if (_moveingParts != null)
-           //     this.Invoke(settings.moveingPartDelay, () => _moveingParts.ForEach(x => x.Execute()));
-           //
-           // if (settings.insertVfx)
-           //     Lean.Pool.LeanPool.Spawn(settings.insertVfx, transform.position, transform.rotation);
-           //
+
+            if (_moveingParts != null)
+            {
+                //this.Invoke(settings.moveingPartDelay, () => _moveingParts.ForEach(x => x.Execute()));
+            }
+
+            if (settings.insertVfx)
+            {
+                
+            }
+               // Lean.Pool.LeanPool.Spawn(settings.insertVfx, transform.position, transform.rotation);
+           
            // TutorialController.inst.HideTutorialAssembly();
         }
     }
