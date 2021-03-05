@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DragController : MonoBehaviour
 {
+    public static DragController Instance;
+    
     private Camera mainCamera;
     
     private GameObject objectToDrag;
@@ -13,8 +15,20 @@ public class DragController : MonoBehaviour
 
     private bool isDrag = false;
 
-    public Vector3 Hit;
+    public float CellsHeight;
     
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Start()
     {
         mainCamera = Camera.main;
@@ -28,8 +42,6 @@ public class DragController : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit,50, planeForCamera))
             {
-                Hit = hit.point;
-                
                 objectToDrag.transform.position =
                     new Vector3(hit.point.x, objectToDrag.transform.position.y, hit.point.z);
             }

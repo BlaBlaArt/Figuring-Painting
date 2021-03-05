@@ -5,11 +5,9 @@ using UnityEngine;
 
 public class DragObject : MonoBehaviour
 {
-    [SerializeField] private DragController dragController;
-
-   // [SerializeField] private Transform MyPerfectPosition;
-
-   [SerializeField] private LayerMask CellLayer;
+    [SerializeField] private Collider colliderToTrigger;
+    
+    [SerializeField] private LayerMask CellLayer;
    
     [SerializeField] private float HeightOfLevel;
 
@@ -27,7 +25,8 @@ public class DragObject : MonoBehaviour
 
     private void OnMouseDown()
     {
-        dragController.SetObjectToDrag(gameObject);
+        DragController.Instance.SetObjectToDrag(gameObject);
+        // dragController.SetObjectToDrag(gameObject);
         if (cell != null)
         {
             cell.OnObjectMove();
@@ -43,7 +42,7 @@ public class DragObject : MonoBehaviour
 
     private void OnMouseUp()
     {
-        dragController.DisableDrag();
+        DragController.Instance.DisableDrag();
 
         CheckCell();
     }
@@ -57,42 +56,48 @@ public class DragObject : MonoBehaviour
 
             if (cell.MyObject != null)
             {
-                Merge(cell.MyObject);
+                CheckMergePosibility(cell.MyObject);
             }
             else
             {
-                transform.position = cell.StartPos;
-                cell.OnGetObject(gameObject);
+                MoveToFreeCell();
             }
         }
         else
         {
-            transform.position = startPos;
+            MoveToStart();
+
         }
     }
 
-    private void Merge(GameObject obj)
+    private void MoveToFreeCell()
     {
-        var data = obj.GetComponent<CharacterData>();
-        CheckLevelObjectOnCell(obj, data.MyLevel);
+        transform.position = cell.StartPos;
+        startPos = cell.StartPos;
+        OnSucssesfullSpawn();
+        cell.OnGetObject(gameObject);
+    }
+    
+    private void CheckMergePosibility(GameObject objOnCell)
+    {
+        var data = objOnCell.GetComponent<CharacterData>();
+        CheckLevelObjectOnCell(objOnCell, data.myCharacterClass);
     }
 
-    private void CheckLevelObjectOnCell(GameObject obj, Levels levels)
+    private void CheckLevelObjectOnCell(GameObject objOnCell, CharacterClass characterClass)
     {
-        if (myData.MyLevel == levels)
+        if (myData.myCharacterClass == characterClass)
         {
-            switch (levels)
+            switch (characterClass)
             {
-                case Levels.Warior:
+                case CharacterClass.Warior:
                 {
-                    Destroy(obj);
-                    myData.MyLevel = Levels.Archer;
+                    OnMerge(objOnCell);
                     break;
                 }
-                case Levels.Archer:
+                case CharacterClass.Archer:
                 {
-                    Destroy(obj);
-                    myData.MyLevel = Levels.Warior;
+                    OnMerge(objOnCell);
                     break;
                 }
             }
@@ -100,8 +105,29 @@ public class DragObject : MonoBehaviour
         else
         {
             cell = null;
-            transform.position = startPos;
+            MoveToStart();
+    
         }
+    }
+
+    private void OnSucssesfullSpawn()
+    {
+        LevelController.Instance.OnSpawnCharacter?.Invoke(myData.CharacterNum);
+    }
+    
+    private void MoveToStart()
+    {
+        colliderToTrigger.isTrigger = true;
+        transform.position = startPos;
+        this.WaitAndDoCoroutine(0.15f, () => colliderToTrigger.isTrigger = false);  
+    }
+
+    private void OnMerge(GameObject objOnCell)
+    {
+        Destroy(objOnCell);
+        MoveToFreeCell();
+        transform.localScale += transform.localScale;
+        OnSucssesfullSpawn();
     }
 
     private void OnTriggerEnter(Collider other)

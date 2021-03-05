@@ -7,16 +7,19 @@ public class Cell : MonoBehaviour
     public GameObject MyObject;
 
     private BoxCollider myCollider;
+
+    private float heigth;
     
     private void Start()
     {
         myCollider = GetComponent<BoxCollider>();
         StartPos = transform.position;
+        heigth = DragController.Instance.CellsHeight;
     }
 
     public void OnActivate()
     {
-        transform.position += Vector3.up * 0.25f;
+        transform.position += Vector3.up * heigth;
     }
 
     public void OnGetObject(GameObject Obj)

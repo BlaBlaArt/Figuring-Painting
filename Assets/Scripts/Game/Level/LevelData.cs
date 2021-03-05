@@ -6,12 +6,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Level Data", menuName = "Level Data", order = 1)]
 public class LevelData : ScriptableObject
 {
-    public Characters CurretLevelCharacters;
+    public Character[] CurretLevelCharacters;
 }
 
 [Serializable]
-public struct Characters
+public struct Character
 {
-    public int[,] countsByType;
-    
+    public CharacterClass CharacterClass;
+    public int count;
+    public GameObject CharacterPref;
 }

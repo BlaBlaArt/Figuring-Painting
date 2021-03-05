@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CharacterData : MonoBehaviour
 {
-    public Levels MyLevel;
+    public CharacterClass myCharacterClass;
+    public int CharacterNum;
 }
 
-public enum Levels
+public enum CharacterClass
 {
     Warior,
     Archer

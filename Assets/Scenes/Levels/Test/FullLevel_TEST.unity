@@ -1482,7 +1482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f72f1353136064d8242aff1ab7161e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyLevel: 0
+  myCharacterClass: 0
 --- !u!1 &1271387141
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,7 +1731,7 @@ MonoBehaviour:
   planeForCamera:
     serializedVersion: 2
     m_Bits: 64
-  Hit: {x: 0, y: 0, z: 0}
+  CellsHeight: 0
 --- !u!1 &1446352580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2922,6 +2922,8 @@ MonoBehaviour:
   - {fileID: 1790725768}
   - {fileID: 1976731578}
   unboxController: {fileID: 1404666770}
+  CurrentLevelData: {fileID: 0}
+  StageNum: 0
 --- !u!4 &2008594688
 Transform:
   m_ObjectHideFlags: 0
@@ -3017,7 +3019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f72f1353136064d8242aff1ab7161e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyLevel: 1
+  myCharacterClass: 0
 --- !u!54 &2027857550
 Rigidbody:
   m_ObjectHideFlags: 0

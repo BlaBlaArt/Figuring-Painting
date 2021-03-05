@@ -10,8 +10,15 @@ public class LevelController : MonoBehaviour
     public AssemblyController[] assemblyControllers;
     public UnboxController unboxController;
 
+    public LevelData CurrentLevelData;
+
+    public int StageNum;
+
     private int assemblyCount;
 
+    public event Action<int> OnStageStart;
+    public Action<int> OnSpawnCharacter;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -27,6 +34,7 @@ public class LevelController : MonoBehaviour
     private void Start()
     {
         assemblyCount = 0;
+        StageNum = 0;
         
         PartController.onGrabStart = new UnityEngine.Events.UnityEvent<PartController>();
         PartController.onGrabStop = new UnityEngine.Events.UnityEvent<PartController>();
@@ -57,13 +65,15 @@ public class LevelController : MonoBehaviour
         assemblyCount++;
         if (assemblyCount == assemblyControllers.Length)
         {
-            OnStageComplete();
+            OnStageComplete(0);
             Debug.Log("StageComplete");
         }
     }
 
-    private void OnStageComplete()
+    private void OnStageComplete(int stageNum)
     {
+        StageNum = ++stageNum;
+        OnStageStart?.Invoke(StageNum);
         CameraController.Instance.OnStageComplete();
     }
 
