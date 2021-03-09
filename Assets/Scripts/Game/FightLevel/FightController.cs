@@ -43,18 +43,26 @@ public class FightController : MonoBehaviour
         finishButton.GetComponent<Button>().onClick.AddListener(OnStageComplete);
     }
 
-    private void OnDestroy()
-    {
-        finishButton.GetComponent<Button>().onClick.RemoveListener(OnStageComplete);
-    }
-
     private void OnStageComplete()
     {
         Debug.Log("2 stagte Complete");
+        DisactiveCells();
         GetCharacters();
         StartFight();
+        
+        finishButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        finishButton.SetInactive();
+
     }
 
+    private void DisactiveCells()
+    {
+        foreach (var cell in Cells)
+        {
+            cell.gameObject.SetInactive();
+        }
+    }
+    
     private void StartFight()
     {
         foreach (var enemy in Enemys)

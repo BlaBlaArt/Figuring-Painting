@@ -124,8 +124,8 @@ Rigidbody:
   m_GameObject: {fileID: 849918218981452304}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 10
+  m_AngularDrag: 10
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -146,6 +146,9 @@ MonoBehaviour:
   myCharacterClass: 0
   CharacterNum: 0
   CharacterLevel: 0
+  Speed: 4
+  DelayBetweenAttacks: 0.15
+  DistanceToStartAttack: 0.15
 --- !u!114 &-7100580889343688480
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -293,10 +293,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33899322}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &33899324
@@ -547,6 +547,15 @@ MonoBehaviour:
   - {fileID: 1098965711}
   - {fileID: 1446352586}
   - {fileID: 1880332793}
+  - {fileID: 1719865870}
+  - {fileID: 259882769}
+  - {fileID: 1284740533}
+  - {fileID: 350227094}
+  - {fileID: 1104708639}
+  - {fileID: 191662278}
+  - {fileID: 2036519805}
+  - {fileID: 72799517}
+  - {fileID: 1741365075}
   Characters: []
 --- !u!4 &117936338
 Transform:
