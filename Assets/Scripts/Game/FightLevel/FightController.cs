@@ -44,6 +44,21 @@ public class FightController : MonoBehaviour
         finishButton = GameC.Instance.Finish2StageButton;
         levelData = LevelController.Instance.CurrentLevelData; 
         finishButton.GetComponent<Button>().onClick.AddListener(FightButton);
+
+        GameC.Instance.OnLevelUnload += OnLevelUnload;
+    }
+
+    private void OnLevelUnload()
+    {
+        foreach (var enemy in Enemys)
+        {
+            Destroy(enemy);
+        }
+
+        foreach (var character in Characters)
+        {
+            Destroy(character);
+        }
     }
 
     private void OnDestroy()
