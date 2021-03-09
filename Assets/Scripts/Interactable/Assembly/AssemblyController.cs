@@ -15,8 +15,8 @@ public class Part
 {
     public PartController part;
     [SerializeReference] public HighlightController partDummy;
-    public int id;
-    [HideInInspector] public bool insterted;
+    public int id; 
+    public bool insterted;
 }
 
 public class AssemblyController : MonoBehaviour
@@ -44,11 +44,12 @@ public class AssemblyController : MonoBehaviour
         foreach (var item in parts)
         {
             item.part.partID = item.id;
+            item.part.onGrabStart.AddListener(OnGrabStartPartOfAssembly);
+            item.part.onGrabStop.AddListener(OnGrabStopPartOfAssembly);
             item.partDummy.HideHighlight();
         }
 
-        PartController.onGrabStart.AddListener(OnGrabStartPartOfAssembly);
-        PartController.onGrabStop.AddListener(OnGrabStopPartOfAssembly);
+      
 
         if (dontDisassemble)
         {
@@ -60,8 +61,11 @@ public class AssemblyController : MonoBehaviour
 
     void OnDestroy()
     {
-        PartController.onGrabStart.RemoveListener(OnGrabStartPartOfAssembly);
-        PartController.onGrabStop.RemoveListener(OnGrabStopPartOfAssembly);
+        foreach (var item in parts)
+        {
+            item.part.onGrabStart.AddListener(OnGrabStartPartOfAssembly);
+            item.part.onGrabStop.AddListener(OnGrabStopPartOfAssembly);
+        }
     }
 
     public void PartPlacement()
@@ -102,14 +106,15 @@ public class AssemblyController : MonoBehaviour
     private void OnFullyAssembeld()
     {
 
-       
-            
         parts[0].partDummy.transform.parent.SetInactive();
         this.WaitAndDoCoroutine(.5f, Taptic.Medium);
         onAssemblyFinished.Invoke();
             
-        PartController.onGrabStart.RemoveListener(OnGrabStartPartOfAssembly);
-        PartController.onGrabStop.RemoveListener(OnGrabStopPartOfAssembly);
+        foreach (var item in parts)
+        {
+            item.part.onGrabStart.AddListener(OnGrabStartPartOfAssembly);
+            item.part.onGrabStop.AddListener(OnGrabStopPartOfAssembly);
+        }
 
         this.WaitAndDoCoroutine(0.5f, () => transform.DOMove(pointToMoveOnAssamble.position, 0.5f));
         this.WaitAndDoCoroutine(1.5f, () => Destroy(gameObject));

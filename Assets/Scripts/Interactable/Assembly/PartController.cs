@@ -39,8 +39,11 @@ public class PartController : MonoBehaviour
 
     [SerializeField] private HighlightControllerOutline myOutline;
     
-    public static UnityEvent<PartController> onGrabStart;
-    public static UnityEvent<PartController> onGrabStop;
+    public UnityEvent<PartController> onGrabStart;
+    public UnityEvent<PartController> onGrabStop;
+    
+    public static UnityEvent<PartController> OnGrabStart;
+    public static UnityEvent<PartController> OnGrabStop;
 
     float _followSmooth = 15f;
 
@@ -80,6 +83,7 @@ public class PartController : MonoBehaviour
 
         Taptic.Light();
         onGrabStart.Invoke(this);
+        OnGrabStart.Invoke(this);
     }
 
     void OnMouseDrag()
@@ -106,6 +110,7 @@ public class PartController : MonoBehaviour
         TogglePhysics(true);
 
         onGrabStop.Invoke(this);
+        OnGrabStop.Invoke(this);
         
         myOutline.HideHighlight();
     }

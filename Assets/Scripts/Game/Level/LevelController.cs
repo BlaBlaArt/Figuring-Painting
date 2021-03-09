@@ -36,8 +36,8 @@ public class LevelController : MonoBehaviour
         assemblyCount = 0;
         StageNum = 0;
         
-        PartController.onGrabStart = new UnityEngine.Events.UnityEvent<PartController>();
-        PartController.onGrabStop = new UnityEngine.Events.UnityEvent<PartController>();
+        PartController.OnGrabStart = new UnityEngine.Events.UnityEvent<PartController>();
+        PartController.OnGrabStop = new UnityEngine.Events.UnityEvent<PartController>();
         
         if (unboxController)
         {
