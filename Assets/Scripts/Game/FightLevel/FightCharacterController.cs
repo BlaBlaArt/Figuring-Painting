@@ -13,14 +13,20 @@ public class FightCharacterController : MonoBehaviour
     private CharacterData myData;
     private Rigidbody rigidbody;
 
-    [Space] private float speed;
+    [Space] 
+    private float speed;
     private float delayBetweenAttacks;
     private float distanceToStartAttack;
+    
+    public int Health;
+    private int dammage;
 
     private void Start()
     {
         myData = GetComponent<CharacterData>();
         rigidbody = GetComponent<Rigidbody>();
+        Health = myData.Health;
+        dammage = myData.Dammage;
         speed = myData.Speed;
         delayBetweenAttacks = myData.DelayBetweenAttacks;
         distanceToStartAttack = myData.DistanceToStartAttack;
@@ -30,10 +36,33 @@ public class FightCharacterController : MonoBehaviour
     {
         CalculateDistToEnemys();
         DisableAllExtraComponents();
-
         FightControl();
     }
 
+    private void ContinueFightCheck()
+    {
+        if (FightController.Instance.Enemys.Count > 0 && FightController.Instance.Characters.Count > 0)
+        {
+            StartFight();
+        }
+        else
+        {
+            if (FightController.Instance.Enemys.Count > FightController.Instance.Characters.Count)
+            {
+                LevelEnd(false);
+            }
+            else
+            {
+                LevelEnd(true);
+            }
+        }
+    }
+
+    private void LevelEnd(bool isWin)
+    {
+        GameC.Instance.LevelEnd(isWin);
+    }
+    
     private void DisableAllExtraComponents()
     {
         GetComponent<DragObject>().enabled = false;
@@ -45,7 +74,7 @@ public class FightCharacterController : MonoBehaviour
 
         if (IsHero)
         {
-            for (int i = 0; i < FightController.Instance.Enemys.Length; i++)
+            for (int i = 0; i < FightController.Instance.Enemys.Count; i++)
             {
                 Enemys.Add(FightController.Instance.Enemys[i]);
             }
@@ -62,6 +91,27 @@ public class FightCharacterController : MonoBehaviour
             .FirstOrDefault();
     }
 
+    public void TakeDammage(int dammage)
+    {
+        if (gameObject != null)
+        {
+            Health -= dammage;
+            if (Health <= 0)
+            {
+                if (IsHero)
+                {
+                    FightController.Instance.Characters.Remove(gameObject);
+                }
+                else
+                {
+                    FightController.Instance.Enemys.Remove(gameObject);
+                }
+
+                Destroy(gameObject);
+            }
+        }
+    }
+    
     private void FightControl()
     {
         StartCoroutine(WalkController());
@@ -70,7 +120,7 @@ public class FightCharacterController : MonoBehaviour
     private IEnumerator WalkController()
     {    
         rigidbody.isKinematic = false;
-
+        
       
         while (Vector3.Distance(transform.position, myEnemy.transform.position) >= distanceToStartAttack + transform.localScale.x/2)
         {
@@ -88,12 +138,34 @@ public class FightCharacterController : MonoBehaviour
                  Vector3.Distance(transform.position, myEnemy.transform.position) <= distanceToStartAttack + transform.localScale.x/2);
 
         rigidbody.velocity = Vector3.zero;
-        rigidbody.isKinematic = true;
 
-        
-        Debug.Log("walkEnd" + Vector3.Distance(transform.position, myEnemy.transform.position));
-
+        StartCoroutine(Fighting());
     }
+
+    private IEnumerator Fighting()
+    {
+        var enemyController = myEnemy.GetComponent<FightCharacterController>();
+        int enemyHealth = enemyController.Health;
+       
+        while (enemyHealth >= 0)
+        {
+            if (myEnemy != null)
+            {
+                enemyController.TakeDammage(dammage);
+                enemyHealth = enemyController.Health;
+                yield return new WaitForSeconds(delayBetweenAttacks);
+            }
+            else
+            {
+                break;
+            }
+        }
+        
+        StopAllCoroutines();
+        ContinueFightCheck();
+    }
+    
+    
         //   var walk = StartCoroutine(Walk());
 
         //float time = 0;

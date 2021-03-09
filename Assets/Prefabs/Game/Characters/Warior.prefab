@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 849918218981452308}
   - component: {fileID: 849918218981452309}
   - component: {fileID: 849918218981452306}
-  - component: {fileID: 849918218981452307}
   - component: {fileID: 849918218981452311}
   - component: {fileID: 849918218981452310}
   - component: {fileID: 849918218981452313}
   - component: {fileID: -7100580889343688480}
+  - component: {fileID: 2658668533829476044}
   m_Layer: 0
   m_Name: Warior
   m_TagString: Untagged
@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849918218981452304}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &849918218981452306
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -86,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &849918218981452307
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849918218981452304}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 4, z: 1}
-  m_Center: {x: 0, y: -1.25, z: 0}
 --- !u!114 &849918218981452311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbfdc98b55b12044691cc54e7a9aa168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliderToTrigger: {fileID: 849918218981452307}
+  colliderToTrigger: {fileID: 2658668533829476044}
   CellLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -148,7 +135,9 @@ MonoBehaviour:
   CharacterLevel: 0
   Speed: 4
   DelayBetweenAttacks: 0.15
+  Dammage: 1
   DistanceToStartAttack: 0.15
+  Health: 10
 --- !u!114 &-7100580889343688480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +152,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsHero: 0
   myEnemy: {fileID: 0}
+  Health: 0
+--- !u!136 &2658668533829476044
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849918218981452304}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000003
+  m_Height: 4.15
+  m_Direction: 1
+  m_Center: {x: 0.000000059604666, y: -0.57, z: -0.000000089406996}

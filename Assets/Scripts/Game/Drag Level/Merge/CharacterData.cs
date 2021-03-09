@@ -10,7 +10,12 @@ public class CharacterData : MonoBehaviour
     [Header("FIGHT")]
     public float Speed;
     public float DelayBetweenAttacks;
+    public int Dammage;
     public float DistanceToStartAttack;
+
+    [Header("STATS")] 
+    public int Health;
+    
 
     private void Start()
     {

@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Xml;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class FightController : MonoBehaviour
@@ -12,12 +10,15 @@ public class FightController : MonoBehaviour
     
     private GameObject finishButton;
 
-    public GameObject[] Enemys;
-    [SerializeField] private Cell[] Cells; 
+    public List<GameObject> Enemys = new List<GameObject>();
+    [SerializeField] private Cell[] Cells;
+    [SerializeField] private GameObject[] enemyCells;
     
     public List<GameObject> Characters = new List<GameObject>();
 
     private LevelData levelData;
+
+    private UnityAction FightButton;
 
     private void Awake()
     {
@@ -33,14 +34,22 @@ public class FightController : MonoBehaviour
 
     private void Start()
     {
+        FightButton = new UnityAction(OnStageComplete);
+        
         foreach (var enemy in Enemys)
         {
             enemy.GetComponent<FightCharacterController>().IsHero = false;
         }
         
         finishButton = GameC.Instance.Finish2StageButton;
-        levelData = LevelController.Instance.CurrentLevelData;
-        finishButton.GetComponent<Button>().onClick.AddListener(OnStageComplete);
+        levelData = LevelController.Instance.CurrentLevelData; 
+        finishButton.GetComponent<Button>().onClick.AddListener(FightButton);
+    }
+
+    private void OnDestroy()
+    {
+        //   finishButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        // finishButton.GetComponent<Button>().onClick.RemoveListener(FightButton);
     }
 
     private void OnStageComplete()
@@ -50,7 +59,8 @@ public class FightController : MonoBehaviour
         GetCharacters();
         StartFight();
         
-        finishButton.GetComponent<Button>().onClick.RemoveAllListeners();
+      //  finishButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        finishButton.GetComponent<Button>().onClick.RemoveListener(FightButton);
         finishButton.SetInactive();
 
     }
@@ -60,6 +70,11 @@ public class FightController : MonoBehaviour
         foreach (var cell in Cells)
         {
             cell.gameObject.SetInactive();
+        }
+
+        foreach (var cell in enemyCells)
+        {
+            cell.SetInactive();
         }
     }
     

@@ -37,7 +37,7 @@ public class SaveLoadSystem : MonoBehaviour
 		else
 			Data = JsonConvert.DeserializeObject<SaveLoadData>(ppData);
 
-		DontDestroyOnLoad(this);
+		//DontDestroyOnLoad(this);
 	}
 
 	public void Save()

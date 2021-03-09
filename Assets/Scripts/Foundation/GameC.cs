@@ -57,7 +57,7 @@ public class GameC : MonoBehaviour
 		OnLevelUnload?.Invoke();
 	}
 
-	private void LevelEnd(bool playerWin)
+	public void LevelEnd(bool playerWin)
 	{
 		if (playerWin)
 			AnalyticsHelper.CompleteLevel();
