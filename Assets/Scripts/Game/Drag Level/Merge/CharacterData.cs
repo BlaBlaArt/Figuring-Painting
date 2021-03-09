@@ -6,10 +6,12 @@ public class CharacterData : MonoBehaviour
     public CharacterClass myCharacterClass;
     public int CharacterNum;
     public int CharacterLevel;
+    public GameObject Bullet;
 
     [Header("FIGHT")]
     public float Speed;
     public float DelayBetweenAttacks;
+    public float AttackTime;
     public int Dammage;
     public float DistanceToStartAttack;
 
