@@ -9,6 +9,8 @@ public class FightCharacterController : MonoBehaviour
 {
     public bool IsHero;
 
+    [SerializeField] private Animator anim;
+    
     [SerializeField] private GameObject myEnemy;
 
     private CharacterData myData;
@@ -130,7 +132,8 @@ public class FightCharacterController : MonoBehaviour
     {    
         rigidbody.isKinematic = false;
         
-      
+        anim.SetBool("IsRun", true);
+
         while (Vector3.Distance(transform.position, myEnemy.transform.position) >= distanceToStartAttack + transform.localScale.x/2)
         {
             var normalized = (myEnemy.transform.position - transform.position).normalized;
@@ -181,6 +184,8 @@ public class FightCharacterController : MonoBehaviour
         {
             case CharacterClass.Archer:
             {
+                anim.SetTrigger("Attack");
+                
                 var tmpBullet = Instantiate(bulletPref);
                 FightController.Instance.TmpObjects.Add(tmpBullet);
                 tmpBullet.transform.position = transform.position;

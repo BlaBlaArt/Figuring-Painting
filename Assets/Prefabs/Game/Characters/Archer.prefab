@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsHero: 0
+  anim: {fileID: 4007233544803358046}
   myEnemy: {fileID: 0}
   Health: 0
 --- !u!136 &2152760604888750277
