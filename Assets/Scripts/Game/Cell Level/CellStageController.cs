@@ -1,10 +1,13 @@
 using NaughtyAttributes;
+using TMPro;
 using UnityEngine;
 
 public class CellStageController : MonoBehaviour
 {
     [SerializeField] private Transform[] PointsToSpawn = new Transform[4];
 
+    [SerializeField] private TextMeshPro[] texts = new TextMeshPro[4];
+    
     private int CountOfCharecters = 4;
     
     [SerializeField] private int[] counts;
@@ -15,6 +18,11 @@ public class CellStageController : MonoBehaviour
     
     private void Start()
     {
+        for (int i = 0; i < PointsToSpawn.Length; i++)
+        {
+            texts[i] = PointsToSpawn[i].GetComponentInChildren<TextMeshPro>();
+            texts[i].SetInactive();
+        }
         counts = new int[CountOfCharecters];
         FinishButton = GameC.Instance.Finish2StageButton;
         LevelController.Instance.OnStageStart += OnStageStart;
@@ -37,6 +45,7 @@ public class CellStageController : MonoBehaviour
         {
             counts[i] = currentLevelData.CurretLevelCharacters[i].count;
             SpawnCharacters(currentLevelData.CurretLevelCharacters[i], PointsToSpawn[i],i);
+            
         }
         
     }
@@ -48,9 +57,11 @@ public class CellStageController : MonoBehaviour
 
     private void SpawnCharacters(Character character, Transform point, int numInArray)
     {
-        
+
         if (counts[numInArray] > 0)
         {
+            texts[numInArray].gameObject.SetActive();
+            texts[numInArray].text = counts[numInArray].ToString();
             counts[numInArray]--;
             var tmpCharacter = Instantiate(character.CharacterPref);
             tmpCharacter.transform.position = point.position;
@@ -58,7 +69,12 @@ public class CellStageController : MonoBehaviour
         }
         else if (FinishConritionCheck())
         {
+            texts[numInArray].gameObject.SetInactive();
             StageComplite();
+        }
+        else
+        {
+            texts[numInArray].gameObject.SetInactive();
         }
         
     }

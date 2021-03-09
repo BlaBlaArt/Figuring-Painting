@@ -91,23 +91,25 @@ public class DragObject : MonoBehaviour
 
     private void CheckLevelObjectOnCell(GameObject objOnCell, CharacterClass characterClass)
     {
-        if (myData.myCharacterClass == characterClass)
-        {
-            switch (characterClass)
-            {
-                case CharacterClass.Warior:
-                {
-                    OnMerge(objOnCell);
-                    break;
-                }
-                case CharacterClass.Archer:
-                {
-                    OnMerge(objOnCell);
-                    break;
-                }
-            }
-        }
-        else
+        
+        //////////////////////////////////////////////////////MERGEEEEEEEEEEEEEEEEEEEEEEEEEE//
+       // if (myData.myCharacterClass == characterClass)
+       // {
+       //     switch (characterClass)
+       //     {
+       //         case CharacterClass.Warior:
+       //         {
+       //             OnMerge(objOnCell);
+       //             break;
+       //         }
+       //         case CharacterClass.Archer:
+       //         {
+       //             OnMerge(objOnCell);
+       //             break;
+       //         }
+       //     }
+       // }
+       // else
         {
             cell = null;
             MoveToStart();
