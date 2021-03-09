@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 873748857421193478}
   - component: {fileID: 873748857421193481}
   m_Layer: 0
-  m_Name: ARCHER
+  m_Name: WARIOR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -409,22 +409,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 75a7c8d5922ec3c4c8b48f89f6ad3737, type: 2}
+      objectReference: {fileID: 2100000, guid: 52aab077efc606e498603676429147e8, type: 2}
     - target: {fileID: -4157524182732408741, guid: a1fcad1e7b6a2c148953973842f90aa5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 75a7c8d5922ec3c4c8b48f89f6ad3737, type: 2}
+      objectReference: {fileID: 2100000, guid: 52aab077efc606e498603676429147e8, type: 2}
     - target: {fileID: -2708497312253239672, guid: a1fcad1e7b6a2c148953973842f90aa5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 75a7c8d5922ec3c4c8b48f89f6ad3737, type: 2}
+      objectReference: {fileID: 2100000, guid: 52aab077efc606e498603676429147e8, type: 2}
     - target: {fileID: -2708497312253239672, guid: a1fcad1e7b6a2c148953973842f90aa5,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 75a7c8d5922ec3c4c8b48f89f6ad3737, type: 2}
+      objectReference: {fileID: 2100000, guid: 52aab077efc606e498603676429147e8, type: 2}
     - target: {fileID: -1450400270514423276, guid: a1fcad1e7b6a2c148953973842f90aa5,
         type: 3}
       propertyPath: m_Layer
