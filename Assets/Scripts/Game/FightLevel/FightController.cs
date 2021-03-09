@@ -10,6 +10,8 @@ public class FightController : MonoBehaviour
     
     private GameObject finishButton;
 
+    public List<GameObject> TmpObjects;
+
     public List<GameObject> Enemys = new List<GameObject>();
     [SerializeField] private Cell[] Cells;
     [SerializeField] private GameObject[] enemyCells;
@@ -59,14 +61,13 @@ public class FightController : MonoBehaviour
         {
             Destroy(character);
         }
-    }
 
-    private void OnDestroy()
-    {
-        //   finishButton.GetComponent<Button>().onClick.RemoveAllListeners();
-        // finishButton.GetComponent<Button>().onClick.RemoveListener(FightButton);
+        foreach (var tmp in TmpObjects)
+        {
+            Destroy(tmp);
+        }
     }
-
+    
     private void OnStageComplete()
     {
         Debug.Log("2 stagte Complete");

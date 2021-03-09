@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 public class FightCharacterController : MonoBehaviour
@@ -13,10 +14,15 @@ public class FightCharacterController : MonoBehaviour
     private CharacterData myData;
     private Rigidbody rigidbody;
 
+    private CharacterClass myClass;
+    
     [Space] 
     private float speed;
     private float delayBetweenAttacks;
     private float distanceToStartAttack;
+    private float attackTime;
+
+    private GameObject bulletPref;
     
     public int Health;
     private int dammage;
@@ -25,10 +31,13 @@ public class FightCharacterController : MonoBehaviour
     {
         myData = GetComponent<CharacterData>();
         rigidbody = GetComponent<Rigidbody>();
+        bulletPref = myData.Bullet;
+        myClass = myData.myCharacterClass;
         Health = myData.Health;
         dammage = myData.Dammage;
         speed = myData.Speed;
         delayBetweenAttacks = myData.DelayBetweenAttacks;
+        attackTime = myData.AttackTime;
         distanceToStartAttack = myData.DistanceToStartAttack;
     }
 
@@ -151,6 +160,7 @@ public class FightCharacterController : MonoBehaviour
         {
             if (myEnemy != null)
             {
+                yield return Attack();
                 enemyController.TakeDammage(dammage);
                 enemyHealth = enemyController.Health;
                 yield return new WaitForSeconds(delayBetweenAttacks);
@@ -164,49 +174,29 @@ public class FightCharacterController : MonoBehaviour
         StopAllCoroutines();
         ContinueFightCheck();
     }
+
+    private IEnumerator Attack()
+    {
+        switch (myClass)
+        {
+            case CharacterClass.Archer:
+            {
+                var tmpBullet = Instantiate(bulletPref);
+                FightController.Instance.TmpObjects.Add(tmpBullet);
+                tmpBullet.transform.position = transform.position;
+                tmpBullet.transform.LookAt(myEnemy.transform);
+                tmpBullet.transform.DOMove(myEnemy.transform.position, attackTime).SetEase(Ease.Linear);
+                break;
+            }
+            case CharacterClass.Warior:
+            {
+                break;
+            }
+        }
+        
+        yield return new WaitForSeconds(attackTime);
+    }
+
+
     
-    
-        //   var walk = StartCoroutine(Walk());
-
-        //float time = 0;
-        //while (time < 1f)
-        //{
-        //    transform.position = Vector3.Lerp(transform.position, myEnemy.transform.position, time);
-        //    time += Time.deltaTime / speed;
-        //    yield return null;
-        //    
-        //    if (Vector3.Distance(transform.position, myEnemy.transform.position) < distanceToStartAttack)
-        //    {
-        //        yield break;
-        //    }
-        //}
-
-        // while (Vector3.Distance(transform.position, myEnemy.transform.position) >= distanceToStartAttack)
-        // {
-        //     Debug.Log("walk");
-        //     var vec = (myEnemy.transform.position - transform.position).normalized;
-        //   // rigidbody.velocity = new Vector3(vec.x, 0, vec.z);
-        //     //transform.Translate(new Vector3(vec.x, transform.position.y, vec.z));
-        //     transform.Translate(vec);
-        //     
-        //     Debug.DrawRay(transform.position, vec * 20, Color.green);
-        //     Debug.Break();
-        //    //
-        //     yield return new WaitForEndOfFrame();
-        // }
-
-        // yield return new WaitUntil(() =>
-        //     Vector3.Distance(transform.position, myEnemy.transform.position) <= distanceToStartAttack);
-
-
-
-        // rigidbody.velocity = Vector3.zero;
-        // StopCoroutine(walk);
-    
-
-// private IEnumerator Walk()
-    // {
-    //   
-    // }
-
 }
