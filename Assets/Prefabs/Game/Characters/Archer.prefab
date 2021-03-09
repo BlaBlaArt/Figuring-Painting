@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5980496133672056427}
   - component: {fileID: 5980496133672056426}
   - component: {fileID: 5980496133672056425}
+  - component: {fileID: -4198495665875744963}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -114,7 +115,6 @@ MonoBehaviour:
   CellLayer:
     serializedVersion: 2
     m_Bits: 128
-  HeightOfLevel: -1.4
 --- !u!54 &5980496133672056426
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -144,3 +144,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCharacterClass: 1
+  CharacterNum: 0
+  CharacterLevel: 0
+--- !u!114 &-4198495665875744963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5980496133672056424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f490229ac7230e847891b9d91ff16409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsHero: 0
+  myEnemy: {fileID: 0}

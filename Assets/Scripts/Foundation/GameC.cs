@@ -11,6 +11,9 @@ public class GameC : MonoBehaviour
 
 	public event Action OnLevelUnload;
 
+
+	public GameObject Finish2StageButton;
+
 	public Camera MainCamera;
 
 	private void Awake()
@@ -23,6 +26,8 @@ public class GameC : MonoBehaviour
 
 	private void Start()
 	{
+		Finish2StageButton.SetInactive();
+		
 		Application.targetFrameRate = 60;
 
 		OnInitComplite += AnalyticsHelper.Init;
@@ -44,6 +49,8 @@ public class GameC : MonoBehaviour
 
 	private void UnloadLevel(bool nextLvl)
 	{
+		Finish2StageButton.SetInactive();
+
 		if (nextLvl)
 			SLS.Data.Game.Level.Value++;
 

@@ -8,8 +8,7 @@ public class DragObject : MonoBehaviour
     [SerializeField] private Collider colliderToTrigger;
     
     [SerializeField] private LayerMask CellLayer;
-   
-    [SerializeField] private float HeightOfLevel;
+    private float heightOfLevel;
 
     private CharacterData myData;
     
@@ -20,6 +19,7 @@ public class DragObject : MonoBehaviour
 
     private void Start()
     {
+        heightOfLevel = DragController.Instance.HeightOfLevel;
         myData = GetComponent<CharacterData>();
         startPos = transform.position;
         startCell = null;
@@ -39,7 +39,7 @@ public class DragObject : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        transform.position = new Vector3(transform.position.x, HeightOfLevel, transform.position.z);
+        transform.position = new Vector3(transform.position.x, heightOfLevel, transform.position.z);
     }
 
     private void OnMouseUp()
@@ -133,7 +133,8 @@ public class DragObject : MonoBehaviour
     {
         Destroy(objOnCell);
         MoveToFreeCell();
-        transform.localScale += transform.localScale;
+        myData.CharacterLevel++;
+        myData.OnLevelChange();
         OnSucssesfullSpawn();
     }
 
