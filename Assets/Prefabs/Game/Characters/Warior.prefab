@@ -136,7 +136,7 @@ MonoBehaviour:
   CharacterNum: 0
   CharacterLevel: 0
   Bullet: {fileID: 0}
-  Speed: 4
+  Speed: 2
   DelayBetweenAttacks: 0.15
   AttackTime: 0
   Dammage: 1
@@ -167,7 +167,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.1
+  m_Radius: 0.01
   m_Height: 4.15
   m_Direction: 1
   m_Center: {x: 0.000000059604666, y: -0.57, z: -0.000000089406996}
