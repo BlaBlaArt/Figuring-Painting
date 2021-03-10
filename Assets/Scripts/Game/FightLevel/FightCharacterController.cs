@@ -52,8 +52,11 @@ public class FightCharacterController : MonoBehaviour
     public void StartFight()
     {
         CalculateDistToEnemys();
-        DisableAllExtraComponents();
-        FightControl();
+        if (myEnemy != null)
+        {
+            DisableAllExtraComponents();
+            FightControl();
+        }
     }
 
     private void ContinueFightCheck()
