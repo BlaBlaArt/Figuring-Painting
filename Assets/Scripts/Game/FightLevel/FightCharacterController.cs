@@ -42,10 +42,18 @@ public class FightCharacterController : MonoBehaviour
         delayBetweenAttacks = myData.DelayBetweenAttacks;
         attackTime = myData.AttackTime;
         distanceToStartAttack = myData.DistanceToStartAttack;
+        GameC.Instance.OnLevelEnd += OnLevelEnd;
+    }
+    
+    
+    private void OnLevelEnd(bool obj)
+    {
+        myAnimatorController.OnWin();
     }
 
     private void OnDestroy()
     {
+        GameC.Instance.OnLevelEnd -= OnLevelEnd;
         StopAllCoroutines();
     }
 
@@ -57,6 +65,7 @@ public class FightCharacterController : MonoBehaviour
             DisableAllExtraComponents();
             FightControl();
         }
+
     }
 
     private void ContinueFightCheck()
