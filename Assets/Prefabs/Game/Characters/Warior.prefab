@@ -189,6 +189,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6378374678837295681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5658089887880327832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49fc175e623af3a4fbae7ed46b2a5539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 8422205870439508478}
 --- !u!1001 &5518313116340997338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -271,6 +284,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3482931524901344351, guid: 240d3ef593101b646b241a37d65e2064,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 52aab077efc606e498603676429147e8, type: 2}
+    - target: {fileID: 5488756169993635164, guid: 240d3ef593101b646b241a37d65e2064,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 52aab077efc606e498603676429147e8, type: 2}
+    - target: {fileID: 8677984012699926927, guid: 240d3ef593101b646b241a37d65e2064,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 52aab077efc606e498603676429147e8, type: 2}
+    - target: {fileID: 8677984012699926927, guid: 240d3ef593101b646b241a37d65e2064,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 52aab077efc606e498603676429147e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 240d3ef593101b646b241a37d65e2064, type: 3}
 --- !u!1 &5658089887880327832 stripped

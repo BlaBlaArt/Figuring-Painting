@@ -8,11 +8,11 @@ using UnityEngine;
 public class FightCharacterController : MonoBehaviour
 {
     public bool IsHero;
-
-    [SerializeField] private Animator anim;
     
     [SerializeField] private GameObject myEnemy;
-
+    
+    private IAnimationController myAnimatorController;
+    
     private CharacterData myData;
     private Rigidbody rigidbody;
 
@@ -31,6 +31,7 @@ public class FightCharacterController : MonoBehaviour
 
     private void Start()
     {
+        myAnimatorController = GetComponentInChildren<IAnimationController>();
         myData = GetComponent<CharacterData>();
         rigidbody = GetComponent<Rigidbody>();
         bulletPref = myData.Bullet;
@@ -41,6 +42,11 @@ public class FightCharacterController : MonoBehaviour
         delayBetweenAttacks = myData.DelayBetweenAttacks;
         attackTime = myData.AttackTime;
         distanceToStartAttack = myData.DistanceToStartAttack;
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 
     public void StartFight()
@@ -131,24 +137,40 @@ public class FightCharacterController : MonoBehaviour
     private IEnumerator WalkController()
     {    
         rigidbody.isKinematic = false;
-        
-        anim.SetBool("IsRun", true);
 
-        while (Vector3.Distance(transform.position, myEnemy.transform.position) >= distanceToStartAttack + transform.localScale.x/2)
+        myAnimatorController.Run();
+
+        if (myEnemy != null)
         {
-            var normalized = (myEnemy.transform.position - transform.position).normalized;
-        
-            var dir = new Vector3(normalized.x, 0, normalized.z);
+            while (Vector3.Distance(transform.position, myEnemy.transform.position) >=
+                   distanceToStartAttack + transform.localScale.x / 2)
+            {
 
-            rigidbody.velocity = dir / speed;
-            
-            transform.LookAt(new Vector3(myEnemy.transform.position.x, transform.position.y, myEnemy.transform.position.z), Vector3.up);
-            yield return new WaitForFixedUpdate();
+                var normalized = (myEnemy.transform.position - transform.position).normalized;
+
+                var dir = new Vector3(normalized.x, 0, normalized.z);
+
+                rigidbody.velocity = dir / speed;
+
+                transform.LookAt(
+                    new Vector3(myEnemy.transform.position.x, transform.position.y, myEnemy.transform.position.z),
+                    Vector3.up);
+                yield return new WaitForFixedUpdate();
+            }
+        }
+        else
+        {
+            myAnimatorController.Idle();
+            rigidbody.velocity = Vector3.zero;
+            StartFight();
+            yield break;
         }
 
         yield return new WaitUntil(() =>
                  Vector3.Distance(transform.position, myEnemy.transform.position) <= distanceToStartAttack + transform.localScale.x/2);
 
+        myAnimatorController.Idle();
+        
         rigidbody.velocity = Vector3.zero;
 
         StartCoroutine(Fighting());
@@ -180,11 +202,12 @@ public class FightCharacterController : MonoBehaviour
 
     private IEnumerator Attack()
     {
+        myAnimatorController.Attack();
+        
         switch (myClass)
         {
             case CharacterClass.Archer:
             {
-                anim.SetTrigger("Attack");
                 
                 var tmpBullet = Instantiate(bulletPref);
                 FightController.Instance.TmpObjects.Add(tmpBullet);
