@@ -16,7 +16,7 @@ MonoBehaviour:
   floorMask:
     serializedVersion: 2
     m_Bits: 64
-  floorHeight: 0.15
+  floorHeight: 0.1
   snapBackSpeed: 0.5
   dropTime: 0.4
   moveingPartDelay: 0.2
