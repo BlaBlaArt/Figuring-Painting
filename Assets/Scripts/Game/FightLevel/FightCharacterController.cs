@@ -110,8 +110,6 @@ public class FightCharacterController : MonoBehaviour
 
     public void TakeDammage(int dammage)
     {
-        if (enabled)
-        {
             Health -= dammage;
             if (Health <= 0)
             {
@@ -126,7 +124,6 @@ public class FightCharacterController : MonoBehaviour
 
                 Destroy(gameObject);
             }
-        }
     }
     
     private void FightControl()
@@ -184,7 +181,11 @@ public class FightCharacterController : MonoBehaviour
             if (myEnemy != null)
             {
                 yield return Attack();
-                enemyController.TakeDammage(dammage);
+                if(myEnemy != null)
+                    enemyController.TakeDammage(dammage);
+                else
+                    break;
+                
                 enemyHealth = enemyController.Health;
                 yield return new WaitForSeconds(delayBetweenAttacks);
             }
