@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DragObject : MonoBehaviour
@@ -18,6 +15,7 @@ public class DragObject : MonoBehaviour
     private Vector3 startPos;
 
     private IAnimationController myAnimationController;
+    
 
     private void Start()
     {

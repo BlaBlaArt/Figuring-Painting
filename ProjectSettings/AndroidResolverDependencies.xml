@@ -60,7 +60,7 @@
   </files>
   <settings>
     <setting name="androidAbis" value="armeabi-v7a" />
-    <setting name="bundleId" value="com.24Play.MyGame" />
+    <setting name="bundleId" value="com.play24.figuringpainting" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
     <setting name="gradleTemplateEnabled" value="False" />

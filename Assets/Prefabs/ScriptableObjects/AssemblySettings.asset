@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AssemblySettings
   m_EditorClassIdentifier: 
   stepAssembly: 1
-  distFromTargetPos: 0.15
+  distFromTargetPos: 0.25
   snapPartSpeed: 1

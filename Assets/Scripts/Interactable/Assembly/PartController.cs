@@ -89,8 +89,7 @@ public class PartController : MonoBehaviour
     void OnMouseDrag()
     {
         float dist = Mathf.InverseLerp(0, _startDist,
-            Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z),
-                new Vector3(_endPos.x, 0, _endPos.z)));
+            Vector3.Distance(transform.position, _endPos));
 
         //Ray ray = InputController.inst.GetCameraRay();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
