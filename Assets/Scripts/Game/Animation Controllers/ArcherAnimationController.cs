@@ -7,6 +7,7 @@ public class ArcherAnimationController : MonoBehaviour, IAnimationController
     [SerializeField] private Animator anim;
     private static readonly int IsRun = Animator.StringToHash("IsRun");
     private static readonly int Attack1 = Animator.StringToHash("Attack");
+    private static readonly int IsDrag = Animator.StringToHash("IsDrag");
 
     public void Run()
     {
@@ -23,8 +24,9 @@ public class ArcherAnimationController : MonoBehaviour, IAnimationController
         anim.SetBool(IsRun, false);
     }
 
-    public void OnDrag()
+    public void OnDrag(bool isStart)
     {
-        
+        anim.SetBool(IsDrag, isStart);
     }
+    
 }

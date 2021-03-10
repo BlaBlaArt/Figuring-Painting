@@ -17,8 +17,11 @@ public class DragObject : MonoBehaviour
     private Cell startCell;
     private Vector3 startPos;
 
+    private IAnimationController myAnimationController;
+
     private void Start()
     {
+        myAnimationController = GetComponentInChildren<IAnimationController>();
         heightOfLevel = DragController.Instance.HeightOfLevel;
         myData = GetComponent<CharacterData>();
         startPos = transform.position;
@@ -34,6 +37,8 @@ public class DragObject : MonoBehaviour
             cell.OnObjectMove();
         }
         
+        myAnimationController.OnDrag(true);
+        
         Debug.Log("DOWN");
     }
 
@@ -46,6 +51,8 @@ public class DragObject : MonoBehaviour
     {
         DragController.Instance.DisableDrag();
 
+        myAnimationController.OnDrag(false);
+        
         CheckCell();
     }
 

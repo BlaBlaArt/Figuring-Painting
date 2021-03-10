@@ -7,5 +7,5 @@ public interface IAnimationController
     public void Run();
     public void Attack();
     public void Idle();
-    public void OnDrag();
+    public void OnDrag(bool isStart);
 }

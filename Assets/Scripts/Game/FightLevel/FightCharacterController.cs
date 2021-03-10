@@ -110,7 +110,7 @@ public class FightCharacterController : MonoBehaviour
 
     public void TakeDammage(int dammage)
     {
-        if (gameObject != null)
+        if (enabled)
         {
             Health -= dammage;
             if (Health <= 0)
@@ -140,25 +140,23 @@ public class FightCharacterController : MonoBehaviour
 
         myAnimatorController.Run();
 
-        if (myEnemy != null)
+        while (myEnemy != null && Vector3.Distance(transform.position, myEnemy.transform.position) >=
+            distanceToStartAttack + transform.localScale.x / 2)
         {
-            while (Vector3.Distance(transform.position, myEnemy.transform.position) >=
-                   distanceToStartAttack + transform.localScale.x / 2)
-            {
 
-                var normalized = (myEnemy.transform.position - transform.position).normalized;
+            var normalized = (myEnemy.transform.position - transform.position).normalized;
 
-                var dir = new Vector3(normalized.x, 0, normalized.z);
+            var dir = new Vector3(normalized.x, 0, normalized.z);
 
-                rigidbody.velocity = dir / speed;
+            rigidbody.velocity = dir / speed;
 
-                transform.LookAt(
-                    new Vector3(myEnemy.transform.position.x, transform.position.y, myEnemy.transform.position.z),
-                    Vector3.up);
-                yield return new WaitForFixedUpdate();
-            }
+            transform.LookAt(
+                new Vector3(myEnemy.transform.position.x, transform.position.y, myEnemy.transform.position.z),
+                Vector3.up);
+            yield return new WaitForFixedUpdate();
         }
-        else
+        
+        if(myEnemy == null)
         {
             myAnimatorController.Idle();
             rigidbody.velocity = Vector3.zero;
