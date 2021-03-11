@@ -19,7 +19,8 @@ public class Cell : MonoBehaviour
 
     public void OnActivate()
     {
-        transform.position += Vector3.up * heigth;
+        if(MyObject == null)
+            transform.position += Vector3.up * heigth;
     }
 
     public void OnGetObject(GameObject Obj)
@@ -31,6 +32,7 @@ public class Cell : MonoBehaviour
     public void OnObjectMove()
     {
         MyObject = null;
+        OnActivate();
     }
     
     public void OnDisactive()

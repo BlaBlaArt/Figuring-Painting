@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 
 public class DragObject : MonoBehaviour
@@ -19,6 +20,8 @@ public class DragObject : MonoBehaviour
 
     private float startRadiusOfColider;
 
+    private bool canCollide = true;
+    
     private void Start()
     {
         var colider = GetComponent<CapsuleCollider>();
@@ -90,7 +93,8 @@ public class DragObject : MonoBehaviour
 
     private void MoveToFreeCell()
     {
-        transform.position = cell.StartPos;
+        //transform.position = cell.StartPos;
+        transform.DOMove(cell.StartPos, Vector3.Distance(transform.position, cell.StartPos) * 0.5f).SetEase(Ease.Linear);
         startPos = cell.StartPos;
         if(startCell != null)
             startCell.OnObjectMove();
@@ -141,11 +145,18 @@ public class DragObject : MonoBehaviour
     
     private void MoveToStart()
     {
-        colliderToTrigger.isTrigger = true;
-        transform.position = startPos;
+        canCollide = false;
+        transform.DOMove(startPos, Vector3.Distance(transform.position, startPos) * 0.5f).SetEase(Ease.Linear)
+            .OnComplete(
+                () =>
+                {
+                    canCollide = true;
+                });
+        
+        // transform.position = startPos;
         if(startCell != null)
             startCell.OnGetObject(gameObject);
-        this.WaitAndDoCoroutine(0.15f, () => colliderToTrigger.isTrigger = false);  
+        // this.WaitAndDoCoroutine(0.15f, () => colliderToTrigger.isTrigger = false);  
     }
 
     private void OnMerge(GameObject objOnCell)
@@ -159,7 +170,7 @@ public class DragObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Cell"))
+        if (canCollide && other.CompareTag("Cell"))
         {
             other.GetComponent<Cell>().OnActivate();
         }
@@ -167,7 +178,7 @@ public class DragObject : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Cell"))
+        if (canCollide && other.CompareTag("Cell"))
         {
             other.GetComponent<Cell>().OnDisactive();
         }
