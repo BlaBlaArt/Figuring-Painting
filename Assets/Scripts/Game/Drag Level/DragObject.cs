@@ -94,7 +94,7 @@ public class DragObject : MonoBehaviour
     private void MoveToFreeCell()
     {
         //transform.position = cell.StartPos;
-        transform.DOMove(cell.StartPos, Vector3.Distance(transform.position, cell.StartPos) * 0.5f).SetEase(Ease.Linear);
+        transform.DOMove(cell.StartPos, Vector3.Distance(transform.position, cell.StartPos)/10).SetEase(Ease.Linear);
         startPos = cell.StartPos;
         if(startCell != null)
             startCell.OnObjectMove();
@@ -146,7 +146,7 @@ public class DragObject : MonoBehaviour
     private void MoveToStart()
     {
         canCollide = false;
-        transform.DOMove(startPos, Vector3.Distance(transform.position, startPos) * 0.5f).SetEase(Ease.Linear)
+        transform.DOMove(startPos, Vector3.Distance(transform.position, startPos)/10).SetEase(Ease.Linear)
             .OnComplete(
                 () =>
                 {
