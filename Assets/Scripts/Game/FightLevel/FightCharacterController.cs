@@ -94,7 +94,7 @@ public class FightCharacterController : MonoBehaviour
     
     private void DisableAllExtraComponents()
     {
-        GetComponent<DragObject>().enabled = false;
+        Destroy(GetComponent<DragObject>());
     }
 
     private void CalculateDistToEnemys()
