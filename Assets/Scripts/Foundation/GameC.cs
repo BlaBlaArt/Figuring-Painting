@@ -45,6 +45,14 @@ public class GameC : MonoBehaviour
 		});
 	}
 
+	public void ShowFinishButton()
+	{
+		if (!Finish2StageButton.activeSelf)
+		{
+			Finish2StageButton.SetActive();
+		}
+	}
+	
 	public void LoadLevel()
 	{
 		var levelNumber = SLS.Data.Game.Level.Value;

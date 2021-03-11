@@ -1,6 +1,7 @@
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CellStageController : MonoBehaviour
 {
@@ -11,25 +12,31 @@ public class CellStageController : MonoBehaviour
     private int CountOfCharecters = 4;
     
     [SerializeField] private int[] counts;
-
-    private GameObject FinishButton;
     
     private LevelData currentLevelData;
     
     private void Start()
     {
+        GameC.Instance.Finish2StageButton.GetComponent<Button>().onClick.AddListener(OnStartFightStage);
         for (int i = 0; i < PointsToSpawn.Length; i++)
         {
             texts[i] = PointsToSpawn[i].GetComponentInChildren<TextMeshPro>();
             texts[i].SetInactive();
         }
         counts = new int[CountOfCharecters];
-        FinishButton = GameC.Instance.Finish2StageButton;
         LevelController.Instance.OnStageStart += OnStageStart;
         LevelController.Instance.OnSpawnCharacter += OnSpawnCharacter;
         currentLevelData = LevelController.Instance.CurrentLevelData;
     }
 
+    private void OnStartFightStage()
+    {
+        foreach (var text in texts)
+        {
+            text.gameObject.SetInactive();
+        }
+    }
+    
     private void OnStageStart(int obj)
     {
         if (obj == 1)
@@ -71,7 +78,6 @@ public class CellStageController : MonoBehaviour
         else if (FinishConritionCheck())
         {
             texts[numInArray].gameObject.SetInactive();
-            StageComplite();
         }
         else
         {
@@ -97,14 +103,10 @@ public class CellStageController : MonoBehaviour
 
     }
 
-    private void StageComplite()
-    {
-        FinishButton.SetActive();
-    }
-    
     private void OnDestroy()
     {
         LevelController.Instance.OnStageStart -= OnStageStart;
+        GameC.Instance.Finish2StageButton.GetComponent<Button>().onClick.RemoveListener(OnStartFightStage);
     }
 
     [Button]

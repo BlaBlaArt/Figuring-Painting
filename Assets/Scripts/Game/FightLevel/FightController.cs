@@ -85,6 +85,7 @@ public class FightController : MonoBehaviour
         Debug.Log("2 stagte Complete");
         DisactiveCells();
         GetCharacters();
+        DestroyNotUsedCherecters();
         StartFight();
         
       //  finishButton.GetComponent<Button>().onClick.RemoveAllListeners();
@@ -126,8 +127,19 @@ public class FightController : MonoBehaviour
             if (Cells[i].MyObject != null)
             {
                 Characters.Add(Cells[i].MyObject);
+                TmpObjects.Remove(Cells[i].MyObject);
                 Cells[i].MyObject.GetComponent<FightCharacterController>().IsHero = true;
             }
         }
+    }
+
+    private void DestroyNotUsedCherecters()
+    {
+        foreach (var tmp in TmpObjects)
+        {
+            Destroy(tmp);
+        }
+        
+        TmpObjects.Clear();
     }
 }

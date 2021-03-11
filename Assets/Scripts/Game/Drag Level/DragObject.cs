@@ -97,6 +97,7 @@ public class DragObject : MonoBehaviour
         startCell = cell;
         OnSucssesfullSpawn();
         cell.OnGetObject(gameObject);
+        GameC.Instance.ShowFinishButton();
     }
     
     private void CheckMergePosibility(GameObject objOnCell)
