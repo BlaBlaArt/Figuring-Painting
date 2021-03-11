@@ -1,5 +1,5 @@
-﻿using Facebook.Unity;
-using GameAnalyticsSDK;
+﻿//using Facebook.Unity;
+//using GameAnalyticsSDK;
 using UnityEngine;
 
 public static class AnalyticsHelper
@@ -27,19 +27,19 @@ public static class AnalyticsHelper
 
 	public static void Init()
 	{
-		GameAnalytics.Initialize();
+		// GameAnalytics.Initialize();
 
-		if (FB.IsInitialized)
-		{
-			FB.ActivateApp();
-		}
-		else
-		{
-			FB.Init(() =>
-			{
-				FB.ActivateApp();
-			});
-		}
+		// if (FB.IsInitialized)
+		// {
+		// 	FB.ActivateApp();
+		// }
+		// else
+		// {
+		// 	FB.Init(() =>
+		// 	{
+		// 		FB.ActivateApp();
+		// 	});
+		// }
 
 		Logwin.Log("Init", "", "Analytics", LogwinParam.Color(Color.green));
 	}
@@ -50,7 +50,7 @@ public static class AnalyticsHelper
 
 		Logwin.Log("StartLevel", GetCurrentLevelName(), "Analytics", LogwinParam.Color(Color.green));
 
-		GameAnalytics.NewProgressionEvent(GameAnalyticsSDK.GAProgressionStatus.Start, "Game", GetCurrentLevelName());
+		// GameAnalytics.NewProgressionEvent(GameAnalyticsSDK.GAProgressionStatus.Start, "Game", GetCurrentLevelName());
 	}
 
 	public static void CompleteLevel()
@@ -59,7 +59,7 @@ public static class AnalyticsHelper
 
 		Logwin.Log("CompleteLevel", GetCurrentLevelName(), "Analytics", LogwinParam.Color(Color.green));
 
-		GameAnalytics.NewProgressionEvent(GameAnalyticsSDK.GAProgressionStatus.Complete, "Game", GetCurrentLevelName());
+		// GameAnalytics.NewProgressionEvent(GameAnalyticsSDK.GAProgressionStatus.Complete, "Game", GetCurrentLevelName());
 
 		IncrementLevel();
 
@@ -72,7 +72,7 @@ public static class AnalyticsHelper
 
 		Logwin.Log("FailLevel", GetCurrentLevelName(), "Analytics", LogwinParam.Color(Color.green));
 
-		GameAnalytics.NewProgressionEvent(GameAnalyticsSDK.GAProgressionStatus.Fail, "Game", GetCurrentLevelName());
+		// GameAnalytics.NewProgressionEvent(GameAnalyticsSDK.GAProgressionStatus.Fail, "Game", GetCurrentLevelName());
 
 		_levelWasStarted = false;
 	}

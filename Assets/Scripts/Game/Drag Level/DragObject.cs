@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class DragObject : MonoBehaviour
@@ -15,15 +16,25 @@ public class DragObject : MonoBehaviour
     private Vector3 startPos;
 
     private IAnimationController myAnimationController;
-    
+
+    private float startRadiusOfColider;
 
     private void Start()
     {
+        var colider = GetComponent<CapsuleCollider>();
+        startRadiusOfColider = colider.radius;
+        colider.radius = 0.01f;
         myAnimationController = GetComponentInChildren<IAnimationController>();
         heightOfLevel = DragController.Instance.HeightOfLevel;
         myData = GetComponent<CharacterData>();
         startPos = transform.position;
         startCell = null;
+    }
+
+    private void OnDisable()
+    {
+        var colider = GetComponent<CapsuleCollider>();
+        colider.radius = startRadiusOfColider;
     }
 
     private void OnMouseDown()

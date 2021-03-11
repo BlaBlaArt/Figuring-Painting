@@ -48,6 +48,18 @@ public class FightController : MonoBehaviour
         finishButton.GetComponent<Button>().onClick.AddListener(FightButton);
 
         GameC.Instance.OnLevelUnload += OnLevelUnload;
+        LevelController.Instance.OnStageStart += OnStageStart;
+    }
+
+    private void OnDestroy()
+    {
+        GameC.Instance.OnLevelUnload -= OnLevelUnload;
+        LevelController.Instance.OnStageStart -= OnStageStart;
+    }
+
+    private void OnStageStart(int obj)
+    {
+        TmpObjects.Clear();
     }
 
     private void OnLevelUnload()

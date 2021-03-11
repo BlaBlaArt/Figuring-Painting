@@ -66,6 +66,7 @@ public class CellStageController : MonoBehaviour
             var tmpCharacter = Instantiate(character.CharacterPref);
             tmpCharacter.transform.position = point.position;
             tmpCharacter.GetComponent<CharacterData>().CharacterNum = numInArray;
+            FightController.Instance.TmpObjects.Add(tmpCharacter);
         }
         else if (FinishConritionCheck())
         {
