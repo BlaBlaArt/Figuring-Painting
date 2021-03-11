@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 849918218981452313}
   - component: {fileID: -7100580889343688480}
   - component: {fileID: 2658668533829476044}
-  - component: {fileID: 121218723193334041}
+  - component: {fileID: 4574643700936980195}
   m_Layer: 0
   m_Name: Warior
   m_TagString: Untagged
@@ -171,19 +171,19 @@ CapsuleCollider:
   m_Height: 4.15
   m_Direction: 1
   m_Center: {x: 0.000000059604666, y: -0.57, z: -0.000000089406996}
---- !u!135 &121218723193334041
-SphereCollider:
+--- !u!65 &4574643700936980195
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849918218981452304}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0.000000059604666, y: 3, z: -0.000000089406996}
+  m_Size: {x: 3, y: 0.5, z: 3}
+  m_Center: {x: 0.000000059604666, y: 2, z: -0.84}
 --- !u!95 &8422205870439508478
 Animator:
   serializedVersion: 3

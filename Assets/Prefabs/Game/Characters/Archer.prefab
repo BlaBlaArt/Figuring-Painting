@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5980496133672056425}
   - component: {fileID: -4198495665875744963}
   - component: {fileID: 2152760604888750277}
-  - component: {fileID: 2499298989583718051}
+  - component: {fileID: 8138918689495115395}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -171,8 +171,8 @@ CapsuleCollider:
   m_Height: 4.15
   m_Direction: 1
   m_Center: {x: 0.000000059604666, y: -0.57, z: -0.000000089406996}
---- !u!135 &2499298989583718051
-SphereCollider:
+--- !u!65 &8138918689495115395
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -182,8 +182,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0.000000059604666, y: 3, z: -0.000000089406996}
+  m_Size: {x: 3, y: 0.5, z: 3}
+  m_Center: {x: 0.000000059604666, y: 2, z: -0.84}
 --- !u!95 &4007233544803358046
 Animator:
   serializedVersion: 3
