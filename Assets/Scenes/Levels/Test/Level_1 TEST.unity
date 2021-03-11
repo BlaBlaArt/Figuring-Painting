@@ -1349,6 +1349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff4b31fc2bb3c3419c5604419ad5ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HeightOffset: 0.75
+  deltaTimeMove: 1
   assemblyControllers:
   - {fileID: 2114902404}
   - {fileID: 237355739}

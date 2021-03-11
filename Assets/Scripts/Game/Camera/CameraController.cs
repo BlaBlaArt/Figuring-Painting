@@ -27,6 +27,12 @@ public class CameraController : MonoBehaviour
         SetCamersOutOfStage();
 
         GameC.Instance.OnLevelUnload += OnLevelUnload;
+        GameC.Instance.OnFirstInput += OnFirstInput;
+    }
+
+    private void OnFirstInput()
+    {
+        OnStageComplete();
     }
 
     private void OnLevelUnload()

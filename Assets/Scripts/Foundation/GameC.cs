@@ -5,6 +5,12 @@ public class GameC : MonoBehaviour
 {
 	public static GameC Instance { get; private set; }
 
+
+	public Action OnFirstInput;
+
+	public Action OnAssembleStage;
+
+	public Action<int> OnShowTutorial;
 	public event Action OnInitComplite;
 	public event Action<int> OnLevelStart;
 	public event Action<bool> OnLevelEnd;
