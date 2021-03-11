@@ -116,9 +116,9 @@ public class AssemblyController : MonoBehaviour
             item.part.onGrabStop.AddListener(OnGrabStopPartOfAssembly);
         }
 
-        this.WaitAndDoCoroutine(0.5f, () => transform.DOMove(pointToMoveOnAssamble.position, 0.5f));
-        this.WaitAndDoCoroutine(1.5f, () => Destroy(gameObject));
-        this.WaitAndDoCoroutine(1.5f, () => LevelController.Instance.OnAssemblyComplete());
+        this.WaitAndDoCoroutine(1.25f, () => transform.DOMove(pointToMoveOnAssamble.position, 0.5f));
+        this.WaitAndDoCoroutine(1.75f, () => Destroy(gameObject));
+        this.WaitAndDoCoroutine(1.75f, () => LevelController.Instance.OnAssemblyComplete());
     }
 
     void CheckPlacement(PartController partC)
