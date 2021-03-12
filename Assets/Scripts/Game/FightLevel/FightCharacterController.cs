@@ -229,10 +229,16 @@ public class FightCharacterController : MonoBehaviour
             }
             case CharacterClass.Warior:
             {
+
                 break;
             }
             case CharacterClass.Wizard:
             {
+                var tmpBullet = Instantiate(bulletPref);
+                FightController.Instance.TmpObjects.Add(tmpBullet);
+                tmpBullet.transform.position = transform.position;
+                tmpBullet.transform.LookAt(myEnemy.transform);
+                tmpBullet.transform.DOMove(myEnemy.transform.position, attackTime).SetEase(Ease.Linear);
                 break;
             }
             case CharacterClass.Shield:
