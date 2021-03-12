@@ -13,9 +13,11 @@ namespace TFPlay.UI
 		private bool isAssembleStageInput;
 		private bool isFirstInput;
 		private bool isSecondInput;
+		private bool is2Stage;
 		
 		private void Start()
 		{
+			is2Stage = false;
 			isFirstInput = true;
 			isSecondInput = true;
 			GameC.Instance.OnLevelStart += ShowTutorial;
@@ -44,6 +46,13 @@ namespace TFPlay.UI
 				Debug.Log("SWIPE_1");
 				isSecondInput = false;
 				OnDiableTutorial(1);
+				InputSystem.Instance.OnSwipe -= OnSwipe;
+			}
+			else if (is2Stage)
+			{
+				Debug.Log("SWIPE_2");
+				is2Stage = false;
+				OnDiableTutorial(3);
 				InputSystem.Instance.OnSwipe -= OnSwipe;
 			}
 		}
@@ -89,6 +98,10 @@ namespace TFPlay.UI
 
 		private void ShowTutorial(int levelNumber)
 		{
+			is2Stage = false;
+			isFirstInput = true;
+			isSecondInput = true;
+
 			currentTutorialNumber = 0;
 				
 			tutorialItems[currentTutorialNumber]?.Play();
@@ -96,11 +109,27 @@ namespace TFPlay.UI
 
 		private void OnShowTutorial(int numTutor)
 		{
-			tutorialItems[numTutor]?.Play();
+			foreach (var tutorialItem in tutorialItems)
+				tutorialItem.SetInactive();
+			
+			if (numTutor == 3)
+			{
+				this.WaitAndDoCoroutine(0.5f, () =>
+				{
+					tutorialItems[numTutor]?.Play();
+					is2Stage = true;
+					InputSystem.Instance.OnSwipe += OnSwipe;
+				});
+			}
+			else
+			{
+				tutorialItems[numTutor]?.Play();
+			}
 		}
 
 		private void Pass(bool _)
 		{
+			is2Stage = false;
 			isFirstInput = true;
 			isSecondInput = true;
 			

@@ -124,6 +124,7 @@ public class LevelController : MonoBehaviour
             StageNum = ++stageNum;
             OnStageStart?.Invoke(StageNum);
             CameraController.Instance.OnStageComplete();
+            GameC.Instance.OnShowTutorial?.Invoke(3);
         });
     }
 
