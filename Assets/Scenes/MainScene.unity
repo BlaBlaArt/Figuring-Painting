@@ -4453,13 +4453,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 1362360802}
     m_Modifications:
     - target: {fileID: 699889637, guid: 6919e4f9d7a294ca6b721cd1145ff3c1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 699889637, guid: 6919e4f9d7a294ca6b721cd1145ff3c1, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 2100000, guid: 8f2aafd310ca04d10b1e45717df17808, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 699889637, guid: 6919e4f9d7a294ca6b721cd1145ff3c1, type: 3}
       propertyPath: ParticleImage
       value: 
+      objectReference: {fileID: 2800000, guid: ae10a5f2a4c1c4400a561c45b95f1e00, type: 3}
+    - target: {fileID: 1470579991, guid: 6919e4f9d7a294ca6b721cd1145ff3c1, type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1470579991, guid: 6919e4f9d7a294ca6b721cd1145ff3c1, type: 3}
+      propertyPath: ParticleImage
+      value: 
+      objectReference: {fileID: 2800000, guid: ae10a5f2a4c1c4400a561c45b95f1e00, type: 3}
     - target: {fileID: 2732618747003440049, guid: 6919e4f9d7a294ca6b721cd1145ff3c1,
         type: 3}
       propertyPath: m_fontAsset
@@ -4676,7 +4688,7 @@ PrefabInstance:
     - target: {fileID: 5378059315450065454, guid: 6919e4f9d7a294ca6b721cd1145ff3c1,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5378059315630624744, guid: 6919e4f9d7a294ca6b721cd1145ff3c1,
         type: 3}
@@ -4719,7 +4731,7 @@ PrefabInstance:
     - target: {fileID: 5378059315798184611, guid: 6919e4f9d7a294ca6b721cd1145ff3c1,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -24.888872
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6919e4f9d7a294ca6b721cd1145ff3c1, type: 3}
