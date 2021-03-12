@@ -34,14 +34,11 @@ public class SceneLevelsProvider : MonoBehaviour, ILevelProvider
     {
 
         is2StageLoadded = true;
-       // MenuUI.Instance.BlackScreenFadeIn();
-        
-        //yield return StartCoroutine(Unload());
+
         
         var loadAO = SceneManager.LoadSceneAsync(currentScene + 1, LoadSceneMode.Additive);
         yield return loadAO;
-
-      //  MenuUI.Instance.BlackScreenFadeOut();
+        
 
         MenuUI.Instance.restartButton.interactable = true;
 
@@ -72,6 +69,7 @@ public class SceneLevelsProvider : MonoBehaviour, ILevelProvider
             yield return unloadAO;
             if (is2StageLoadded)
             {
+                is2StageLoadded = false;
                 var unload = SceneManager.UnloadSceneAsync(currentScene + 1);
                 yield return unload;
             }
