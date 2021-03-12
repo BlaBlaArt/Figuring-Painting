@@ -12,6 +12,10 @@ public class DragController : MonoBehaviour
     private GameObject objectToDrag;
 
     public float HeightOfLevel;
+
+    public float OffsetToForward;
+
+    public float FollowSmooth;
     
     [SerializeField] private LayerMask planeForCamera;
 

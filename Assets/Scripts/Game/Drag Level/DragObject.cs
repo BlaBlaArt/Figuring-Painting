@@ -8,6 +8,7 @@ public class DragObject : MonoBehaviour
     
     [SerializeField] private LayerMask CellLayer;
     private float heightOfLevel;
+    private float offsetPosForward;
 
     private CharacterData myData;
     
@@ -29,6 +30,7 @@ public class DragObject : MonoBehaviour
         colider.radius = 0.01f;
         myAnimationController = GetComponentInChildren<IAnimationController>();
         heightOfLevel = DragController.Instance.HeightOfLevel;
+        offsetPosForward = DragController.Instance.OffsetToForward;
         myData = GetComponent<CharacterData>();
         startPos = transform.position;
         startCell = null;
@@ -56,7 +58,8 @@ public class DragObject : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        transform.position = new Vector3(transform.position.x, heightOfLevel, transform.position.z);
+        var targetPosition =  new Vector3(transform.position.x + offsetPosForward, heightOfLevel, transform.position.z);
+        transform.position = targetPosition;
     }
 
     private void OnMouseUp()

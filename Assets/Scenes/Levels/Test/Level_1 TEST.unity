@@ -884,8 +884,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff4b31fc2bb3c3419c5604419ad5ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondStagePref: {fileID: 3204681194650708957, guid: 919bcbd03a450884f8520b577612803c,
-    type: 3}
   HeightOffset: 0.75
   deltaTimeMove: 1
   assemblyControllers:
@@ -1462,7 +1460,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 445bbb195ab432840bc8510fcd8660c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeightOfLevel: -2.8
+  HeightOfLevel: -2.7
+  OffsetToForward: 0.25
+  FollowSmooth: 15
   planeForCamera:
     serializedVersion: 2
     m_Bits: 64
