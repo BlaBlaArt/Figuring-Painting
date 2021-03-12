@@ -165,6 +165,15 @@ public class PartController : MonoBehaviour
         rb.useGravity = on;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Ground"))
+        {
+            transform.position = _startPos;
+            transform.rotation = _startRot;
+        }
+    }
+
     [Button]
     public void Setup()
     {

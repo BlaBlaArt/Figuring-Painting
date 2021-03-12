@@ -44,5 +44,7 @@ public class CharacterData : MonoBehaviour
 public enum CharacterClass
 {
     Warior,
-    Archer
+    Archer,
+    Wizard,
+    Shield
 }

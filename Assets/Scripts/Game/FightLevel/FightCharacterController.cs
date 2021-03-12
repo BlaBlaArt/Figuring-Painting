@@ -231,6 +231,14 @@ public class FightCharacterController : MonoBehaviour
             {
                 break;
             }
+            case CharacterClass.Wizard:
+            {
+                break;
+            }
+            case CharacterClass.Shield:
+            {
+                break;
+            }
         }
         
         yield return new WaitForSeconds(attackTime);
