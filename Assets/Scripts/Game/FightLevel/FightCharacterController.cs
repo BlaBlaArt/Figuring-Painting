@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
 using DG.Tweening;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class FightCharacterController : MonoBehaviour
@@ -53,6 +55,7 @@ public class FightCharacterController : MonoBehaviour
 
     private void OnDestroy()
     {
+        WinCheck();
         GameC.Instance.OnLevelEnd -= OnLevelEnd;
         StopAllCoroutines();
     }
@@ -68,6 +71,23 @@ public class FightCharacterController : MonoBehaviour
 
     }
 
+    private void WinCheck()
+    {
+        if (FightController.Instance.Enemys.Count == 0 && FightController.Instance.Characters.Count == 0)
+        {
+            LevelEnd(false);
+        }
+        else if (FightController.Instance.Enemys.Count > FightController.Instance.Characters.Count)
+        {
+            LevelEnd(false);
+        }
+        else
+        {
+            LevelEnd(true);
+        }
+ 
+    }
+    
     private void ContinueFightCheck()
     {
         if (FightController.Instance.Enemys.Count > 0 && FightController.Instance.Characters.Count > 0)
@@ -76,14 +96,7 @@ public class FightCharacterController : MonoBehaviour
         }
         else
         {
-            if (FightController.Instance.Enemys.Count > FightController.Instance.Characters.Count)
-            {
-                LevelEnd(false);
-            }
-            else
-            {
-                LevelEnd(true);
-            }
+           WinCheck();
         }
     }
 

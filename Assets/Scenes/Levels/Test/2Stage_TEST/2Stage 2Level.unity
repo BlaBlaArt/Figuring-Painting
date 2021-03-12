@@ -200,7 +200,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 849918218981452311, guid: eba2cd5f50b47ec49b22754e56285189, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: eba2cd5f50b47ec49b22754e56285189, type: 3}
 --- !u!4 &35283494 stripped
 Transform:
@@ -281,7 +282,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 849918218981452311, guid: 129ba98fbad84ea46a6cd9b723529900, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 129ba98fbad84ea46a6cd9b723529900, type: 3}
 --- !u!4 &2021297225 stripped
 Transform:
@@ -378,22 +380,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3204681193578711659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3204681193578711668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbfdc98b55b12044691cc54e7a9aa168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliderToTrigger: {fileID: 3204681193578711671}
-  CellLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!23 &3204681193578711660
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -454,7 +440,6 @@ GameObject:
   - component: {fileID: 3204681193578711669}
   - component: {fileID: 3204681193578711661}
   - component: {fileID: 3204681193578711660}
-  - component: {fileID: 3204681193578711659}
   - component: {fileID: 3204681193578711658}
   - component: {fileID: 3204681193578711657}
   - component: {fileID: 3204681193578711656}
@@ -3890,22 +3875,6 @@ Transform:
   m_Father: {fileID: 3204681195517841734}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: -89.982, z: 0}
---- !u!114 &3204681194918861216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3204681194918861225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbfdc98b55b12044691cc54e7a9aa168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliderToTrigger: {fileID: 3204681194918861228}
-  CellLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!23 &3204681194918861217
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3966,7 +3935,6 @@ GameObject:
   - component: {fileID: 3204681194918861226}
   - component: {fileID: 3204681194918861218}
   - component: {fileID: 3204681194918861217}
-  - component: {fileID: 3204681194918861216}
   - component: {fileID: 3204681194918861231}
   - component: {fileID: 3204681194918861230}
   - component: {fileID: 3204681194918861229}
