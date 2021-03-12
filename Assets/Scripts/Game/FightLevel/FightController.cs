@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -141,5 +141,22 @@ public class FightController : MonoBehaviour
         }
         
         TmpObjects.Clear();
+    }
+
+    public void StartWinCheck()
+    {
+        StartCoroutine(WinCheck());
+    }
+    
+    private IEnumerator WinCheck()
+    {
+        yield return new WaitForSeconds(0.25f);
+        
+        if (Enemys.Count == 0 && Characters.Count == 0)
+        {
+            GameC.Instance.LevelEnd(false);
+
+        }
+ 
     }
 }
