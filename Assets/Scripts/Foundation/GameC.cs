@@ -15,6 +15,7 @@ public class GameC : MonoBehaviour
 	public Action<int> OnShowTutorial;
 	public event Action OnInitComplite;
 	public event Action<int> OnLevelStart;
+	public event Action<int> OnLevelUIUpdate;
 	public event Action<bool> OnLevelEnd;
 
 	public event Action OnLevelUnload;
@@ -58,9 +59,11 @@ public class GameC : MonoBehaviour
 	public void LoadLevel()
 	{
 		var levelNumber = SLS.Data.Game.Level.Value;
+		var levelNumberUI = SLS.Data.Game.LevelUI.Value;
 
 		AnalyticsHelper.StartLevel();
 		OnLevelStart?.Invoke(levelNumber);
+		OnLevelUIUpdate?.Invoke(levelNumberUI);
 	}
 
 	private void UnloadLevel(bool nextLvl)
@@ -68,7 +71,10 @@ public class GameC : MonoBehaviour
 		Finish2StageButton.SetInactive();
 
 		if (nextLvl)
+		{
 			SLS.Data.Game.Level.Value += 2;
+			SLS.Data.Game.LevelUI.Value++;
+		}
 
 		OnLevelUnload?.Invoke();
 	}

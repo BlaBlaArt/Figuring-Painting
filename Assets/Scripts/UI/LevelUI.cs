@@ -15,25 +15,14 @@ namespace TFPlay.UI
 
 		private void Init()
 		{
-			GameC.Instance.OnLevelStart += SetLevel;
+			GameC.Instance.OnLevelUIUpdate += SetLevel;
 		}
 
 		private void SetLevel(int levelNumber)
 		{
 			Debug.Log("Level Number" + levelNumber);
-			
-			if (levelNumber == 0)
-			{
-				levelText.text = string.Format(levelFormat, levelNumber + 1);
-			}
-			else if(levelNumber == 2)
-			{
-				levelText.text = string.Format(levelFormat, levelNumber);
-			}
-			else
-			{
-				levelText.text = string.Format(levelFormat, levelNumber - 1);
-			}
+			levelText.text = string.Format(levelFormat, levelNumber);
+
 		}
 
 		public void Restart()

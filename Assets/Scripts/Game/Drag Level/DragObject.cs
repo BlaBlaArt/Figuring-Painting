@@ -49,6 +49,7 @@ public class DragObject : MonoBehaviour
         if (cell != null)
         {
             cell.OnObjectMove();
+            cell.OnActivate();
         }
         
         myAnimationController.OnDrag(true);

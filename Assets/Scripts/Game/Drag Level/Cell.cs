@@ -32,7 +32,7 @@ public class Cell : MonoBehaviour
     public void OnObjectMove()
     {
         MyObject = null;
-        OnActivate();
+      //  OnActivate();
     }
     
     public void OnDisactive()
