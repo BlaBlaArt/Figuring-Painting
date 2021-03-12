@@ -8,6 +8,7 @@ public class LevelController : MonoBehaviour
 {
     public static LevelController Instance;
 
+   // [SerializeField] private GameObject SecondStagePref;
     [SerializeField] private float HeightOffset;
     [SerializeField] private float deltaTimeMove;
     
@@ -22,6 +23,8 @@ public class LevelController : MonoBehaviour
 
     private List<GameObject> objectsToMove = new List<GameObject>();
     private List<Vector3> startPositions = new List<Vector3>();
+
+    private GameObject tmpLevel;
     
     public event Action<int> OnStageStart;
     public Action<int> OnSpawnCharacter;
@@ -69,6 +72,7 @@ public class LevelController : MonoBehaviour
 
     private void OnDestroy()
     {
+        Destroy(tmpLevel);
         GameC.Instance.OnFirstInput -= OnFirstInput;
     }
 
@@ -112,9 +116,15 @@ public class LevelController : MonoBehaviour
 
     private void OnStageComplete(int stageNum)
     {
-        StageNum = ++stageNum;
-        OnStageStart?.Invoke(StageNum);
-        CameraController.Instance.OnStageComplete();
+      //  tmpLevel = Instantiate(SecondStagePref);
+      GameC.Instance.Load2Stage?.Invoke();
+      
+        this.WaitAndDoCoroutine(0.5f, () =>
+        {
+            StageNum = ++stageNum;
+            OnStageStart?.Invoke(StageNum);
+            CameraController.Instance.OnStageComplete();
+        });
     }
 
 }

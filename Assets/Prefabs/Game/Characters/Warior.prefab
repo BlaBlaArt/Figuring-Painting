@@ -140,7 +140,7 @@ MonoBehaviour:
   DelayBetweenAttacks: 0.15
   AttackTime: 0
   Dammage: 1
-  DistanceToStartAttack: 0.125
+  DistanceToStartAttack: 0.135
   Health: 10
 --- !u!114 &-7100580889343688480
 MonoBehaviour:

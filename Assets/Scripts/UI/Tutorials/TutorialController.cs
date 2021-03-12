@@ -20,11 +20,18 @@ namespace TFPlay.UI
 			isSecondInput = true;
 			GameC.Instance.OnLevelStart += ShowTutorial;
 			GameC.Instance.OnLevelEnd += Pass;
+			GameC.Instance.OnLevelUnload += OnLevelUnload; 
 			GameC.Instance.OnLevelStart += OnLevelStart;
 			GameC.Instance.OnShowTutorial += OnShowTutorial;
 			GameC.Instance.OnAssembleStage += OnAssembleStage;
 			InputSystem.Instance.OnTouch += OnTouch;
 			
+			foreach (var tutorialItem in tutorialItems)
+				tutorialItem.SetInactive();
+		}
+
+		private void OnLevelUnload()
+		{
 			foreach (var tutorialItem in tutorialItems)
 				tutorialItem.SetInactive();
 		}

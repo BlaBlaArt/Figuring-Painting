@@ -6,6 +6,8 @@ public class GameC : MonoBehaviour
 	public static GameC Instance { get; private set; }
 
 
+	public Action Load2Stage;
+	
 	public Action OnFirstInput;
 
 	public Action OnAssembleStage;
@@ -66,7 +68,7 @@ public class GameC : MonoBehaviour
 		Finish2StageButton.SetInactive();
 
 		if (nextLvl)
-			SLS.Data.Game.Level.Value++;
+			SLS.Data.Game.Level.Value += 2;
 
 		OnLevelUnload?.Invoke();
 	}
