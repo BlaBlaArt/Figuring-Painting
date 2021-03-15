@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -96,14 +97,21 @@ public class FightController : MonoBehaviour
 
     private void DisactiveCells()
     {
+
         foreach (var cell in Cells)
         {
-            cell.gameObject.SetInactive();
+            cell.transform.DOMoveY(-2.75f, 0.5f).OnComplete(() =>
+            {
+                cell.gameObject.SetInactive();
+            });
         }
 
         foreach (var cell in enemyCells)
         {
-            cell.SetInactive();
+            cell.transform.DOMoveY(-2.75f, 0.5f).OnComplete(() =>
+            {
+                cell.gameObject.SetInactive();
+            });
         }
     }
     

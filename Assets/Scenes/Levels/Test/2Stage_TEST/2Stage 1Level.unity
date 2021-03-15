@@ -130,6 +130,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3204681193569134616, guid: 919bcbd03a450884f8520b577612803c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.30110914
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204681193569134616, guid: 919bcbd03a450884f8520b577612803c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6213234
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204681193666992679, guid: 919bcbd03a450884f8520b577612803c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204681193852073219, guid: 919bcbd03a450884f8520b577612803c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204681194158059589, guid: 919bcbd03a450884f8520b577612803c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204681194414644053, guid: 919bcbd03a450884f8520b577612803c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204681194588195716, guid: 919bcbd03a450884f8520b577612803c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204681194621594047, guid: 919bcbd03a450884f8520b577612803c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3204681194650708957, guid: 919bcbd03a450884f8520b577612803c,
         type: 3}
       propertyPath: m_Name
@@ -194,6 +234,21 @@ PrefabInstance:
         type: 3}
       propertyPath: offsetToSpawn
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204681194873293245, guid: 919bcbd03a450884f8520b577612803c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204681195291845624, guid: 919bcbd03a450884f8520b577612803c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204681195342540336, guid: 919bcbd03a450884f8520b577612803c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3204681195249197880, guid: 919bcbd03a450884f8520b577612803c, type: 3}
