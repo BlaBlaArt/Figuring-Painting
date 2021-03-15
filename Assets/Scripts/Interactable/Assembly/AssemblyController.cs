@@ -77,7 +77,10 @@ public class AssemblyController : MonoBehaviour
     public void ReadyToAssemble()
     {
         foreach (var item in parts)
+        {
             item.part.TogglePhysics(true);
+            item.part.CheckDraggeble();
+        }
 
        // this.WaitAndDoCoroutine(0f, () => onPartNew.Invoke(parts[0].part));
        // this.WaitAndDoCoroutine(1f, parts[_currentStep].partDummy.ShowHighlight);

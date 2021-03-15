@@ -54,6 +54,8 @@ public class PartController : MonoBehaviour
 
     List<IMoveingPart> _moveingParts;
 
+    private bool canDrag;
+    
     void Awake()
     {
         _moveingParts = GetComponentsInChildren<IMoveingPart>().ToList();
@@ -65,21 +67,27 @@ public class PartController : MonoBehaviour
 
     private void Start()
     {
+        canDrag = false;
         myOutline.HideHighlight();
         transform.eulerAngles = new Vector3(0, 0, 90f);
     }
 
+    public void CheckDraggeble() => this.WaitAndDoCoroutine(1.5f, () => canDrag = true);
+
     void OnMouseDown()
     {
-        myOutline.ShowHighlight();
+        if (canDrag)
+        {
+            myOutline.ShowHighlight();
         
-        transform.DOKill();
+            transform.DOKill();
 
-        TogglePhysics(false);
+            TogglePhysics(false);
 
-        Taptic.Light();
-        onGrabStart.Invoke(this);
-        OnGrabStart.Invoke(this);
+            Taptic.Light();
+            onGrabStart.Invoke(this);
+            OnGrabStart.Invoke(this);
+        }
     }
 
     void OnMouseDrag()
