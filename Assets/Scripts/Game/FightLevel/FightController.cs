@@ -49,11 +49,35 @@ public class FightController : MonoBehaviour
         finishButton.GetComponent<Button>().onClick.AddListener(FightButton);
 
         GameC.Instance.OnLevelUnload += OnLevelUnload;
+        GameC.Instance.OnLevelEnd += OnLevelEnd;
         LevelController.Instance.OnStageStart += OnStageStart;
+    }
+
+    private void OnLevelEnd(bool isWin)
+    {
+        if (isWin)
+        {
+            Debug.Log(Characters.Print());
+            
+            SLS.Data.Game.StoredCharacters.StoregeCharacters.ForEach((sc => sc.Counts.Value = 0));
+            foreach (var character in Characters)
+            {
+                var data = character.GetComponent<CharacterData>();
+            //    int num = SLS.Data.Game.StoredCharacters.Value[data.myCharacterClass];
+            SLS.Data.Game.StoredCharacters.StoregeCharacters
+                .Find(d => d.CharacterClass.Value == data.myCharacterClass).Counts.Value++;
+          //  SLS.Data.Game.StoredCharacters.Value.Counts[num]++;
+                SLS.Save();
+                Debug.Log("character class " + data.myCharacterClass + " CharacterData " +
+                          SLS.Data.Game.StoredCharacters.StoregeCharacters
+                              .Find(d => d.CharacterClass.Value == data.myCharacterClass).Counts.Value);
+            }
+        }
     }
 
     private void OnDestroy()
     {
+        GameC.Instance.OnLevelEnd -= OnLevelEnd;
         GameC.Instance.OnLevelUnload -= OnLevelUnload;
         LevelController.Instance.OnStageStart -= OnStageStart;
     }
@@ -65,6 +89,8 @@ public class FightController : MonoBehaviour
 
     private void OnLevelUnload()
     {
+        Debug.Log("levelUnload");
+        
         foreach (var enemy in Enemys)
         {
             Destroy(enemy);
@@ -72,6 +98,7 @@ public class FightController : MonoBehaviour
 
         foreach (var character in Characters)
         {
+           
             Destroy(character);
         }
 
