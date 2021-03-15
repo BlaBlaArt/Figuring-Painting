@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!64 &7216099102312702412
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 133640758610584048}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2315202752553696022, guid: e5839dbdfb730dc45a767a620d73188b, type: 3}
 --- !u!54 &52308431218114375
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30,6 +16,20 @@ Rigidbody:
   m_Interpolate: 2
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!64 &7216099102312702412
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133640758610584048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2315202752553696022, guid: e5839dbdfb730dc45a767a620d73188b, type: 3}
 --- !u!114 &8410781929190327680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,17 +448,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a1fcad1e7b6a2c148953973842f90aa5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00053759
+      value: -0.003000006
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1fcad1e7b6a2c148953973842f90aa5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.538
+      value: 0.0030000135
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1fcad1e7b6a2c148953973842f90aa5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.08
+      value: 0.006000023
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1fcad1e7b6a2c148953973842f90aa5,
         type: 3}
@@ -609,17 +609,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a1fcad1e7b6a2c148953973842f90aa5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00053759
+      value: -0.003
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1fcad1e7b6a2c148953973842f90aa5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.538
+      value: 0.003
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1fcad1e7b6a2c148953973842f90aa5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.08
+      value: 0.006
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1fcad1e7b6a2c148953973842f90aa5,
         type: 3}
