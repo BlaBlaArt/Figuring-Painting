@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40378016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.254, y: -0.78, z: -2.85}
+  m_LocalPosition: {x: -0.183, y: -0.834, z: -2.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -451,7 +451,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380174843}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.52, y: -0.78, z: -2.85}
+  m_LocalPosition: {x: 0.39, y: -0.834, z: -2.729}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -764,7 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff4b31fc2bb3c3419c5604419ad5ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeightOffset: 0.75
+  HeightOffset: 1
   deltaTimeMove: 1
   assemblyControllers:
   - {fileID: 2114902404}
@@ -776,7 +776,6 @@ MonoBehaviour:
   - {fileID: 1176866346}
   - {fileID: 240682850}
   - {fileID: 534382559}
-  unboxController: {fileID: 552552151}
   CurrentLevelData: {fileID: 11400000, guid: 2d55c6809c016e1409b0271e9dd40eec, type: 2}
   StageNum: 1
 --- !u!4 &690105599
@@ -1051,7 +1050,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098993669}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.531, y: -0.78, z: -2.85}
+  m_LocalPosition: {x: -0.432, y: -0.834, z: -2.749}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1481,7 +1480,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895257853}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.232, y: -0.78, z: -2.85}
+  m_LocalPosition: {x: 0.136, y: -0.834, z: -2.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

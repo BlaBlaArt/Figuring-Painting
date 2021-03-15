@@ -24,7 +24,6 @@ public class LevelController : MonoBehaviour
 
     private int currentBox;
     
-    private List<GameObject> objectsToMove = new List<GameObject>();
     private List<Vector3> startPositions = new List<Vector3>();
 
     private GameObject tmpLevel;
@@ -46,7 +45,6 @@ public class LevelController : MonoBehaviour
 
     private void Start()
     {
-        objectsToMove = new List<GameObject>();
         startPositions = new List<Vector3>();
         assemblyCount = 0;
         StageNum = 0;
@@ -57,7 +55,6 @@ public class LevelController : MonoBehaviour
 
         for (int i = 0; i < Boxes.Length; i++)
         {
-            objectsToMove.Add(Boxes[i].gameObject);
             startPositions.Add(Boxes[i].transform.position);
             Boxes[i].transform.position += Vector3.up * HeightOffset;
             Boxes[i].onBoxOpen.AddListener(OnBoxOpen);
@@ -65,8 +62,7 @@ public class LevelController : MonoBehaviour
 
         for (int i = 0; i < assemblyControllers.Length; i++)
         {
-            objectsToMove.Add(assemblyControllers[i].gameObject);
-            startPositions.Add(assemblyControllers[i].transform.position);
+           // startPositions.Add(assemblyControllers[i].transform.position);
             assemblyControllers[i].transform.position += Vector3.up * HeightOffset;
         }
 
@@ -82,12 +78,8 @@ public class LevelController : MonoBehaviour
 
     private void OnFirstInput()
     {
-       // for (int i = 0; i < objectsToMove.Count; i++)
-       // {
-       //     objectsToMove[i].transform.DOMove(startPositions[i], deltaTimeMove).SetEase(Ease.InCubic);
-       // }
 
-       Boxes[currentBox].transform.DOMove(startPositions[currentBox], deltaTimeMove).SetEase(Ease.InCubic);
+        Boxes[currentBox].transform.DOMove(startPositions[currentBox], deltaTimeMove).SetEase(Ease.InCubic);
        assemblyControllers[currentBox].transform.DOMove(startPositions[currentBox], deltaTimeMove).SetEase(Ease.InCubic);
 
 
