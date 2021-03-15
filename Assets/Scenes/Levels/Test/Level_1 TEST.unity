@@ -1395,7 +1395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 445bbb195ab432840bc8510fcd8660c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeightOfLevel: -2.7
+  DeltaHeightOfLevel: 0.1
   OffsetToForward: 0.25
   FollowSmooth: 15
   planeForCamera:

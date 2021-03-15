@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class DragController : MonoBehaviour
@@ -11,7 +12,7 @@ public class DragController : MonoBehaviour
     
     private GameObject objectToDrag;
 
-    public float HeightOfLevel;
+    public float DeltaHeightOfLevel;
 
     public float OffsetToForward;
 
@@ -48,6 +49,8 @@ public class DragController : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit,50, planeForCamera))
             {
+                Debug.Log("hit point" + hit.point);
+                
                 objectToDrag.transform.position =
                     new Vector3(hit.point.x, objectToDrag.transform.position.y, hit.point.z);
             }
@@ -64,4 +67,5 @@ public class DragController : MonoBehaviour
     {
         isDrag = false;
     }
+    
 }

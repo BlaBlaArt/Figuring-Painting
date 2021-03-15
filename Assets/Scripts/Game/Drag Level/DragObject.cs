@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class DragObject : MonoBehaviour
@@ -7,7 +8,7 @@ public class DragObject : MonoBehaviour
     [SerializeField] private Collider colliderToTrigger;
     
     [SerializeField] private LayerMask CellLayer;
-    private float heightOfLevel;
+    private float deltaHeightOfLevel, heightToMove;
     private float offsetPosForward;
 
     private CharacterData myData;
@@ -22,6 +23,8 @@ public class DragObject : MonoBehaviour
     private float startRadiusOfColider;
 
     private bool canCollide = true;
+
+    private Transform myTransform;
     
     private void Start()
     {
@@ -29,11 +32,13 @@ public class DragObject : MonoBehaviour
         startRadiusOfColider = colider.radius;
         colider.radius = 0.01f;
         myAnimationController = GetComponentInChildren<IAnimationController>();
-        heightOfLevel = DragController.Instance.HeightOfLevel;
+        deltaHeightOfLevel = DragController.Instance.DeltaHeightOfLevel;
         offsetPosForward = DragController.Instance.OffsetToForward;
         myData = GetComponent<CharacterData>();
         startPos = transform.position;
         startCell = null;
+        myTransform = transform;
+        heightToMove = myTransform.position.y + deltaHeightOfLevel;
     }
 
     private void OnDisable()
@@ -59,8 +64,8 @@ public class DragObject : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        var targetPosition =  new Vector3(transform.position.x + offsetPosForward, heightOfLevel, transform.position.z);
-        transform.position = targetPosition;
+        var targetPosition =  new Vector3(myTransform.position.x + offsetPosForward, heightToMove, myTransform.position.z);
+        myTransform.position = targetPosition;
     }
 
     private void OnMouseUp()
@@ -187,4 +192,5 @@ public class DragObject : MonoBehaviour
             other.GetComponent<Cell>().OnDisactive();
         }
     }
+
 }
