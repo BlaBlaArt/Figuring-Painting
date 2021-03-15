@@ -49,7 +49,6 @@ public class DragController : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit,50, planeForCamera))
             {
-                Debug.Log("hit point" + hit.point);
                 
                 objectToDrag.transform.position =
                     new Vector3(hit.point.x, objectToDrag.transform.position.y, hit.point.z);

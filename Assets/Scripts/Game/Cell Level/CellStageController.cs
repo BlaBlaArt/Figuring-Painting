@@ -12,6 +12,7 @@ public class CellStageController : MonoBehaviour
     private int CountOfCharecters = 4;
     
     [SerializeField] private int[] counts;
+    [SerializeField] private float offsetToSpawn;
     
     private LevelData currentLevelData;
     
@@ -71,9 +72,12 @@ public class CellStageController : MonoBehaviour
             texts[numInArray].text = counts[numInArray].ToString();
             counts[numInArray]--;
             var tmpCharacter = Instantiate(character.CharacterPref);
-            tmpCharacter.transform.position = point.position;
+            tmpCharacter.transform.position =
+                new Vector3(point.position.x, point.position.y, point.position.z + offsetToSpawn);
+            tmpCharacter.transform.rotation = point.rotation;
             tmpCharacter.GetComponent<CharacterData>().CharacterNum = numInArray;
             FightController.Instance.TmpObjects.Add(tmpCharacter);
+            tmpCharacter.GetComponent<DragObject>().OnStartInvoke(offsetToSpawn);
         }
         else if (FinishConritionCheck())
         {

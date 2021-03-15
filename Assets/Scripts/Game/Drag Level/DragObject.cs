@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class DragObject : MonoBehaviour
 {
@@ -24,6 +26,8 @@ public class DragObject : MonoBehaviour
 
     private bool canCollide = true;
 
+    public float OffsetOfSpawn;
+    
     private Transform myTransform;
     
     private void Start()
@@ -39,6 +43,23 @@ public class DragObject : MonoBehaviour
         startCell = null;
         myTransform = transform;
         heightToMove = myTransform.position.y + deltaHeightOfLevel;
+    }
+    
+
+    public void OnStartInvoke(float offsetOfSpawn)
+    {
+        OffsetOfSpawn = offsetOfSpawn;
+        StartCoroutine(OnStart());
+    }
+
+    private IEnumerator OnStart()
+    {
+        yield return new WaitForEndOfFrame();
+        myAnimationController.Run();
+        var startPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - OffsetOfSpawn);
+        transform.DOMove(startPos, 0.75f).OnComplete(() => myAnimationController.Idle());
+        this.startPos = startPos;
+
     }
 
     private void OnDisable()

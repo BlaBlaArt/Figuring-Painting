@@ -5957,6 +5957,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   counts: 
+  offsetToSpawn: 0.8
 --- !u!4 &3204681195645262930
 Transform:
   m_ObjectHideFlags: 0

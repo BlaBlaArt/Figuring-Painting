@@ -34,7 +34,7 @@ public class AssemblyController : MonoBehaviour
 
    // int _currentStep;
 
-   [SerializeField] private Transform pointToMoveOnAssamble;
+   [SerializeField] private Transform pointToMoveOnAssamble, pointToMoveAfterAllAssemble;
 
     Part _currentPart;
 
@@ -128,6 +128,11 @@ public class AssemblyController : MonoBehaviour
     private void OnPartArrived()
     {
        // Destroy(gameObject);
+    }
+
+    public void OnAllAssembleComplete()
+    {
+        transform.DOMove(pointToMoveAfterAllAssemble.position, 1.5f).SetEase(Ease.Linear);
     }
 
     void CheckPlacement(PartController partC)

@@ -109,6 +109,10 @@ public class LevelController : MonoBehaviour
         assemblyCount++;
         if (assemblyCount == assemblyControllers.Length)
         {
+            foreach (var assembly in assemblyControllers)
+            {
+                assembly.OnAllAssembleComplete();
+            }
             OnStageComplete(0);
             Debug.Log("StageComplete");
         }
