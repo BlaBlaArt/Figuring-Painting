@@ -13,7 +13,8 @@ public class LevelController : MonoBehaviour
     [SerializeField] private float deltaTimeMove;
     
     public AssemblyController[] assemblyControllers;
-    public UnboxController unboxController;
+    public UnboxController[] Boxes;
+   // public UnboxController unboxController;
 
     public LevelData CurrentLevelData;
 
@@ -21,6 +22,8 @@ public class LevelController : MonoBehaviour
 
     private int assemblyCount;
 
+    private int currentBox;
+    
     private List<GameObject> objectsToMove = new List<GameObject>();
     private List<Vector3> startPositions = new List<Vector3>();
 
@@ -47,23 +50,24 @@ public class LevelController : MonoBehaviour
         startPositions = new List<Vector3>();
         assemblyCount = 0;
         StageNum = 0;
+        currentBox = 0;
         
         PartController.OnGrabStart = new UnityEngine.Events.UnityEvent<PartController>();
         PartController.OnGrabStop = new UnityEngine.Events.UnityEvent<PartController>();
-        
-        if (unboxController)
+
+        for (int i = 0; i < Boxes.Length; i++)
         {
-            objectsToMove.Add(unboxController.gameObject);
-            startPositions.Add(unboxController.transform.position);
-            unboxController.transform.position += Vector3.up * HeightOffset;
-            unboxController.onBoxOpen.AddListener(OnBoxOpen);
+            objectsToMove.Add(Boxes[i].gameObject);
+            startPositions.Add(Boxes[i].transform.position);
+            Boxes[i].transform.position += Vector3.up * HeightOffset;
+            Boxes[i].onBoxOpen.AddListener(OnBoxOpen);
         }
 
-        foreach (var assembly in assemblyControllers)
+        for (int i = 0; i < assemblyControllers.Length; i++)
         {
-            objectsToMove.Add(assembly.gameObject);
-            startPositions.Add(assembly.transform.position);
-            assembly.transform.position += Vector3.up * HeightOffset;
+            objectsToMove.Add(assemblyControllers[i].gameObject);
+            startPositions.Add(assemblyControllers[i].transform.position);
+            assemblyControllers[i].transform.position += Vector3.up * HeightOffset;
         }
 
         GameC.Instance.OnFirstInput += OnFirstInput;
@@ -78,10 +82,14 @@ public class LevelController : MonoBehaviour
 
     private void OnFirstInput()
     {
-        for (int i = 0; i < objectsToMove.Count; i++)
-        {
-            objectsToMove[i].transform.DOMove(startPositions[i], deltaTimeMove).SetEase(Ease.InCubic);
-        }
+       // for (int i = 0; i < objectsToMove.Count; i++)
+       // {
+       //     objectsToMove[i].transform.DOMove(startPositions[i], deltaTimeMove).SetEase(Ease.InCubic);
+       // }
+
+       Boxes[currentBox].transform.DOMove(startPositions[currentBox], deltaTimeMove).SetEase(Ease.InCubic);
+       assemblyControllers[currentBox].transform.DOMove(startPositions[currentBox], deltaTimeMove).SetEase(Ease.InCubic);
+
 
         this.WaitAndDoCoroutine(deltaTimeMove, () =>
         {
@@ -91,17 +99,15 @@ public class LevelController : MonoBehaviour
 
     void OnBoxOpen()
     {
-        foreach (var controller in assemblyControllers)
+        assemblyControllers[currentBox].ReadyToAssemble();
+        this.WaitAndDoCoroutine(1.5f,() =>
         {
-            controller.ReadyToAssemble();
-            this.WaitAndDoCoroutine(1.5f,() =>
-            {
-                controller.PartPlacement();
-                unboxController.onBoxOpen.RemoveListener(OnBoxOpen);
-                GameC.Instance.OnAssembleStage?.Invoke();
-                Destroy(unboxController.gameObject);
-            });
-        }
+            assemblyControllers[currentBox].PartPlacement();
+            Boxes[currentBox].onBoxOpen.RemoveListener(OnBoxOpen);
+            GameC.Instance.OnAssembleStage?.Invoke();
+            Destroy(Boxes[currentBox].gameObject);
+        });
+        //currentBox++;
     }
     
     public void OnAssemblyComplete()
@@ -115,6 +121,11 @@ public class LevelController : MonoBehaviour
             }
             OnStageComplete(0);
             Debug.Log("StageComplete");
+        }
+        else
+        {
+            currentBox++;
+            OnFirstInput();
         }
     }
 
