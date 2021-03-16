@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
 using DG.Tweening;
-using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class DragObject : MonoBehaviour
 {
@@ -15,10 +12,10 @@ public class DragObject : MonoBehaviour
 
     private CharacterData myData;
     
-    private Cell cell;
+    public Cell cell;
 
-    private Cell startCell;
-    private Vector3 startPos;
+    public Cell startCell;
+    public Vector3 startPos;
 
     private IAnimationController myAnimationController;
 
@@ -116,6 +113,7 @@ public class DragObject : MonoBehaviour
 
             if (cell.MyObject != null)
             {
+                Debug.Log("MergeEnter");
                 CheckMergePosibility(cell.MyObject);
             }
             else
@@ -171,9 +169,39 @@ public class DragObject : MonoBehaviour
        // }
        // else
         {
-            cell = null;
+          //  cell = null;
+            ChangeObjectOnCellAndMe();
+        }
+    }
+
+    private void ChangeObjectOnCellAndMe()
+    {
+        Debug.Log("StartCell " + startCell);
+        if (startCell != null)
+        {
+            var dragObject = cell.MyObject.GetComponent<DragObject>();
+            
+            var startpos = startPos;
+            startPos = dragObject.startPos;
+            dragObject.startPos = startpos;
+            
+            var tmpcell = startCell;
+            
+            startCell.OnGetObject(dragObject.gameObject);
+            startCell = dragObject.startCell;
+
+            dragObject.startCell.OnGetObject(gameObject);
+            dragObject.startCell = tmpcell;
+            dragObject.cell = tmpcell;
+            
+            
+            
+            dragObject.MoveToStart();
             MoveToStart();
-    
+        }
+        else
+        {
+            MoveToStart();
         }
     }
 
@@ -183,7 +211,7 @@ public class DragObject : MonoBehaviour
             LevelController.Instance.OnSpawnCharacter?.Invoke(myData.CharacterNum);
     }
     
-    private void MoveToStart()
+    public void MoveToStart()
     {
         canCollide = false;
         transform.DOMove(startPos, Vector3.Distance(transform.position, startPos)/10).SetEase(Ease.Linear)
@@ -196,6 +224,12 @@ public class DragObject : MonoBehaviour
         // transform.position = startPos;
         if(startCell != null)
             startCell.OnGetObject(gameObject);
+
+        if (cell != null)
+        {
+            cell.OnDisactive();
+            cell = null;
+        }
         // this.WaitAndDoCoroutine(0.15f, () => colliderToTrigger.isTrigger = false);  
     }
 

@@ -21,7 +21,7 @@ public class Cell : MonoBehaviour
 
     public void OnActivate()
     {
-        if(MyObject == null)
+     //  if(MyObject == null)
             transform.position += Vector3.up * heigth;
     }
 
