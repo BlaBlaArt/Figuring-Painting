@@ -30,3 +30,11 @@ MonoBehaviour:
     type: 3}
   ShieldPref: {fileID: 849918218981452304, guid: eba2cd5f50b47ec49b22754e56285189,
     type: 3}
+  ArcherEnemyPref: {fileID: 5980496133672056424, guid: 2f5fd43abff50f8429d1e72127fa017a,
+    type: 3}
+  WariorEnemyPref: {fileID: 849918218981452304, guid: adb93399cde2a9b4aaaa7c8f5a910733,
+    type: 3}
+  WizardEnemyPref: {fileID: 849918218981452304, guid: d979219719e9f454daa21013097fdc2f,
+    type: 3}
+  ShieldEnemyPref: {fileID: 849918218981452304, guid: c4a783c5b109dfd4eba9fbd57bf3ba8d,
+    type: 3}

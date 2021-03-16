@@ -22,8 +22,11 @@ public class AllLevelData : ScriptableObject
     public float CellsHeight;
     
     
-    [Header("FightStage")]
+    [Header("FightStageHero")]
     public GameObject ArcherPref, WariorPref, WizardPref, ShieldPref;
+    
+    [Header("FightStageEnemy")]
+    public GameObject ArcherEnemyPref, WariorEnemyPref, WizardEnemyPref, ShieldEnemyPref;
 
 
 }

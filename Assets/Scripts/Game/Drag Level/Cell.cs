@@ -6,6 +6,8 @@ public class Cell : MonoBehaviour
 
     public GameObject MyObject;
 
+    public int Id;
+    
     private BoxCollider myCollider;
 
     private float heigth;

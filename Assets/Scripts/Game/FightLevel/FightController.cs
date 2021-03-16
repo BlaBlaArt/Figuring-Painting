@@ -16,16 +16,19 @@ public class FightController : MonoBehaviour
 
     public List<GameObject> Enemys = new List<GameObject>();
     [SerializeField] private Cell[] Cells;
-    [SerializeField] private GameObject[] enemyCells;
+    [SerializeField] private Cell[] enemyCells;
     
     public List<GameObject> Characters = new List<GameObject>();
 
     private GameObject ArcherPref, WariorPref, WizardPref, ShieldPref;
+    private GameObject ArcherEnemyPref, WariorEnemyPref, WizardEnemyPref, ShieldEnemyPref;
     
     private LevelData levelData;
 
     private UnityAction FightButton;
 
+    private LevelData currentLevelData;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -40,11 +43,17 @@ public class FightController : MonoBehaviour
 
     private void Start()
     {
+        currentLevelData = LevelController.Instance.CurrentLevelData;
         var data = GameC.Instance.AllLevelData;
         ArcherPref = data.ArcherPref;
         WariorPref = data.WariorPref;
         WizardPref = data.WizardPref;
         ShieldPref = data.ShieldPref;
+
+        ArcherEnemyPref = data.ArcherEnemyPref;
+        WariorEnemyPref = data.WariorEnemyPref;
+        WizardEnemyPref = data.WizardEnemyPref;
+        ShieldEnemyPref = data.ShieldEnemyPref;
 
         FightButton = new UnityAction(OnStageComplete);
         
@@ -60,6 +69,8 @@ public class FightController : MonoBehaviour
         GameC.Instance.OnLevelUnload += OnLevelUnload;
         GameC.Instance.OnLevelEnd += OnLevelEnd;
         LevelController.Instance.OnStageStart += OnStageStart;
+        
+        SpawnEnemies();
     }
 
     private void OnLevelEnd(bool isWin)
@@ -97,6 +108,178 @@ public class FightController : MonoBehaviour
         TmpObjects.Clear();
     }
 
+    private void SpawnEnemies()
+    {
+        int heroCount = 0;
+        int enemyCounts = 0;
+        
+        foreach (var character in currentLevelData.CurretLevelCharacters)
+        {
+            if (character.count > 0)
+                heroCount+= character.count;
+        }
+        var data = SLS.Data.Game.StoredCharacters.StoregeCharacters.FindAll((sc => sc.Counts.Value > 0));
+        foreach (var character in data)
+        {
+            heroCount += character.Counts.Value;
+        }
+
+        enemyCounts = heroCount;
+
+        Debug.Log("EnemyCounts" + enemyCounts);
+        
+        SpawnEnemiesSetCell(enemyCounts);
+    }
+
+    private void SpawnEnemiesSetCell(int enemyCount)
+    {
+        for (int i = 0; i < enemyCount; i++)
+        {
+            var cell = GetCell(enemyCells,true);
+            GameObject tmpEnemy = null;
+            
+            if (cell.Id < 3)
+            {
+                tmpEnemy = Instantiate(ChooseEnemy(CharacterClass.Shield, CharacterClass.Warior));
+            }
+            else if (cell.Id >=3 && cell.Id <6)
+            {
+                tmpEnemy = Instantiate(ChooseEnemy());
+            }
+            else if (cell.Id >= 6 && cell.Id < 9)
+            {
+                tmpEnemy = Instantiate(ChooseEnemy(CharacterClass.Wizard));
+            }
+            
+            tmpEnemy.transform.position = cell.transform.position;
+            tmpEnemy.transform.rotation = cell.transform.rotation;
+        
+            cell.OnGetObject(tmpEnemy);
+            Enemys.Add(tmpEnemy);
+        }
+
+        foreach (var enemyCell in enemyCells)
+        {
+            enemyCell.enabled = false;
+        }
+    }
+
+    private GameObject ChooseEnemy()
+    {
+        List<CharacterClass> characters = new List<CharacterClass>
+        {
+            CharacterClass.Archer,
+            CharacterClass.Shield,
+            CharacterClass.Warior,
+            CharacterClass.Wizard
+        };
+        
+        var characterClass = characters.GetRandom();
+
+        switch (characterClass)
+        {
+            case CharacterClass.Archer:
+            {
+                return ArcherEnemyPref;
+            }
+            case CharacterClass.Shield:
+            {
+                return ShieldEnemyPref;
+            }
+            case CharacterClass.Warior:
+            {
+                return WariorEnemyPref;
+            }
+            case CharacterClass.Wizard:
+            {
+                return WizardEnemyPref;
+            }
+            default:
+                return null;
+        }
+        
+    }
+    
+    private GameObject ChooseEnemy(CharacterClass enemyClassToNotSpawn)
+    {
+        List<CharacterClass> characters = new List<CharacterClass>
+        {
+            CharacterClass.Archer,
+            CharacterClass.Shield,
+            CharacterClass.Warior,
+            CharacterClass.Wizard
+        };
+
+        var extra = characters.First(t => t == enemyClassToNotSpawn);
+        characters.Remove(extra);
+
+        var characterClass = characters.GetRandom();
+
+        switch (characterClass)
+        {
+            case CharacterClass.Archer:
+            {
+                return ArcherEnemyPref;
+            }
+            case CharacterClass.Shield:
+            {
+                return ShieldEnemyPref;
+            }
+            case CharacterClass.Warior:
+            {
+                return WariorEnemyPref;
+            }
+            case CharacterClass.Wizard:
+            {
+                return WizardEnemyPref;
+            }
+            default:
+                return null;
+        }
+        
+    }
+
+    private GameObject ChooseEnemy(CharacterClass enemyClassToNotSpawn1, CharacterClass enemyClassToNotSpawn2)
+    {
+        List<CharacterClass> characters = new List<CharacterClass>
+        {
+            CharacterClass.Archer,
+            CharacterClass.Shield,
+            CharacterClass.Warior,
+            CharacterClass.Wizard
+        };
+
+        var extra1 = characters.First(t => t == enemyClassToNotSpawn1);
+        var extra2 = characters.First(t => t == enemyClassToNotSpawn2);
+        characters.Remove(extra1);
+        characters.Remove(extra2);
+
+        var characterClass = characters.GetRandom();
+
+        switch (characterClass)
+        {
+            case CharacterClass.Archer:
+            {
+                return ArcherEnemyPref;
+            }
+            case CharacterClass.Shield:
+            {
+                return ShieldEnemyPref;
+            }
+            case CharacterClass.Warior:
+            {
+                return WariorEnemyPref;
+            }
+            case CharacterClass.Wizard:
+            {
+                return WizardEnemyPref;
+            }
+            default:
+                return null;
+        }
+        
+    }
+    
     private void SpawnCharactersFromData()
     {
 
@@ -108,7 +291,7 @@ public class FightController : MonoBehaviour
             var type = data[i].CharacterClass.Value;
             for (int j = 0; j < data[i].Counts.Value; j++)
             {
-                var cell = GetCell();
+                var cell = GetCell(Cells,false);
                 if (cell != null)
                 {
                     var tmpCharacter = Instantiate(GetCharacter(type));
@@ -147,17 +330,26 @@ public class FightController : MonoBehaviour
         return null;
     }
     
-    private Cell GetCell()
+    private Cell GetCell(Cell[] cells, bool isShofle)
     {
 
-        if (Cells.All(c => c.MyObject != null))
+        if (cells.All(c => c.MyObject != null))
         {
             return null;
         }
         else
         {
-            var cell = Cells.First(c => c.MyObject == null);
-            return cell;
+            if (!isShofle)
+            {
+                var cell = cells.First(c => c.MyObject == null);
+                return cell; 
+            }
+            else
+            {
+                cells.Shuffle();
+                var cell = cells.First(c => c.MyObject == null);
+                return cell;
+            }
         }
     }
 

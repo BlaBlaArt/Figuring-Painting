@@ -53,6 +53,8 @@ MonoBehaviour:
   CellLayer:
     serializedVersion: 2
     m_Bits: 128
+  OffsetOfSpawn: 0
+  IsSpawnOnCell: 0
 --- !u!54 &5980496133672056426
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -85,12 +87,12 @@ MonoBehaviour:
   CharacterNum: 0
   CharacterLevel: 0
   Bullet: {fileID: 7732793102894312523, guid: 5d9620990a2595e4c90775e8bad1d96d, type: 3}
-  Speed: 4
-  DelayBetweenAttacks: 0.3
-  AttackTime: 0.5
-  Dammage: 2
-  DistanceToStartAttack: 0.75
-  Health: 5
+  Speed: 2.5
+  DelayBetweenAttacks: 0.8
+  AttackTime: 0.2
+  Dammage: 30
+  DistanceToStartAttack: 0.477642
+  Health: 20
 --- !u!114 &-4198495665875744963
 MonoBehaviour:
   m_ObjectHideFlags: 0
