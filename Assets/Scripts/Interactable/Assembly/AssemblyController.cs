@@ -79,7 +79,6 @@ public class AssemblyController : MonoBehaviour
         foreach (var item in parts)
         {
             item.part.TogglePhysics(true);
-            item.part.CheckDraggeble();
         }
 
        // this.WaitAndDoCoroutine(0f, () => onPartNew.Invoke(parts[0].part));
@@ -132,7 +131,8 @@ public class AssemblyController : MonoBehaviour
 
     public void OnAllAssembleComplete()
     {
-        transform.DOMove(pointToMoveAfterAllAssemble.position, 1.5f).SetEase(Ease.Linear);
+        transform.DOMove(pointToMoveAfterAllAssemble.position, 1.5f).SetEase(Ease.Linear)
+            .OnComplete(() => Destroy(gameObject));
     }
 
     void CheckPlacement(PartController partC)

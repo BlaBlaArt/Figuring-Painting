@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -19,6 +20,8 @@ public class FightController : MonoBehaviour
     
     public List<GameObject> Characters = new List<GameObject>();
 
+    [SerializeField] private GameObject ArcherPref, WariorPref, WizardPref, ShieldPref;
+    
     private LevelData levelData;
 
     private UnityAction FightButton;
@@ -84,7 +87,72 @@ public class FightController : MonoBehaviour
 
     private void OnStageStart(int obj)
     {
+        SpawnCharactersFromData();
         TmpObjects.Clear();
+    }
+
+    private void SpawnCharactersFromData()
+    {
+
+        var data = SLS.Data.Game.StoredCharacters.StoregeCharacters.FindAll((sc => sc.Counts.Value > 0));
+        for (int i = 0; i < data.Count; i++)
+        {
+            Debug.Log("character class " + data[i].CharacterClass.Value + " CharacterData " +
+                      data[i].Counts.Value);
+            var type = data[i].CharacterClass.Value;
+            for (int j = 0; j < data[i].Counts.Value; j++)
+            {
+                var cell = GetCell();
+                if (cell != null)
+                {
+                    var tmpCharacter = Instantiate(GetCharacter(type));
+                    Debug.Log("Cell " + cell.name + " Character " + tmpCharacter.name);
+                    tmpCharacter.transform.position = cell.transform.position;
+                    tmpCharacter.transform.rotation = cell.transform.rotation;
+                    tmpCharacter.GetComponent<DragObject>().OnSpawnOnCell(cell);
+                    cell.OnGetObject(tmpCharacter);
+                }
+            }
+        }
+    }
+
+    private GameObject GetCharacter(CharacterClass characterClass)
+    {
+        switch (characterClass)
+        {
+            case CharacterClass.Archer:
+            {
+                return ArcherPref;
+            }
+            case CharacterClass.Shield:
+            {
+                return ShieldPref;
+            }
+            case CharacterClass.Warior:
+            {
+                return WariorPref;
+            }
+            case CharacterClass.Wizard:
+            {
+                return WizardPref;
+            }
+        }
+
+        return null;
+    }
+    
+    private Cell GetCell()
+    {
+
+        if (Cells.All(c => c.MyObject != null))
+        {
+            return null;
+        }
+        else
+        {
+            var cell = Cells.First(c => c.MyObject == null);
+            return cell;
+        }
     }
 
     private void OnLevelUnload()

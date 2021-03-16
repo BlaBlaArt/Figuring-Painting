@@ -29,6 +29,8 @@ public class DragObject : MonoBehaviour
     public float OffsetOfSpawn;
     
     private Transform myTransform;
+
+    public bool IsSpawnOnCell = false;
     
     private void Start()
     {
@@ -68,6 +70,13 @@ public class DragObject : MonoBehaviour
         colider.radius = startRadiusOfColider;
     }
 
+    public void OnSpawnOnCell(Cell cell)
+    {
+        IsSpawnOnCell = true;
+        this.cell = cell;
+        startCell = cell;
+    }
+    
     private void OnMouseDown()
     {
         DragController.Instance.SetObjectToDrag(gameObject);
@@ -170,7 +179,8 @@ public class DragObject : MonoBehaviour
 
     private void OnSucssesfullSpawn()
     {
-        LevelController.Instance.OnSpawnCharacter?.Invoke(myData.CharacterNum);
+        if (!IsSpawnOnCell)
+            LevelController.Instance.OnSpawnCharacter?.Invoke(myData.CharacterNum);
     }
     
     private void MoveToStart()

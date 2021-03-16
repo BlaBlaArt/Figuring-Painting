@@ -53,8 +53,6 @@ public class PartController : MonoBehaviour
     Vector3 _targetPosition;
 
     List<IMoveingPart> _moveingParts;
-
-    private bool canDrag;
     
     void Awake()
     {
@@ -67,33 +65,28 @@ public class PartController : MonoBehaviour
 
     private void Start()
     {
-        canDrag = false;
         myOutline.HideHighlight();
         transform.eulerAngles = new Vector3(0, 0, 90f);
     }
 
-    public void CheckDraggeble() => this.WaitAndDoCoroutine(1.5f, () => canDrag = true);
 
     void OnMouseDown()
     {
-        if (canDrag)
-        {
-            myOutline.ShowHighlight();
+        myOutline.ShowHighlight();
         
-            transform.DOKill();
+        transform.DOKill();
 
-            TogglePhysics(false);
+        TogglePhysics(false);
 
-            Taptic.Light();
-            onGrabStart.Invoke(this);
-            OnGrabStart.Invoke(this);
-        }
+        Taptic.Light();
+        onGrabStart.Invoke(this);
+        OnGrabStart.Invoke(this);
     }
 
     void OnMouseDrag()
     {
         float dist = Mathf.InverseLerp(0, _startDist,
-            Vector3.Distance(transform.position, _endPos));
+            Vector3.Distance(new Vector3(0, 0, transform.position.z), new Vector3(0, 0,_endPos.z)))/2;
 
         //Ray ray = InputController.inst.GetCameraRay();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -135,7 +128,7 @@ public class PartController : MonoBehaviour
 
         _targetPosition = _startPos;
 
-        _startDist = Vector3.Distance(_startPos, _endPos);
+        _startDist = Vector3.Distance(new Vector3(_startPos.x, 0, _startPos.z), new Vector3(_endPos.x, 0, _endPos.z));
         
     }
 
