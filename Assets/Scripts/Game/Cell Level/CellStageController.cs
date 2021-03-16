@@ -11,13 +11,14 @@ public class CellStageController : MonoBehaviour
     
     private int CountOfCharecters = 4;
     
-    [SerializeField] private int[] counts;
-    [SerializeField] private float offsetToSpawn;
+    [SerializeField] private int[] counts; 
+    private float offsetToSpawn;
     
     private LevelData currentLevelData;
     
     private void Start()
     {
+        offsetToSpawn = GameC.Instance.AllLevelData.OffsetToSpawnCharacters;
         GameC.Instance.Finish2StageButton.GetComponent<Button>().onClick.AddListener(OnStartFightStage);
         for (int i = 0; i < PointsToSpawn.Length; i++)
         {

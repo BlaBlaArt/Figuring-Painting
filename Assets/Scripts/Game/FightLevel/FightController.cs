@@ -20,7 +20,7 @@ public class FightController : MonoBehaviour
     
     public List<GameObject> Characters = new List<GameObject>();
 
-    [SerializeField] private GameObject ArcherPref, WariorPref, WizardPref, ShieldPref;
+    private GameObject ArcherPref, WariorPref, WizardPref, ShieldPref;
     
     private LevelData levelData;
 
@@ -40,6 +40,12 @@ public class FightController : MonoBehaviour
 
     private void Start()
     {
+        var data = GameC.Instance.AllLevelData;
+        ArcherPref = data.ArcherPref;
+        WariorPref = data.WariorPref;
+        WizardPref = data.WizardPref;
+        ShieldPref = data.ShieldPref;
+
         FightButton = new UnityAction(OnStageComplete);
         
         foreach (var enemy in Enemys)

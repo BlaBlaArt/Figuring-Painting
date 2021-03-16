@@ -11,17 +11,17 @@ public class DragController : MonoBehaviour
     private Camera mainCamera;
     
     private GameObject objectToDrag;
-
+    [HideInInspector]
     public float DeltaHeightOfLevel;
-
+    [HideInInspector]
     public float OffsetToForward;
-
+    [HideInInspector]
     public float FollowSmooth;
     
-    [SerializeField] private LayerMask planeForCamera;
+    private LayerMask planeForCamera;
 
     private bool isDrag = false;
-
+    [HideInInspector]
     public float CellsHeight;
     
     private void Awake()
@@ -38,6 +38,14 @@ public class DragController : MonoBehaviour
 
     private void Start()
     {
+        var data = GameC.Instance.AllLevelData;
+        DeltaHeightOfLevel = data.DeltaHeightOfLevel;
+        OffsetToForward = data.OffsetToForward;
+        FollowSmooth = data.FollowSmooth;
+        planeForCamera = data.PlaneForCamera;
+        CellsHeight = data.CellsHeight;
+
+
         mainCamera = Camera.main;
     }
 

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5689851d10f5ebb439db319b1f6303b7, type: 3}
+  m_Name: AllLevelData
+  m_EditorClassIdentifier: 
+  HeightOFBoxOffset: 1
+  DeltaTimeToMoveBox: 1
+  OffsetToSpawnCharacters: 0.8
+  DeltaHeightOfLevel: 0.1
+  OffsetToForward: 0.25
+  FollowSmooth: 15
+  PlaneForCamera:
+    serializedVersion: 2
+    m_Bits: 64
+  CellsHeight: 0.1
+  ArcherPref: {fileID: 5980496133672056424, guid: 4d9b0a414a96aa54fae55b34ccf5ff61,
+    type: 3}
+  WariorPref: {fileID: 849918218981452304, guid: 59cf7398606e72442b1b69f96a8811be,
+    type: 3}
+  WizardPref: {fileID: 849918218981452304, guid: 129ba98fbad84ea46a6cd9b723529900,
+    type: 3}
+  ShieldPref: {fileID: 849918218981452304, guid: eba2cd5f50b47ec49b22754e56285189,
+    type: 3}

@@ -3477,6 +3477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610706fdb12694feea522327b7b659d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AllLevelData: {fileID: 11400000, guid: 20f4c9ba8ad2b0442ae89e9f8b2e4ff7, type: 2}
   Finish2StageButton: {fileID: 1374820115}
   MainCamera: {fileID: 0}
 --- !u!114 &1529347595

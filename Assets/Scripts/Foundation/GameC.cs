@@ -21,6 +21,8 @@ public class GameC : MonoBehaviour
 	public event Action OnLevelUnload;
 
 
+	public AllLevelData AllLevelData;
+	
 	public GameObject Finish2StageButton;
 
 	public Camera MainCamera;

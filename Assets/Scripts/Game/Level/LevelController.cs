@@ -9,8 +9,8 @@ public class LevelController : MonoBehaviour
     public static LevelController Instance;
 
    // [SerializeField] private GameObject SecondStagePref;
-    [SerializeField] private float HeightOffset;
-    [SerializeField] private float deltaTimeMove;
+    private float HeightOffset;
+    private float deltaTimeMove;
     
     public AssemblyController[] assemblyControllers;
     public UnboxController[] Boxes;
@@ -45,6 +45,9 @@ public class LevelController : MonoBehaviour
 
     private void Start()
     {
+        var data = GameC.Instance.AllLevelData;
+        HeightOffset = data.HeightOFBoxOffset;
+        deltaTimeMove = data.DeltaTimeToMoveBox;
         startPositions = new List<Vector3>();
         assemblyCount = 0;
         StageNum = 0;
