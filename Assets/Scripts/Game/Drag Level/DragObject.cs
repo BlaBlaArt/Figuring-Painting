@@ -202,6 +202,7 @@ public class DragObject : MonoBehaviour
             
             dragObject.MoveToStart();
             MoveToStart();
+            GameC.Instance.ShowFinishButton();
         }
         else
         {
