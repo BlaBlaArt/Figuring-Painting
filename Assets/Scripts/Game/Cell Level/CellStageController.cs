@@ -67,27 +67,48 @@ public class CellStageController : MonoBehaviour
     private void SpawnCharacters(Character character, Transform point, int numInArray)
     {
 
-        if (counts[numInArray] > 0)
+        for (int i = 0; i < counts[numInArray]; i++)
         {
-            texts[numInArray].gameObject.SetActive();
-            texts[numInArray].text = counts[numInArray].ToString();
-            counts[numInArray]--;
+           // counts[numInArray]--;
             var tmpCharacter = Instantiate(character.CharacterPref);
-            tmpCharacter.transform.position =
-                new Vector3(point.position.x, point.position.y, point.position.z + offsetToSpawn);
+            
+            var cell = FightController.Instance.GetCell(FightController.Instance.Cells, false);
+            
+            tmpCharacter.transform.position = cell.transform.position;
             tmpCharacter.transform.rotation = point.rotation;
+            
             tmpCharacter.GetComponent<CharacterData>().CharacterNum = numInArray;
-            FightController.Instance.TmpObjects.Add(tmpCharacter);
-            tmpCharacter.GetComponent<DragObject>().OnStartInvoke(offsetToSpawn);
+            tmpCharacter.GetComponent<DragObject>().OnSpawnOnCell(cell);
+            cell.OnGetObject(tmpCharacter);
         }
-        else if (FinishConritionCheck())
-        {
-            texts[numInArray].gameObject.SetInactive();
-        }
-        else
-        {
-            texts[numInArray].gameObject.SetInactive();
-        }
+        
+        // if (counts[numInArray] > 0)
+        // {
+        //   //  texts[numInArray].gameObject.SetActive();
+        //    // texts[numInArray].text = counts[numInArray].ToString();
+        //     counts[numInArray]--;
+        //     var tmpCharacter = Instantiate(character.CharacterPref);
+        //     
+        //     var cell = FightController.Instance.GetCell(FightController.Instance.Cells, false);
+        //     
+        //     tmpCharacter.transform.position = cell.transform.position;
+        //         //new Vector3(point.position.x, point.position.y, point.position.z + offsetToSpawn);
+        //     tmpCharacter.transform.rotation = point.rotation;
+        //     
+        //     tmpCharacter.GetComponent<CharacterData>().CharacterNum = numInArray;
+        //   //  FightController.Instance.TmpObjects.Add(tmpCharacter);
+        //   //  tmpCharacter.GetComponent<DragObject>().OnStartInvoke(offsetToSpawn);
+        //     tmpCharacter.GetComponent<DragObject>().OnSpawnOnCell(cell);
+        //     cell.OnGetObject(tmpCharacter);
+        // }
+        //else if (FinishConritionCheck())
+        //{
+        //    texts[numInArray].gameObject.SetInactive();
+        //}
+        //else
+        //{
+        //    texts[numInArray].gameObject.SetInactive();
+        //}
         
     }
 

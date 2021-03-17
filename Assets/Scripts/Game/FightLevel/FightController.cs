@@ -15,7 +15,7 @@ public class FightController : MonoBehaviour
     public List<GameObject> TmpObjects;
 
     public List<GameObject> Enemys = new List<GameObject>();
-    [SerializeField] private Cell[] Cells;
+    public Cell[] Cells;
     [SerializeField] private Cell[] enemyCells;
     
     public List<GameObject> Characters = new List<GameObject>();
@@ -348,7 +348,7 @@ public class FightController : MonoBehaviour
         return null;
     }
     
-    private Cell GetCell(Cell[] cells, bool isShofle)
+    public Cell GetCell(Cell[] cells, bool isShofle)
     {
 
         if (cells.All(c => c.MyObject != null))
