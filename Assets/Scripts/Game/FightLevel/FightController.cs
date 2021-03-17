@@ -72,7 +72,7 @@ public class FightController : MonoBehaviour
         
         SpawnEnemies();
     }
-
+    
     private void OnLevelEnd(bool isWin)
     {
         if (isWin)
@@ -108,6 +108,17 @@ public class FightController : MonoBehaviour
         TmpObjects.Clear();
     }
 
+    public void OnDragObjectDown()
+    {
+        this.WaitAndDoCoroutine(0.15f, () =>
+        {
+            foreach (var cell in Cells)
+            {
+                cell.OnDisactive();
+            }
+        });
+    }
+    
     private void SpawnEnemies()
     {
         int heroCount = 0;
@@ -124,7 +135,14 @@ public class FightController : MonoBehaviour
             heroCount += character.Counts.Value;
         }
 
-        enemyCounts = heroCount;
+        if (SLS.Data.Game.Level.Value == 0)
+        {
+            enemyCounts = --heroCount;
+        }
+        else
+        {
+            enemyCounts = heroCount;
+        }
 
         Debug.Log("EnemyCounts" + enemyCounts);
         

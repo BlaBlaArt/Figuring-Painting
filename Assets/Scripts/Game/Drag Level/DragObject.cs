@@ -71,6 +71,7 @@ public class DragObject : MonoBehaviour
     {
         IsSpawnOnCell = true;
         this.cell = cell;
+        cell.OnDisactive();
         startCell = cell;
     }
     
@@ -102,6 +103,8 @@ public class DragObject : MonoBehaviour
         myAnimationController.OnDrag(false);
         
         CheckCell();
+        
+        FightController.Instance.OnDragObjectDown();
     }
 
     private void CheckCell()
