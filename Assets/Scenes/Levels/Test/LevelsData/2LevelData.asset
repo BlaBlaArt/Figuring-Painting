@@ -13,18 +13,6 @@ MonoBehaviour:
   m_Name: 2LevelData
   m_EditorClassIdentifier: 
   CurretLevelCharacters:
-  - CharacterClass: 0
-    count: 1
-    CharacterPref: {fileID: 849918218981452304, guid: 59cf7398606e72442b1b69f96a8811be,
-      type: 3}
-  - CharacterClass: 1
-    count: 1
-    CharacterPref: {fileID: 5980496133672056424, guid: 4d9b0a414a96aa54fae55b34ccf5ff61,
-      type: 3}
-  - CharacterClass: 2
-    count: 1
-    CharacterPref: {fileID: 849918218981452304, guid: 129ba98fbad84ea46a6cd9b723529900,
-      type: 3}
   - CharacterClass: 3
     count: 1
     CharacterPref: {fileID: 849918218981452304, guid: eba2cd5f50b47ec49b22754e56285189,

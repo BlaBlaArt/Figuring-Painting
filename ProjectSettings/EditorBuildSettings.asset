@@ -32,4 +32,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Test/2Stage_TEST/2Stage 2Level.unity
     guid: 06f27808087742848aa52bc5dc8afc6a
+  - enabled: 1
+    path: Assets/Scenes/Levels/Test/Level3.unity
+    guid: bb889d134689cb244ac59ffd32bd0216
+  - enabled: 1
+    path: Assets/Scenes/Levels/Test/2Stage_TEST/2Stage 1Level 1.unity
+    guid: 9551fd1445f5f5d48a42be992d4eb339
+  - enabled: 1
+    path: Assets/Scenes/Levels/Test/Level 4.unity
+    guid: d9f9e8d7aaa474e4386cb8743b3c87a0
+  - enabled: 1
+    path: Assets/Scenes/Levels/Test/2Stage_TEST/2Stage 1Level 2.unity
+    guid: cc448d9a02c3b5149a84ea743312365f
+  - enabled: 1
+    path: Assets/Scenes/Levels/Test/Level 5.unity
+    guid: effbee368dce98749b9fe2f43e74c1f7
+  - enabled: 1
+    path: Assets/Scenes/Levels/Test/2Stage_TEST/2Stage 1Level 3.unity
+    guid: 41a655bdfffcaef43b7a78483c2e9691
+  - enabled: 1
+    path: Assets/Scenes/Levels/Test/Level 6.unity
+    guid: 6753f193f2f652e4ebc165a7b6a0cd3e
+  - enabled: 1
+    path: Assets/Scenes/Levels/Test/2Stage_TEST/2Stage 1Level 4.unity
+    guid: 90416e9e16d94804da5fbd771bc4689d
   m_configObjects: {}
