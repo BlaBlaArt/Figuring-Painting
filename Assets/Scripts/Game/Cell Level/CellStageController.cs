@@ -79,6 +79,7 @@ public class CellStageController : MonoBehaviour
             
             tmpCharacter.GetComponent<CharacterData>().CharacterNum = numInArray;
             tmpCharacter.GetComponent<DragObject>().OnSpawnOnCell(cell);
+            //tmpCharacter.GetComponent<DragObject>().startCell = cell;
             cell.OnGetObject(tmpCharacter);
         }
         

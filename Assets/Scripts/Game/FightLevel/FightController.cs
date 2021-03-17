@@ -317,6 +317,7 @@ public class FightController : MonoBehaviour
                     tmpCharacter.transform.position = cell.transform.position;
                     tmpCharacter.transform.rotation = cell.transform.rotation;
                     tmpCharacter.GetComponent<DragObject>().OnSpawnOnCell(cell);
+                    tmpCharacter.GetComponent<DragObject>().startCell = cell;
                     cell.OnGetObject(tmpCharacter);
                 }
             }

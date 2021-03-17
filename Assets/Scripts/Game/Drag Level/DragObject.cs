@@ -39,7 +39,7 @@ public class DragObject : MonoBehaviour
         offsetPosForward = DragController.Instance.OffsetToForward;
         myData = GetComponent<CharacterData>();
         startPos = transform.position;
-        startCell = null;
+        //startCell = null;
         myTransform = transform;
         heightToMove = myTransform.position.y + deltaHeightOfLevel;
     }
