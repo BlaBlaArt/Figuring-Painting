@@ -1,5 +1,6 @@
 using System.Collections;
 using DG.Tweening;
+using TFPlay.UI;
 using UnityEngine;
 
 public class DragObject : MonoBehaviour
@@ -78,6 +79,8 @@ public class DragObject : MonoBehaviour
     
     private void OnMouseDown()
     {
+        Taptic.Light();
+        
         DragController.Instance.SetObjectToDrag(gameObject);
         // dragController.SetObjectToDrag(gameObject);
         if (cell != null)
@@ -99,6 +102,7 @@ public class DragObject : MonoBehaviour
 
     private void OnMouseUp()
     {
+        Taptic.Light();
         DragController.Instance.DisableDrag();
 
         myAnimationController.OnDrag(false);

@@ -52,6 +52,7 @@ public class FightCharacterController : MonoBehaviour
 
     private void OnDestroy()
     {
+        Taptic.Medium();
         GameC.Instance.OnLevelEnd -= OnLevelEnd;
         StopAllCoroutines();
         FightController.Instance.StartWinCheck();
