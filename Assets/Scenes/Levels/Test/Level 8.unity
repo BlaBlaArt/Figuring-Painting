@@ -568,7 +568,7 @@ MonoBehaviour:
   Boxes:
   - {fileID: 552552151}
   - {fileID: 1276925531}
-  CurrentLevelData: {fileID: 11400000, guid: 55cef353907302b4fb21713930751c3b, type: 2}
+  CurrentLevelData: {fileID: 11400000, guid: beee070a0d072f248bd9c59e4892f06b, type: 2}
   StageNum: 1
 --- !u!4 &690105599
 Transform:

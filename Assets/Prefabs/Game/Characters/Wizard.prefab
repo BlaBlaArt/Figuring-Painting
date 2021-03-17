@@ -91,7 +91,7 @@ MonoBehaviour:
   CharacterLevel: 0
   Bullet: {fileID: 7732793102894312523, guid: 5d9620990a2595e4c90775e8bad1d96d, type: 3}
   Speed: 2.5
-  DelayBetweenAttacks: 0.8
+  DelayBetweenAttacks: 0.3
   AttackTime: 0.2
   Dammage: 17
   DistanceToStartAttack: 0.716463

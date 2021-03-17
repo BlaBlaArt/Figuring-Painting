@@ -56,4 +56,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Test/2Stage_TEST/2Stage 1Level 4.unity
     guid: 90416e9e16d94804da5fbd771bc4689d
+  - enabled: 1
+    path: Assets/Scenes/Levels/Test/Level 7.unity
+    guid: 3420dc358253c5d4eb7e216a4d69af8f
+  - enabled: 1
+    path: Assets/Scenes/Levels/Test/2Stage_TEST/2Stage 1Level 5.unity
+    guid: 9a52e19f77f3c104e81356cf9e86323b
+  - enabled: 1
+    path: Assets/Scenes/Levels/Test/Level 8.unity
+    guid: 1dbb31d34e137674081f2dcd964768db
+  - enabled: 1
+    path: Assets/Scenes/Levels/Test/2Stage_TEST/2Stage 1Level 6.unity
+    guid: 5dfec765974b53c4bbb42b174a056928
+  - enabled: 1
+    path: Assets/Scenes/Levels/Test/Level 9.unity
+    guid: 473d4281b5bcc934bb07af2ca91f3bca
+  - enabled: 1
+    path: Assets/Scenes/Levels/Test/2Stage_TEST/2Stage 1Level 7.unity
+    guid: a945091c8831ed54c880195a1c83932a
+  - enabled: 1
+    path: Assets/Scenes/Levels/Test/Level 10.unity
+    guid: a9df3bcc73474f94abcc83c8961c4154
+  - enabled: 1
+    path: Assets/Scenes/Levels/Test/2Stage_TEST/2Stage 1Level 8.unity
+    guid: 20709803d1ce97e4ea341b28664b102b
   m_configObjects: {}
