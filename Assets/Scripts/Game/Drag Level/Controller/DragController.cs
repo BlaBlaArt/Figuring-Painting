@@ -23,6 +23,9 @@ public class DragController : MonoBehaviour
     private bool isDrag = false;
     [HideInInspector]
     public float CellsHeight;
+
+    [HideInInspector]
+    public Color startCellColor, activeCellColor;
     
     private void Awake()
     {
@@ -44,7 +47,8 @@ public class DragController : MonoBehaviour
         FollowSmooth = data.FollowSmooth;
         planeForCamera = data.PlaneForCamera;
         CellsHeight = data.CellsHeight;
-
+        startCellColor = data.StartCellColor;
+        activeCellColor = data.ActiveCellColor;
 
         mainCamera = Camera.main;
     }

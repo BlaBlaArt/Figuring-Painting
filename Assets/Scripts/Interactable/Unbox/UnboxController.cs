@@ -23,8 +23,8 @@ public class UnboxController : MonoBehaviour
 
     [Space]
     [SerializeField] StepType stepType;
-    [SerializeField] [ShowIf("IsNumOfSteps")] int steps = 10;
-    [SerializeField] [HideIf("IsNumOfSteps")] float stepLength = .1f;
+    [SerializeField] [ShowIf("IsNumOfSteps")] int steps = 9;
+    [SerializeField] [HideIf("IsNumOfSteps")] float stepLength = .2f;
 
     [Space]
     public Transform partPositionsParent;

@@ -11,6 +11,8 @@ public class AllLevelData : ScriptableObject
     [Header("CellStage")]
     public float OffsetToSpawnCharacters;
 
+    public Color StartCellColor, ActiveCellColor;
+
     
     [Header("DragStage")]
     public float DeltaHeightOfLevel;

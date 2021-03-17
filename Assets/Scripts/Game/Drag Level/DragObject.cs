@@ -71,8 +71,9 @@ public class DragObject : MonoBehaviour
     {
         IsSpawnOnCell = true;
         this.cell = cell;
-        cell.OnDisactive();
         startCell = cell;
+        this.WaitAndDoCoroutine(0.2f,() => FightController.Instance.TmpObjects.Add(gameObject));
+        this.WaitAndDoCoroutine(0.1f, () => cell.OnDisactive());
     }
     
     private void OnMouseDown()
@@ -134,8 +135,8 @@ public class DragObject : MonoBehaviour
     private void MoveToFreeCell()
     {
         //transform.position = cell.StartPos;
-        transform.DOMove(cell.StartPos, Vector3.Distance(transform.position, cell.StartPos)/10).SetEase(Ease.Linear);
-        startPos = cell.StartPos;
+        transform.DOMove(cell.transform.position, Vector3.Distance(transform.position, cell.transform.position)/10).SetEase(Ease.Linear);
+        startPos = cell.transform.position;
         if(startCell != null)
             startCell.OnObjectMove();
         startCell = cell;
