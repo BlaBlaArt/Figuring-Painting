@@ -28,8 +28,11 @@ public class FightCharacterController : MonoBehaviour
     public int Health;
     private int dammage;
 
+    public bool isDead;
+
     private void Start()
     {
+        isDead = false;
         myAnimatorController = GetComponentInChildren<IAnimationController>();
         myData = GetComponent<CharacterData>();
         rigidbody = GetComponent<Rigidbody>();
@@ -61,7 +64,7 @@ public class FightCharacterController : MonoBehaviour
     public void StartFight()
     {
         CalculateDistToEnemys();
-        if (myEnemy != null)
+        if (!myEnemy.GetComponent<FightCharacterController>().isDead)
         {
             DisableAllExtraComponents();
             FightControl();
@@ -118,7 +121,7 @@ public class FightCharacterController : MonoBehaviour
         }
 
         myEnemy = Enemys.OrderBy(enemy => Vector3.Distance(transform.position, enemy.transform.position))
-            .FirstOrDefault();
+        .FirstOrDefault(t => !t.GetComponent<FightCharacterController>().isDead);
     }
 
     public void TakeDammage(int dammage)
@@ -126,6 +129,8 @@ public class FightCharacterController : MonoBehaviour
             Health -= dammage;
             if (Health <= 0)
             {
+                isDead = true;
+                
                 if (IsHero)
                 {
                     FightController.Instance.Characters.Remove(gameObject);
@@ -135,8 +140,22 @@ public class FightCharacterController : MonoBehaviour
                     FightController.Instance.Enemys.Remove(gameObject);
                 }
 
-                Destroy(gameObject);
+                StopAllCoroutines();
+                StartCoroutine(OnDead());
             }
+    }
+
+    private IEnumerator OnDead()
+    {
+        myAnimatorController.OnDead();
+        
+        Debug.Log("End of Dead1");
+
+        yield return new WaitForSeconds(3f);
+        
+        Debug.Log("End of Dead2");
+        
+        Destroy(gameObject);
     }
     
     private void FightControl()
@@ -150,7 +169,7 @@ public class FightCharacterController : MonoBehaviour
 
         myAnimatorController.Run();
 
-        while (myEnemy != null && Vector3.Distance(transform.position, myEnemy.transform.position) >=
+        while (!myEnemy.GetComponent<FightCharacterController>().isDead && Vector3.Distance(transform.position, myEnemy.transform.position) >=
             distanceToStartAttack + transform.localScale.x / 2)
         {
 
@@ -166,7 +185,7 @@ public class FightCharacterController : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         
-        if(myEnemy == null)
+        if(myEnemy.GetComponent<FightCharacterController>().isDead)
         {
             myAnimatorController.Idle();
             rigidbody.velocity = Vector3.zero;
@@ -191,10 +210,10 @@ public class FightCharacterController : MonoBehaviour
        
         while (enemyHealth >= 0)
         {
-            if (myEnemy != null)
+            if (!enemyController.isDead)
             {
                 yield return Attack();
-                if(myEnemy != null)
+                if(!enemyController.isDead)
                     enemyController.TakeDammage(dammage);
                 else
                     break;
@@ -216,6 +235,8 @@ public class FightCharacterController : MonoBehaviour
     {
         myAnimatorController.Attack();
         
+        yield return new WaitForSeconds(attackTime);
+
         switch (myClass)
         {
             case CharacterClass.Archer:
@@ -223,9 +244,9 @@ public class FightCharacterController : MonoBehaviour
                 
                 var tmpBullet = Instantiate(bulletPref);
                 FightController.Instance.TmpObjects.Add(tmpBullet);
-                tmpBullet.transform.position = transform.position;
+                tmpBullet.transform.position = new Vector3(transform.position.x, transform.position.y+0.1f, transform.position.z);
                 tmpBullet.transform.LookAt(myEnemy.transform);
-                tmpBullet.transform.DOMove(myEnemy.transform.position, attackTime).SetEase(Ease.Linear);
+                tmpBullet.transform.DOMove(myEnemy.transform.position, delayBetweenAttacks/4).SetEase(Ease.Linear);
                 break;
             }
             case CharacterClass.Warior:
@@ -237,9 +258,9 @@ public class FightCharacterController : MonoBehaviour
             {
                 var tmpBullet = Instantiate(bulletPref);
                 FightController.Instance.TmpObjects.Add(tmpBullet);
-                tmpBullet.transform.position = transform.position;
+                tmpBullet.transform.position = new Vector3(transform.position.x, transform.position.y+0.1f, transform.position.z);
                 tmpBullet.transform.LookAt(myEnemy.transform);
-                tmpBullet.transform.DOMove(myEnemy.transform.position, attackTime).SetEase(Ease.Linear);
+                tmpBullet.transform.DOMove(myEnemy.transform.position, delayBetweenAttacks/4).SetEase(Ease.Linear);
                 break;
             }
             case CharacterClass.Shield:
@@ -247,8 +268,9 @@ public class FightCharacterController : MonoBehaviour
                 break;
             }
         }
-        
-        yield return new WaitForSeconds(attackTime);
+
+        yield return new WaitForEndOfFrame();
+
     }
 
 

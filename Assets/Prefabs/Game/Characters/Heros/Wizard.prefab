@@ -91,7 +91,7 @@ MonoBehaviour:
   CharacterLevel: 0
   Bullet: {fileID: 7732793102894312523, guid: 5d9620990a2595e4c90775e8bad1d96d, type: 3}
   Speed: 2.5
-  DelayBetweenAttacks: 0.3
+  DelayBetweenAttacks: 1.4
   AttackTime: 0.2
   Dammage: 17
   DistanceToStartAttack: 0.716463
@@ -185,17 +185,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: bf4f7bef0d0040a4da685a0d5adeeb65,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 21.199999
+      value: 24.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bf4f7bef0d0040a4da685a0d5adeeb65,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 21.199999
+      value: 24.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bf4f7bef0d0040a4da685a0d5adeeb65,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 21.199999
+      value: 24.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bf4f7bef0d0040a4da685a0d5adeeb65,
         type: 3}

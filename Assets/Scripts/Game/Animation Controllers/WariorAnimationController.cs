@@ -34,4 +34,10 @@ public class WariorAnimationController : MonoBehaviour, IAnimationController
     {
         anim.SetTrigger(IsWin);
     }
+
+    public void OnDead()
+    {
+        anim.SetTrigger("IsDead");
+        anim.SetBool("ISDEAD", true);
+    }
 }
