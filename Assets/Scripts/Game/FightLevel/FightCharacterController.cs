@@ -22,6 +22,8 @@ public class FightCharacterController : MonoBehaviour
     private float delayBetweenAttacks;
     private float distanceToStartAttack;
     private float attackTime;
+    [Space] [SerializeField] private ParticleSystem vfxOnMe;
+    [SerializeField] private GameObject vfxOnEnenmy;
 
     private GameObject bulletPref;
     
@@ -235,6 +237,9 @@ public class FightCharacterController : MonoBehaviour
     {
         myAnimatorController.Attack();
         
+        if(vfxOnMe != null)
+            vfxOnMe.Play(true);
+
         yield return new WaitForSeconds(attackTime);
 
         switch (myClass)
@@ -256,11 +261,11 @@ public class FightCharacterController : MonoBehaviour
             }
             case CharacterClass.Wizard:
             {
-                var tmpBullet = Instantiate(bulletPref);
+                var tmpBullet = Instantiate(vfxOnEnenmy);
                 FightController.Instance.TmpObjects.Add(tmpBullet);
-                tmpBullet.transform.position = new Vector3(transform.position.x, transform.position.y+0.1f, transform.position.z);
-                tmpBullet.transform.LookAt(myEnemy.transform);
-                tmpBullet.transform.DOMove(myEnemy.transform.position, delayBetweenAttacks/4).SetEase(Ease.Linear);
+                tmpBullet.transform.position = myEnemy.transform.position;
+              //  tmpBullet.transform.LookAt(myEnemy.transform);
+              //  tmpBullet.transform.DOMove(myEnemy.transform.position, delayBetweenAttacks/4).SetEase(Ease.Linear);
                 break;
             }
             case CharacterClass.Shield:
