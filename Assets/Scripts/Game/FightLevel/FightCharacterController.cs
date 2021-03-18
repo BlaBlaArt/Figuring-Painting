@@ -252,8 +252,15 @@ public class FightCharacterController : MonoBehaviour
                 tmpBullet.transform.position = new Vector3(transform.position.x, transform.position.y+0.1f, transform.position.z);
                 tmpBullet.transform.LookAt(myEnemy.transform);
                 var seq = DOTween.Sequence();
-                
-                tmpBullet.transform.DOMove(myEnemy.transform.position, delayBetweenAttacks/4).SetEase(Ease.Linear);
+
+                var dist = Vector3.Distance(transform.position, myEnemy.transform.position);
+
+                seq.Append(tmpBullet.transform
+                    .DOMove(new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z),
+                        delayBetweenAttacks / 4)
+                    .SetEase(Ease.Linear));
+                seq.Append(tmpBullet.transform.DOMove(myEnemy.transform.position, delayBetweenAttacks / 4)
+                    .SetEase(Ease.InExpo));
                 break;
             }
             case CharacterClass.Warior:
