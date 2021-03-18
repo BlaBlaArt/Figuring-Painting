@@ -69,8 +69,8 @@ MonoBehaviour:
   CharacterLevel: 0
   Bullet: {fileID: 0}
   Speed: 2.5
-  DelayBetweenAttacks: 1.4
-  AttackTime: 0.2
+  DelayBetweenAttacks: 0.2
+  AttackTime: 1.4
   Dammage: 36
   DistanceToStartAttack: 0.238821
   Health: 40
@@ -88,7 +88,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsHero: 0
   myEnemy: {fileID: 0}
+  vfxOnMe: {fileID: 0}
+  vfxOnEnenmy: {fileID: 0}
   Health: 0
+  isDead: 0
 --- !u!136 &2658668533829476044
 CapsuleCollider:
   m_ObjectHideFlags: 0
