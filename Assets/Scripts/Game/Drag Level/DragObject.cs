@@ -20,8 +20,9 @@ public class DragObject : MonoBehaviour
 
     private IAnimationController myAnimationController;
 
-    private float startRadiusOfColider;
-
+    private float startRadiusOfColider, startHeightOfColider;
+    private Vector3 startCenterOfColider;
+    
     private bool canCollide = true;
 
     public float OffsetOfSpawn;
@@ -34,7 +35,11 @@ public class DragObject : MonoBehaviour
     {
         var colider = GetComponent<CapsuleCollider>();
         startRadiusOfColider = colider.radius;
+        startHeightOfColider = colider.height;
+        startCenterOfColider = colider.center;
         colider.radius = 0.01f;
+        colider.center = new Vector3(colider.center.x, -0.6f, colider.center.z);
+        colider.height = 4.15f;
         myAnimationController = GetComponentInChildren<IAnimationController>();
         deltaHeightOfLevel = DragController.Instance.DeltaHeightOfLevel;
         offsetPosForward = DragController.Instance.OffsetToForward;
@@ -66,6 +71,9 @@ public class DragObject : MonoBehaviour
     {
         var colider = GetComponent<CapsuleCollider>();
         colider.radius = startRadiusOfColider;
+        colider.height = startHeightOfColider;
+        colider.center = startCenterOfColider;
+        transform.position = startPos;
     }
 
     public void OnSpawnOnCell(Cell cell)
