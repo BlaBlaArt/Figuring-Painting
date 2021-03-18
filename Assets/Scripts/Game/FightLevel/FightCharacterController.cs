@@ -25,6 +25,8 @@ public class FightCharacterController : MonoBehaviour
     [Space] [SerializeField] private ParticleSystem vfxOnMe;
     [SerializeField] private GameObject vfxOnEnenmy;
 
+    [SerializeField] private GameObject myTrail;
+    
     private GameObject bulletPref;
     
     public int Health;
@@ -34,6 +36,8 @@ public class FightCharacterController : MonoBehaviour
 
     private void Start()
     {
+        if(myTrail != null)
+            myTrail.SetInactive();
         isDead = false;
         myAnimatorController = GetComponentInChildren<IAnimationController>();
         myData = GetComponent<CharacterData>();
@@ -240,6 +244,9 @@ public class FightCharacterController : MonoBehaviour
         if(vfxOnMe != null)
             vfxOnMe.Play(true);
 
+        if(myTrail != null)
+            myTrail.SetActive();
+        
         yield return new WaitForSeconds(attackTime);
 
         switch (myClass)
@@ -265,7 +272,7 @@ public class FightCharacterController : MonoBehaviour
             }
             case CharacterClass.Warior:
             {
-
+                myTrail.SetInactive();
                 break;
             }
             case CharacterClass.Wizard:
@@ -279,6 +286,7 @@ public class FightCharacterController : MonoBehaviour
             }
             case CharacterClass.Shield:
             {
+                myTrail.SetInactive();
                 break;
             }
         }

@@ -144,6 +144,7 @@ MonoBehaviour:
   myEnemy: {fileID: 0}
   vfxOnMe: {fileID: 0}
   vfxOnEnenmy: {fileID: 0}
+  myTrail: {fileID: 5448364414980378731}
   Health: 0
   isDead: 0
 --- !u!136 &2658668533829476044
