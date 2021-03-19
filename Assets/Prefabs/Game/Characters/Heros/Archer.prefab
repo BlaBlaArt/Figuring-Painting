@@ -127,7 +127,7 @@ MonoBehaviour:
   AttackTime: 1.4
   Dammage: 30
   DistanceToStartAttack: 0.477642
-  Health: 20
+  Health: 40
 --- !u!114 &-4198495665875744963
 MonoBehaviour:
   m_ObjectHideFlags: 0
