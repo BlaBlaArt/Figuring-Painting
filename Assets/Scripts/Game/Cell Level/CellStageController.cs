@@ -70,17 +70,26 @@ public class CellStageController : MonoBehaviour
         for (int i = 0; i < counts[numInArray]; i++)
         {
            // counts[numInArray]--;
-            var tmpCharacter = Instantiate(character.CharacterPref);
+
+           var cell = FightController.Instance.GetCell(FightController.Instance.Cells, false);
+
+           if (cell != null)
+           {
+               var tmpCharacter = Instantiate(character.CharacterPref);
+               
+               tmpCharacter.transform.position = cell.transform.position;
+               tmpCharacter.transform.rotation = point.rotation;
             
-            var cell = FightController.Instance.GetCell(FightController.Instance.Cells, false);
-            
-            tmpCharacter.transform.position = cell.transform.position;
-            tmpCharacter.transform.rotation = point.rotation;
-            
-            tmpCharacter.GetComponent<CharacterData>().CharacterNum = numInArray;
-            tmpCharacter.GetComponent<DragObject>().OnSpawnOnCell(cell);
-            //tmpCharacter.GetComponent<DragObject>().startCell = cell;
-            cell.OnGetObject(tmpCharacter);
+               tmpCharacter.GetComponent<CharacterData>().CharacterNum = numInArray;
+               tmpCharacter.GetComponent<DragObject>().OnSpawnOnCell(cell);
+               //tmpCharacter.GetComponent<DragObject>().startCell = cell;
+               cell.OnGetObject(tmpCharacter);
+           }
+           else
+           {
+               break;
+           }
+           
         }
         
         // if (counts[numInArray] > 0)
