@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Newtonsoft.Json.Serialization;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
@@ -137,14 +138,30 @@ public class LevelController : MonoBehaviour
     {
       //  tmpLevel = Instantiate(SecondStagePref);
       GameC.Instance.Load2Stage?.Invoke();
-      
-        this.WaitAndDoCoroutine(0.5f, () =>
-        {
-            StageNum = ++stageNum;
-            OnStageStart?.Invoke(StageNum);
-            CameraController.Instance.OnStageComplete();
-            GameC.Instance.OnShowTutorial?.Invoke(3);
-        });
+
+
+      StartCoroutine(DelayBetweenCall(stageNum));
+      // this.WaitAndDoCoroutine(0.5f, () =>
+      // {
+      //     StageNum = ++stageNum;
+      //     OnStageStart?.Invoke(StageNum);
+      //     CameraController.Instance.OnStageComplete();
+      //     GameC.Instance.OnShowTutorial?.Invoke(3);
+      // });
+
     }
+    
+    private IEnumerator DelayBetweenCall(int stageNum)
+    {
+        yield return new WaitUntil(() => FightController.Instance != null);
+        yield return new WaitForSeconds(0.15f);
+        
+        StageNum = ++stageNum;
+        OnStageStart?.Invoke(StageNum);
+        CameraController.Instance.OnStageComplete();
+        GameC.Instance.OnShowTutorial?.Invoke(3);
+    }
+
+   
 
 }
