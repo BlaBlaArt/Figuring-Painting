@@ -434,6 +434,8 @@ public class FightController : MonoBehaviour
         StartFight();
         
       //  finishButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        CameraController.Instance.OnStageComplete();
+      
         finishButton.GetComponent<Button>().onClick.RemoveListener(FightButton);
         finishButton.SetInactive();
 
