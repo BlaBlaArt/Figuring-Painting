@@ -14,6 +14,10 @@ public class Cell : MonoBehaviour
     private Material myMaterial;
 
     private Color startCellColor, activeCellColor;
+
+    [SerializeField] private ParticleSystem myActivateEffect1, myActivateEffect2;
+
+    [SerializeField] private Renderer rendererToChangeColor;
     
    // private float heigth;
     
@@ -31,10 +35,10 @@ public class Cell : MonoBehaviour
 
     private void SetMaterial()
     {
-        var tmpMat = GetComponent<Renderer>().material;
+        var tmpMat = rendererToChangeColor.material;
         myMaterial = new Material(tmpMat.shader);
         myMaterial.color = startCellColor;
-        GetComponent<Renderer>().material = myMaterial;
+        rendererToChangeColor.material = myMaterial;
     }
 
     public void OnActivate()
@@ -43,6 +47,9 @@ public class Cell : MonoBehaviour
             //transform.position += Vector3.up * heigth;
 
             myMaterial.DOColor(activeCellColor, 0.25f);
+            myActivateEffect1.Play();
+            myActivateEffect2.Play();
+            
     }
 
     public void OnGetObject(GameObject Obj)
@@ -61,5 +68,7 @@ public class Cell : MonoBehaviour
     {
        // transform.position = StartPos;
        myMaterial.DOColor(startCellColor, 0.25f);
+       myActivateEffect1.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+       myActivateEffect2.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
     }
 }
