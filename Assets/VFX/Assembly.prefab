@@ -9473,7 +9473,7 @@ GameObject:
   - component: {fileID: 7954052644074317339}
   - component: {fileID: 1216072298010956388}
   m_Layer: 0
-  m_Name: CFXR Magic Poof
+  m_Name: Assembly
   m_TagString: FxTemporaire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9488,7 +9488,7 @@ Transform:
   m_GameObject: {fileID: 7954052644092266203}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children:
   - {fileID: 2073585612200074297}
   - {fileID: 7954052644092762873}

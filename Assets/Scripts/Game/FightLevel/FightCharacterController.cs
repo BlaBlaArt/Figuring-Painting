@@ -26,6 +26,8 @@ public class FightCharacterController : MonoBehaviour
     [SerializeField] private GameObject vfxOnEnenmy;
 
     [SerializeField] private GameObject myTrail;
+
+    [SerializeField] private GameObject deathPartickles;
     
     private GameObject bulletPref;
     
@@ -158,6 +160,10 @@ public class FightCharacterController : MonoBehaviour
         Debug.Log("End of Dead1");
 
         yield return new WaitForSeconds(3f);
+
+        var tmpPart = Instantiate(deathPartickles);
+        tmpPart.transform.position = transform.position;
+        FightController.Instance.TmpObjects.Add(tmpPart);
         
         Debug.Log("End of Dead2");
         

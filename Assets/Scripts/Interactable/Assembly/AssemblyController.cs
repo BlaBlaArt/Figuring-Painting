@@ -125,12 +125,13 @@ public class AssemblyController : MonoBehaviour
 
         this.WaitAndDoCoroutine(1.25f, () => transform.DOMove(pointToMoveOnAssamble.position, 0.5f));
         this.WaitAndDoCoroutine(1.75f, () => OnPartArrived());
-        this.WaitAndDoCoroutine(1.75f, () => LevelController.Instance.OnAssemblyComplete());
+        this.WaitAndDoCoroutine(1.95f, () => LevelController.Instance.OnAssemblyComplete());
     }
 
     private void OnPartArrived()
     {
         myPartickles = Instantiate(FullyAssemblePartickles);
+        myPartickles.transform.position = transform.position;
         // Destroy(gameObject);
     }
 

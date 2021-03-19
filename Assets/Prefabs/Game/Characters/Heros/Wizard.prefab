@@ -113,6 +113,9 @@ MonoBehaviour:
   vfxOnMe: {fileID: 2846210802758933179}
   vfxOnEnenmy: {fileID: 5056685769303874666, guid: 120957ae5012e914e81148552e4cf96c,
     type: 3}
+  myTrail: {fileID: 0}
+  deathPartickles: {fileID: 5135239379030784001, guid: 7d5e22df7b8578c4fbdd2b0c3f0da9ec,
+    type: 3}
   Health: 0
   isDead: 0
 --- !u!136 &2658668533829476044

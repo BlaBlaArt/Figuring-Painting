@@ -79,6 +79,8 @@ MonoBehaviour:
   dontDisassemble: 0
   pointToMoveOnAssamble: {fileID: 0}
   pointToMoveAfterAllAssemble: {fileID: 0}
+  FullyAssemblePartickles: {fileID: 7954052644092266203, guid: d2f240d27f74fa54185608bf5b6dca45,
+    type: 3}
 --- !u!54 &2427421134928416379
 Rigidbody:
   m_ObjectHideFlags: 0
