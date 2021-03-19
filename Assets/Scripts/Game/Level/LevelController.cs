@@ -61,14 +61,19 @@ public class LevelController : MonoBehaviour
             startPositions.Add(Boxes[i].transform.position);
             Boxes[i].transform.position += Vector3.up * HeightOffset;
             Boxes[i].onBoxOpen.AddListener(OnBoxOpen);
+            Boxes[i].SetInactive();
         }
 
         for (int i = 0; i < assemblyControllers.Length; i++)
         {
            // startPositions.Add(assemblyControllers[i].transform.position);
             assemblyControllers[i].transform.position += Vector3.up * HeightOffset;
+            assemblyControllers[i].SetInactive();
         }
 
+        Boxes[currentBox].SetActive();
+        assemblyControllers[currentBox].SetActive();
+        
         GameC.Instance.OnFirstInput += OnFirstInput;
 
     }
@@ -82,6 +87,9 @@ public class LevelController : MonoBehaviour
     private void OnFirstInput()
     {
 
+        Boxes[currentBox].SetActive();
+        assemblyControllers[currentBox].SetActive();
+        
         Boxes[currentBox].transform.DOMove(startPositions[currentBox], deltaTimeMove).SetEase(Ease.InCubic);
        assemblyControllers[currentBox].transform.DOMove(startPositions[currentBox], deltaTimeMove).SetEase(Ease.InCubic);
 
@@ -97,6 +105,7 @@ public class LevelController : MonoBehaviour
         assemblyControllers[currentBox].ReadyToAssemble();
         this.WaitAndDoCoroutine(1.5f,() =>
         {
+
             assemblyControllers[currentBox].PartPlacement();
             Boxes[currentBox].onBoxOpen.RemoveListener(OnBoxOpen);
             GameC.Instance.OnAssembleStage?.Invoke();
