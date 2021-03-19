@@ -16,7 +16,7 @@ MonoBehaviour:
   DeltaTimeToMoveBox: 1
   OffsetToSpawnCharacters: 0.8
   StartCellColor: {r: 0.2516465, g: 0.2735849, b: 0.27204922, a: 1}
-  ActiveCellColor: {r: 0.31838635, g: 1, b: 0.06132078, a: 1}
+  ActiveCellColor: {r: 0.35307476, g: 0.5566038, b: 0.2756764, a: 1}
   DeltaHeightOfLevel: 0.1
   OffsetToForward: 0.25
   FollowSmooth: 15
