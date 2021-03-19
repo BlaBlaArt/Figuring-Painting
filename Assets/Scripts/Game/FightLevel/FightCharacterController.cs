@@ -161,6 +161,8 @@ public class FightCharacterController : MonoBehaviour
     private IEnumerator OnDead()
     {
         myAnimatorController.OnDead();
+        MyOutline.SetInactive();
+
         
         Debug.Log("End of Dead1");
 
