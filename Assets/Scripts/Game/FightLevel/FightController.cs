@@ -84,13 +84,43 @@ public class FightController : MonoBehaviour
             {
                 var data = character.GetComponent<CharacterData>();
             //    int num = SLS.Data.Game.StoredCharacters.Value[data.myCharacterClass];
+
+            int myID = GetIdByCharacterClass(data.myCharacterClass);
+            
             SLS.Data.Game.StoredCharacters.StoregeCharacters
-                .Find(d => d.CharacterClass.Value == data.myCharacterClass).Counts.Value++;
+                .Find(d => d.CharacterClass.Value == myID).Counts.Value++;
           //  SLS.Data.Game.StoredCharacters.Value.Counts[num]++;
                 SLS.Save();
                 Debug.Log("character class " + data.myCharacterClass + " CharacterData " +
                           SLS.Data.Game.StoredCharacters.StoregeCharacters
-                              .Find(d => d.CharacterClass.Value == data.myCharacterClass).Counts.Value);
+                              .Find(d => d.CharacterClass.Value == myID).Counts.Value);
+            }
+        }
+    }
+
+    private int GetIdByCharacterClass(CharacterClass characterClass)
+    {
+        switch (characterClass)
+        {
+            case global::CharacterClass.Warior:
+            {
+                return 0;
+            }
+            case global::CharacterClass.Archer:
+            {
+                return 1;
+            }
+            case global::CharacterClass.Wizard:
+            {
+                return 2;
+            }
+            case global::CharacterClass.Shield:
+            {
+                return 3;
+            }
+            default:
+            {
+                return 10;
             }
         }
     }
@@ -324,29 +354,31 @@ public class FightController : MonoBehaviour
         }
     }
 
-    private GameObject GetCharacter(CharacterClass characterClass)
+    private GameObject GetCharacter(int characterClass)
     {
         switch (characterClass)
         {
-            case CharacterClass.Archer:
-            {
-                return ArcherPref;
-            }
-            case CharacterClass.Shield:
-            {
-                return ShieldPref;
-            }
-            case CharacterClass.Warior:
+            case 0:
             {
                 return WariorPref;
             }
-            case CharacterClass.Wizard:
+            case 1:
+            {
+                return ArcherPref;
+            }
+            case 2:
             {
                 return WizardPref;
             }
+            case 3:
+            {
+                return ShieldPref;
+            }
+            default:
+            {
+                return null;
+            }
         }
-
-        return null;
     }
     
     public Cell GetCell(Cell[] cells, bool isShofle)
