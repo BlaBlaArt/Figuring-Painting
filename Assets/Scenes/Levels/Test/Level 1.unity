@@ -1131,7 +1131,7 @@ PrefabInstance:
     - target: {fileID: 873748857421193478, guid: 322ebe803cad9e34f946f27013365b72,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.791
+      value: -0.437
       objectReference: {fileID: 0}
     - target: {fileID: 873748857421193478, guid: 322ebe803cad9e34f946f27013365b72,
         type: 3}
@@ -1141,37 +1141,37 @@ PrefabInstance:
     - target: {fileID: 873748857421193478, guid: 322ebe803cad9e34f946f27013365b72,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99951905
+      value: 0.9488085
       objectReference: {fileID: 0}
     - target: {fileID: 873748857421193478, guid: 322ebe803cad9e34f946f27013365b72,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.25983423
       objectReference: {fileID: 0}
     - target: {fileID: 873748857421193478, guid: 322ebe803cad9e34f946f27013365b72,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.031010328
+      value: -0.17672499
       objectReference: {fileID: 0}
     - target: {fileID: 873748857421193478, guid: 322ebe803cad9e34f946f27013365b72,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.031889413
       objectReference: {fileID: 0}
     - target: {fileID: 873748857421193478, guid: 322ebe803cad9e34f946f27013365b72,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -30.287
       objectReference: {fileID: 0}
     - target: {fileID: 873748857421193478, guid: 322ebe803cad9e34f946f27013365b72,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -3.554
+      value: -21.665
       objectReference: {fileID: 0}
     - target: {fileID: 873748857421193478, guid: 322ebe803cad9e34f946f27013365b72,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 2.079
       objectReference: {fileID: 0}
     - target: {fileID: 873748857421193479, guid: 322ebe803cad9e34f946f27013365b72,
         type: 3}
@@ -1382,7 +1382,7 @@ PrefabInstance:
     - target: {fileID: 873748857421193478, guid: ea37acf10a90b8a4e9ce0905c640e202,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.791
+      value: -0.437
       objectReference: {fileID: 0}
     - target: {fileID: 873748857421193478, guid: ea37acf10a90b8a4e9ce0905c640e202,
         type: 3}
@@ -1392,37 +1392,37 @@ PrefabInstance:
     - target: {fileID: 873748857421193478, guid: ea37acf10a90b8a4e9ce0905c640e202,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99069816
+      value: 0.9656495
       objectReference: {fileID: 0}
     - target: {fileID: 873748857421193478, guid: ea37acf10a90b8a4e9ce0905c640e202,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.19357133
       objectReference: {fileID: 0}
     - target: {fileID: 873748857421193478, guid: ea37acf10a90b8a4e9ce0905c640e202,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.13607767
+      value: 0.15925092
       objectReference: {fileID: 0}
     - target: {fileID: 873748857421193478, guid: ea37acf10a90b8a4e9ce0905c640e202,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.06848752
       objectReference: {fileID: 0}
     - target: {fileID: 873748857421193478, guid: ea37acf10a90b8a4e9ce0905c640e202,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -23.307
       objectReference: {fileID: 0}
     - target: {fileID: 873748857421193478, guid: ea37acf10a90b8a4e9ce0905c640e202,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -15.642
+      value: 17.819
       objectReference: {fileID: 0}
     - target: {fileID: 873748857421193478, guid: ea37acf10a90b8a4e9ce0905c640e202,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 4.41
       objectReference: {fileID: 0}
     - target: {fileID: 873748857421193479, guid: ea37acf10a90b8a4e9ce0905c640e202,
         type: 3}
