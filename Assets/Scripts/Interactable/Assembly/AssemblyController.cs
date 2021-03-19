@@ -34,7 +34,10 @@ public class AssemblyController : MonoBehaviour
    // int _currentStep;
 
    [SerializeField] private Transform pointToMoveOnAssamble, pointToMoveAfterAllAssemble;
+   [SerializeField] private GameObject FullyAssemblePartickles;
 
+
+    private GameObject myPartickles;
     Part _currentPart;
 
     void Start()
@@ -60,10 +63,12 @@ public class AssemblyController : MonoBehaviour
 
     void OnDestroy()
     {
+        Destroy(myPartickles);
+        
         foreach (var item in parts)
         {
-            item.part.onGrabStart.AddListener(OnGrabStartPartOfAssembly);
-            item.part.onGrabStop.AddListener(OnGrabStopPartOfAssembly);
+            item.part.onGrabStart.RemoveListener(OnGrabStartPartOfAssembly);
+            item.part.onGrabStop.RemoveListener(OnGrabStopPartOfAssembly);
         }
     }
 
@@ -125,7 +130,8 @@ public class AssemblyController : MonoBehaviour
 
     private void OnPartArrived()
     {
-       // Destroy(gameObject);
+        myPartickles = Instantiate(FullyAssemblePartickles);
+        // Destroy(gameObject);
     }
 
     public void OnAllAssembleComplete()
