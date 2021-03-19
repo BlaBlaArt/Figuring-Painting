@@ -36,8 +36,11 @@ public class FightCharacterController : MonoBehaviour
 
     public bool isDead;
 
+    [SerializeField] private GameObject MyOutline;
+    
     private void Start()
     {
+        MyOutline.SetInactive();
         if(myTrail != null)
             myTrail.SetInactive();
         isDead = false;
@@ -77,6 +80,8 @@ public class FightCharacterController : MonoBehaviour
             DisableAllExtraComponents();
             FightControl();
         }
+        
+        MyOutline.SetActive();
 
     }
 
