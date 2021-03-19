@@ -166,8 +166,11 @@ public class FightCharacterController : MonoBehaviour
         FightController.Instance.TmpObjects.Add(tmpPart);
         
         Debug.Log("End of Dead2");
-        
-        Destroy(gameObject);
+
+        transform.DOMoveY(transform.position.y + Vector3.down.y * 0.1f, 0.5f).OnComplete(() =>
+        {
+            Destroy(gameObject);
+        });
     }
     
     private void FightControl()
