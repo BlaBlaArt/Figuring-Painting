@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using Newtonsoft.Json.Serialization;
 using UnityEngine;
@@ -40,7 +41,7 @@ public class LevelController : MonoBehaviour
     public event Action<int> OnStageStart;
     public Action<int> OnSpawnCharacter;
 
-    private GameObject tmpAssembl;
+    private List<GameObject> tmpAssembl;
     
     private void Awake()
     {
@@ -110,7 +111,10 @@ public class LevelController : MonoBehaviour
     
     private void OnLevelUnload()
     {
-        Destroy(tmpAssembl);
+        foreach (var tmp in tmpAssembl)
+        {
+            Destroy(tmp);
+        }
     }
 
     private void SpawnAssembling()
@@ -118,6 +122,8 @@ public class LevelController : MonoBehaviour
         int charactersCount = 0;
         int storeCharacters = 0;
 
+        tmpAssembl = new List<GameObject>();
+        
         CurrentLevelData.CurretLevelCharacters = new List<Character>();
         
          var data = SLS.Data.Game.StoredCharacters.StoregeCharacters.FindAll((sc => sc.Counts.Value > 0));
@@ -139,7 +145,7 @@ public class LevelController : MonoBehaviour
              {
 
                  var tmpAss = Instantiate(allLevelData.AssemblyPrefDatas.GetRandom());
-                 tmpAssembl = tmpAss.gameObject;
+                 tmpAssembl.Add(tmpAss.gameObject);
                  Boxes[i] = tmpAss.UnboxController;
                  assemblyControllers[i] = tmpAss.AssemblyController;
 
@@ -152,11 +158,10 @@ public class LevelController : MonoBehaviour
                  tmpCharacter.CharacterClass = tmpAss.CharacterClass;
                  tmpCharacter.CharacterPref = GetCharacter(tmpAss.CharacterClass);
 
-                 if (CurrentLevelData.CurretLevelCharacters.Contains(tmpCharacter))
+                 if (CurrentLevelData.CurretLevelCharacters.Any(t => t.CharacterClass == tmpAss.CharacterClass))
                  {
-                     var character =
-                         CurrentLevelData.CurretLevelCharacters.Find(t =>
-                             t.CharacterClass == tmpCharacter.CharacterClass);
+
+                     var character = CurrentLevelData.CurretLevelCharacters.First(t => t.CharacterClass == tmpCharacter.CharacterClass);
                      character.count++;
                  }
                  else
@@ -197,7 +202,10 @@ public class LevelController : MonoBehaviour
     
     private void OnDestroy()
     {
-        Destroy(tmpAssembl);
+        foreach (var tmp in tmpAssembl)
+        {
+            Destroy(tmp);
+        }
         Destroy(tmpLevel);
         GameC.Instance.OnFirstInput -= OnFirstInput;
         GameC.Instance.OnLevelUnload -= OnLevelUnload;

@@ -152,6 +152,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 504453787100214960}
     m_Modifications:
+    - target: {fileID: 546716064214815120, guid: ea37acf10a90b8a4e9ce0905c640e202,
+        type: 3}
+      propertyPath: outlineWidth
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 873748857421193478, guid: ea37acf10a90b8a4e9ce0905c640e202,
         type: 3}
       propertyPath: m_RootOrder
@@ -236,6 +241,26 @@ PrefabInstance:
         type: 3}
       propertyPath: pointToMoveAfterAllAssemble
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2858274420713111468, guid: ea37acf10a90b8a4e9ce0905c640e202,
+        type: 3}
+      propertyPath: outlineWidth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591862095491377810, guid: ea37acf10a90b8a4e9ce0905c640e202,
+        type: 3}
+      propertyPath: outlineWidth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264629387127220563, guid: ea37acf10a90b8a4e9ce0905c640e202,
+        type: 3}
+      propertyPath: outlineWidth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495656730816685941, guid: ea37acf10a90b8a4e9ce0905c640e202,
+        type: 3}
+      propertyPath: outlineWidth
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea37acf10a90b8a4e9ce0905c640e202, type: 3}

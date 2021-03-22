@@ -9,7 +9,7 @@ public class LevelData : ScriptableObject
 }
 
 [Serializable]
-public struct Character
+public class Character
 {
     public CharacterClass CharacterClass;
     public int count;

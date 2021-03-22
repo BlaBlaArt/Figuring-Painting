@@ -86,6 +86,7 @@ public class AssemblyController : MonoBehaviour
         foreach (var item in parts)
         {
             item.part.TogglePhysics(true);
+            this.WaitAndDoCoroutine(0.5f, () => item.partDummy.ShowHighlight());
         }
 
        // this.WaitAndDoCoroutine(0f, () => onPartNew.Invoke(parts[0].part));

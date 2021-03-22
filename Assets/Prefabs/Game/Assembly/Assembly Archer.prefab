@@ -147,6 +147,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8620014990881004286}
     m_Modifications:
+    - target: {fileID: 295784262115151576, guid: 322ebe803cad9e34f946f27013365b72,
+        type: 3}
+      propertyPath: outlineWidth
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 873748857421193478, guid: 322ebe803cad9e34f946f27013365b72,
         type: 3}
       propertyPath: m_RootOrder
@@ -231,6 +236,21 @@ PrefabInstance:
         type: 3}
       propertyPath: pointToMoveAfterAllAssemble
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416917660939754296, guid: 322ebe803cad9e34f946f27013365b72,
+        type: 3}
+      propertyPath: outlineWidth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484700228526481874, guid: 322ebe803cad9e34f946f27013365b72,
+        type: 3}
+      propertyPath: outlineWidth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7109366882509225628, guid: 322ebe803cad9e34f946f27013365b72,
+        type: 3}
+      propertyPath: outlineWidth
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 322ebe803cad9e34f946f27013365b72, type: 3}

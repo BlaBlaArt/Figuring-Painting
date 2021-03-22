@@ -140,6 +140,26 @@ PrefabInstance:
       propertyPath: pointToMoveAfterAllAssemble
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4291501879099156203, guid: 454c1ef4fa37a4d4f8ac09101c1af212,
+        type: 3}
+      propertyPath: outlineWidth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306707412885229887, guid: 454c1ef4fa37a4d4f8ac09101c1af212,
+        type: 3}
+      propertyPath: outlineWidth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458748149933664010, guid: 454c1ef4fa37a4d4f8ac09101c1af212,
+        type: 3}
+      propertyPath: outlineWidth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147320313428228671, guid: 454c1ef4fa37a4d4f8ac09101c1af212,
+        type: 3}
+      propertyPath: outlineWidth
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 454c1ef4fa37a4d4f8ac09101c1af212, type: 3}
 --- !u!4 &1037019831551398326 stripped
