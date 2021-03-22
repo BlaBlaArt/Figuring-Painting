@@ -9,9 +9,11 @@ public class AllLevelData : ScriptableObject
     public float HeightOFBoxOffset;
     [BoxGroup("Assemble Stage")]
     public float DeltaTimeToMoveBox;
+
+    [BoxGroup("Assemble Stage")]
+    public GameObject ParticklesOnAssemble;
     [BoxGroup("Assemble Stage")]
     public List<int> CountOfEnemiesPerLevel;
-
     [BoxGroup("Assemble Stage")]
     public List<AssemblyPrefData> AssemblyPrefDatas;
 

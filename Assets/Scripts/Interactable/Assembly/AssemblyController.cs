@@ -36,13 +36,16 @@ public class AssemblyController : MonoBehaviour
    public Transform pointToMoveOnAssamble, pointToMoveAfterAllAssemble;
    [SerializeField] private GameObject FullyAssemblePartickles;
 
-
+   private GameObject particklesOnAssemble;
+   
     private GameObject myPartickles;
     Part _currentPart;
 
     void Start()
     {
 
+        particklesOnAssemble = GameC.Instance.AllLevelData.ParticklesOnAssemble;
+        
         foreach (var item in parts)
         {
             item.part.partID = item.id;
@@ -164,7 +167,11 @@ public class AssemblyController : MonoBehaviour
     {
         _currentPart.insterted = true;
 
-        partC.transform.DOMove(_currentPart.partDummy.transform.position, distance * settings.snapPartSpeed);
+        partC.transform.DOMove(_currentPart.partDummy.transform.position, distance * settings.snapPartSpeed).OnComplete(
+            () =>
+            {
+                Instantiate(particklesOnAssemble).transform.position = _currentPart.partDummy.transform.position;
+            });
         partC.transform.DORotateQuaternion(_currentPart.partDummy.transform.rotation, distance * settings.snapPartSpeed);
         partC.PlacementReport(true);
 
