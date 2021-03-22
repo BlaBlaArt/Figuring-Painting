@@ -14,7 +14,7 @@ namespace TFPlay.UI
 		private bool isFirstInput;
 		private bool isSecondInput;
 		private bool is2Stage;
-		
+
 		private void Start()
 		{
 			is2Stage = false;
@@ -22,23 +22,35 @@ namespace TFPlay.UI
 			isSecondInput = true;
 			GameC.Instance.OnLevelStart += ShowTutorial;
 			GameC.Instance.OnLevelEnd += Pass;
-			GameC.Instance.OnLevelUnload += OnLevelUnload; 
+			GameC.Instance.OnLevelUnload += OnLevelUnload;
 			GameC.Instance.OnLevelStart += OnLevelStart;
 			GameC.Instance.OnShowTutorial += OnShowTutorial;
 			GameC.Instance.OnAssembleStage += OnAssembleStage;
+			GameC.Instance.OnDisableTutorials += DisableTutorials;
+			GameC.Instance.ShowTapToPlay += ShowTapToPlay;
 			InputSystem.Instance.OnTouch += OnTouch;
-			
+
+			foreach (var tutorialItem in tutorialItems)
+				tutorialItem.SetInactive();
+		}
+
+		private void DisableTutorials()
+		{
 			foreach (var tutorialItem in tutorialItems)
 				tutorialItem.SetInactive();
 		}
 
 		private void OnLevelUnload()
 		{
-			foreach (var tutorialItem in tutorialItems)
-				tutorialItem.SetInactive();
+			DisableTutorials();
 		}
 
-		private void OnSwipe(InputSystem.SwipeDirection obj)
+		public void ShowTapToPlay()
+		{
+			OnShowTutorial(0);
+		}
+
+	private void OnSwipe(InputSystem.SwipeDirection obj)
 		{
 			Debug.Log("SWIPE");
 			if (isSecondInput)

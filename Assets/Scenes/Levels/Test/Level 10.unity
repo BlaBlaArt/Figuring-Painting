@@ -393,6 +393,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SHIELD
       objectReference: {fileID: 0}
+    - target: {fileID: 873748857421193479, guid: e42ef0520d18ece4b9ad172a2deb6df5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 873748857421193481, guid: e42ef0520d18ece4b9ad172a2deb6df5,
         type: 3}
       propertyPath: pointToMoveOnAssamble
@@ -420,7 +425,7 @@ PrefabInstance:
     - target: {fileID: 347096106849681445, guid: feb1ef3dcb8fe8f4f8dd806a1627e8b1,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1124477952373955231, guid: feb1ef3dcb8fe8f4f8dd806a1627e8b1,
         type: 3}

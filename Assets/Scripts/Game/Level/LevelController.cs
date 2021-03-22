@@ -84,14 +84,30 @@ public class LevelController : MonoBehaviour
             assemblyControllers[i].SetInactive();
         }
 
-        Boxes[currentBox].SetActive();
-        assemblyControllers[currentBox].SetActive();
-        
         GameC.Instance.OnFirstInput += OnFirstInput;
         GameC.Instance.OnLevelUnload += OnLevelUnload;
 
+        if (currentBox < Boxes.Length)
+        {
+            Boxes[currentBox].SetActive();
+            assemblyControllers[currentBox].SetActive();
+        }
+        else
+        {
+            StartCoroutine(WaitForInput());
+            // CameraController.Instance.OnStageComplete();
+            // /  this.WaitAndDoCoroutine(0.75f, () => GameC.Instance.ShowTapToPlay?.Invoke());
+        }
+        
+        
     }
 
+    private IEnumerator WaitForInput()
+    {
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        OnStageComplete(0);
+    }
+    
     private void OnLevelUnload()
     {
         Destroy(tmpAssembl);
@@ -112,34 +128,41 @@ public class LevelController : MonoBehaviour
 
          charactersCount = allLevelData.CountOfEnemiesPerLevel[currentLevelNum - 1] - storeCharacters;
 
-         Boxes = new UnboxController[charactersCount];
-         assemblyControllers = new AssemblyController[charactersCount];
-         
-         for (int i = 0; i < charactersCount; i++)
+         Debug.Log("Character count " + charactersCount);
+         if (charactersCount > 0)
          {
-             
-             var tmpAss = Instantiate(allLevelData.AssemblyPrefDatas.GetRandom());
-             tmpAssembl = tmpAss.gameObject;
-             Boxes[i] = tmpAss.UnboxController;
-             assemblyControllers[i] = tmpAss.AssemblyController;
 
-             tmpAss.AssemblyController.pointToMoveOnAssamble = PointsToMove[currentPointToMoveNum];
-             tmpAss.AssemblyController.pointToMoveAfterAllAssemble = PointToMoveOnAssemblingEnd;
-             currentPointToMoveNum++;
-             
-             Character tmpCharacter = new Character();
-             tmpCharacter.count = 1;
-             tmpCharacter.CharacterClass = tmpAss.CharacterClass;
-             tmpCharacter.CharacterPref = GetCharacter(tmpAss.CharacterClass);
+             Boxes = new UnboxController[charactersCount];
+             assemblyControllers = new AssemblyController[charactersCount];
 
-             if (CurrentLevelData.CurretLevelCharacters.Contains(tmpCharacter))
+             for (int i = 0; i < charactersCount; i++)
              {
-                 var character = CurrentLevelData.CurretLevelCharacters.Find(t => t.CharacterClass == tmpCharacter.CharacterClass);
-                 character.count++;
-             }
-             else
-             {
-                 CurrentLevelData.CurretLevelCharacters.Add(tmpCharacter);
+
+                 var tmpAss = Instantiate(allLevelData.AssemblyPrefDatas.GetRandom());
+                 tmpAssembl = tmpAss.gameObject;
+                 Boxes[i] = tmpAss.UnboxController;
+                 assemblyControllers[i] = tmpAss.AssemblyController;
+
+                 tmpAss.AssemblyController.pointToMoveOnAssamble = PointsToMove[currentPointToMoveNum];
+                 tmpAss.AssemblyController.pointToMoveAfterAllAssemble = PointToMoveOnAssemblingEnd;
+                 currentPointToMoveNum++;
+
+                 Character tmpCharacter = new Character();
+                 tmpCharacter.count = 1;
+                 tmpCharacter.CharacterClass = tmpAss.CharacterClass;
+                 tmpCharacter.CharacterPref = GetCharacter(tmpAss.CharacterClass);
+
+                 if (CurrentLevelData.CurretLevelCharacters.Contains(tmpCharacter))
+                 {
+                     var character =
+                         CurrentLevelData.CurretLevelCharacters.Find(t =>
+                             t.CharacterClass == tmpCharacter.CharacterClass);
+                     character.count++;
+                 }
+                 else
+                 {
+                     CurrentLevelData.CurretLevelCharacters.Add(tmpCharacter);
+                 }
              }
          }
 

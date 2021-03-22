@@ -13,6 +13,11 @@ public class GameC : MonoBehaviour
 	public Action OnAssembleStage;
 
 	public Action<int> OnShowTutorial;
+
+	public Action OnDisableTutorials;
+
+	public Action ShowTapToPlay;
+	
 	public event Action OnInitComplite;
 	public event Action<int> OnLevelStart;
 	public event Action<int> OnLevelUIUpdate;

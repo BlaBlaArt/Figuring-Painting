@@ -34,6 +34,8 @@ public class CellStageController : MonoBehaviour
 
     private void OnStartFightStage()
     {
+        GameC.Instance.OnDisableTutorials?.Invoke();
+        
         foreach (var text in texts)
         {
             text.gameObject.SetInactive();
