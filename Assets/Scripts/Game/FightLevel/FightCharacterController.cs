@@ -28,7 +28,7 @@ public class FightCharacterController : MonoBehaviour
     [SerializeField] private GameObject myTrail;
 
     [SerializeField] private GameObject deathPartickles;
-    [SerializeField] private ParticleSystem dammageParticleSystem1, dammageParticleSystem2;
+    [SerializeField] private GameObject dammageParticleSystem1, dammageParticleSystem2;
     
     private GameObject bulletPref;
     
@@ -142,14 +142,18 @@ public class FightCharacterController : MonoBehaviour
     {
             Health -= dammage;
 
-            if (dammage < 15)
-            {
-                dammageParticleSystem1.Play();
-            }
-            else
-            {
-                dammageParticleSystem2.Play();
-            }
+           if (dammage < 15)
+           {
+               var tmpPArt = Instantiate(dammageParticleSystem1);
+               tmpPArt.transform.position = transform.position;
+               FightController.Instance.TmpObjects.Add(tmpPArt);
+           }
+           else
+           {
+               var tmpPArt = Instantiate(dammageParticleSystem2);
+               tmpPArt.transform.position = transform.position;
+               FightController.Instance.TmpObjects.Add(tmpPArt);
+           }
             
             if (Health <= 0)
             {

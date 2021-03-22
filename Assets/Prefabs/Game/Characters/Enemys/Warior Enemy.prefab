@@ -94,9 +94,9 @@ MonoBehaviour:
   myTrail: {fileID: 8552632308935459652}
   deathPartickles: {fileID: 5135239379030784001, guid: 7d5e22df7b8578c4fbdd2b0c3f0da9ec,
     type: 3}
-  dammageParticleSystem1: {fileID: 8671551908471328232, guid: 3d7b2a6177501194dae3df0e7c047492,
+  dammageParticleSystem1: {fileID: 8671551908456223880, guid: 3d7b2a6177501194dae3df0e7c047492,
     type: 3}
-  dammageParticleSystem2: {fileID: 611871153054593603, guid: 82f95c32c4fa6c1419c77448edcbf2f9,
+  dammageParticleSystem2: {fileID: 189984460360107267, guid: 82f95c32c4fa6c1419c77448edcbf2f9,
     type: 3}
   Health: 0
   isDead: 0
