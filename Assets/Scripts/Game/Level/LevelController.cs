@@ -39,6 +39,8 @@ public class LevelController : MonoBehaviour
     
     public event Action<int> OnStageStart;
     public Action<int> OnSpawnCharacter;
+
+    private GameObject tmpAssembl;
     
     private void Awake()
     {
@@ -86,7 +88,13 @@ public class LevelController : MonoBehaviour
         assemblyControllers[currentBox].SetActive();
         
         GameC.Instance.OnFirstInput += OnFirstInput;
+        GameC.Instance.OnLevelUnload += OnLevelUnload;
 
+    }
+
+    private void OnLevelUnload()
+    {
+        Destroy(tmpAssembl);
     }
 
     private void SpawnAssembling()
@@ -94,6 +102,7 @@ public class LevelController : MonoBehaviour
         int charactersCount = 0;
         int storeCharacters = 0;
 
+        CurrentLevelData.CurretLevelCharacters = new List<Character>();
         
          var data = SLS.Data.Game.StoredCharacters.StoregeCharacters.FindAll((sc => sc.Counts.Value > 0));
          foreach (var character in data)
@@ -108,7 +117,9 @@ public class LevelController : MonoBehaviour
          
          for (int i = 0; i < charactersCount; i++)
          {
+             
              var tmpAss = Instantiate(allLevelData.AssemblyPrefDatas.GetRandom());
+             tmpAssembl = tmpAss.gameObject;
              Boxes[i] = tmpAss.UnboxController;
              assemblyControllers[i] = tmpAss.AssemblyController;
 
@@ -163,8 +174,10 @@ public class LevelController : MonoBehaviour
     
     private void OnDestroy()
     {
+        Destroy(tmpAssembl);
         Destroy(tmpLevel);
         GameC.Instance.OnFirstInput -= OnFirstInput;
+        GameC.Instance.OnLevelUnload -= OnLevelUnload;
     }
 
     private void OnFirstInput()

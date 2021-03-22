@@ -71,7 +71,7 @@ MonoBehaviour:
   Bullet: {fileID: 0}
   Speed: 2.5
   DelayBetweenAttacks: 0.2
-  AttackTime: 1.4
+  AttackTime: 1.45
   Dammage: 16
   DistanceToStartAttack: 0.238821
   Health: 100

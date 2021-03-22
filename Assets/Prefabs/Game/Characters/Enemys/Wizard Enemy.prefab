@@ -103,7 +103,7 @@ MonoBehaviour:
   Bullet: {fileID: 7732793102894312523, guid: 5d9620990a2595e4c90775e8bad1d96d, type: 3}
   Speed: 2.5
   DelayBetweenAttacks: 0.2
-  AttackTime: 1.4
+  AttackTime: 1.45
   Dammage: 15
   DistanceToStartAttack: 0.716463
   Health: 15

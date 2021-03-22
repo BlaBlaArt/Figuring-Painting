@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnboxController: {fileID: 163275269119061408}
   AssemblyController: {fileID: 1037019831551398329}
-  CharacterClass: 0
+  CharacterClass: 2
 --- !u!1001 &163275269142376624
 PrefabInstance:
   m_ObjectHideFlags: 0
