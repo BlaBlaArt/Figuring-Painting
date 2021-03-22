@@ -23,7 +23,8 @@ public class Cell : MonoBehaviour
     
     private void Start()
     {
-        myCollider = GetComponent<BoxCollider>();
+        if(GetComponent<BoxCollider>())
+            myCollider = GetComponent<BoxCollider>();
       //  StartPos = transform.position;
         var dragC = DragController.Instance;
      //   heigth = dragC.CellsHeight;

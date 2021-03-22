@@ -1281,6 +1281,8 @@ MonoBehaviour:
   - {fileID: 5803910516763964567}
   - {fileID: 2381818229891297794}
   Characters: []
+  EnemyCount: 0
+  AllLevelData: {fileID: 0}
 --- !u!1 &3204681194371248519
 GameObject:
   m_ObjectHideFlags: 0
@@ -3580,6 +3582,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 6222450600448490394, guid: 7d2f3f89c7d8a1f478f446cc52c49d31,
+        type: 3}
+      propertyPath: Id
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5652649507207241722, guid: 7d2f3f89c7d8a1f478f446cc52c49d31, type: 3}
     - {fileID: 4034790271118761301, guid: 7d2f3f89c7d8a1f478f446cc52c49d31, type: 3}
@@ -3689,6 +3696,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 6222450600448490394, guid: 7d2f3f89c7d8a1f478f446cc52c49d31,
+        type: 3}
+      propertyPath: Id
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5652649507207241722, guid: 7d2f3f89c7d8a1f478f446cc52c49d31, type: 3}
     - {fileID: 4034790271118761301, guid: 7d2f3f89c7d8a1f478f446cc52c49d31, type: 3}
@@ -3797,6 +3809,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222450600448490394, guid: 7d2f3f89c7d8a1f478f446cc52c49d31,
+        type: 3}
+      propertyPath: Id
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5652649507207241722, guid: 7d2f3f89c7d8a1f478f446cc52c49d31, type: 3}
@@ -4502,6 +4519,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 6222450600448490394, guid: 7d2f3f89c7d8a1f478f446cc52c49d31,
+        type: 3}
+      propertyPath: Id
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5652649507207241722, guid: 7d2f3f89c7d8a1f478f446cc52c49d31, type: 3}
     - {fileID: 4034790271118761301, guid: 7d2f3f89c7d8a1f478f446cc52c49d31, type: 3}
@@ -4600,6 +4622,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222450600448490394, guid: 7d2f3f89c7d8a1f478f446cc52c49d31,
+        type: 3}
+      propertyPath: Id
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5652649507207241722, guid: 7d2f3f89c7d8a1f478f446cc52c49d31, type: 3}
@@ -4709,6 +4736,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222450600448490394, guid: 7d2f3f89c7d8a1f478f446cc52c49d31,
+        type: 3}
+      propertyPath: Id
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5652649507207241722, guid: 7d2f3f89c7d8a1f478f446cc52c49d31, type: 3}
@@ -4925,6 +4957,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222450600448490394, guid: 7d2f3f89c7d8a1f478f446cc52c49d31,
+        type: 3}
+      propertyPath: Id
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5652649507207241722, guid: 7d2f3f89c7d8a1f478f446cc52c49d31, type: 3}
@@ -5552,6 +5589,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222450600448490394, guid: 7d2f3f89c7d8a1f478f446cc52c49d31,
+        type: 3}
+      propertyPath: Id
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5652649507207241722, guid: 7d2f3f89c7d8a1f478f446cc52c49d31, type: 3}

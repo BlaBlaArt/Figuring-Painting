@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeightOFBoxOffset: 1
   DeltaTimeToMoveBox: 1
+  CountOfEnemiesPerLevel: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  AssemblyPrefDatas:
+  - {fileID: 8073180592347940573, guid: 3b56889f581194b4bb34854b13690d1f, type: 3}
+  - {fileID: 9154178433747435602, guid: dbbbf5ba15b71a548b6df42ad634262c, type: 3}
+  - {fileID: 1231961621818123394, guid: 5f1fd12be9392b9479c4225622d1841c, type: 3}
+  - {fileID: 894141438528034435, guid: 1afe566dfabd18c43a4609c6520a5df8, type: 3}
   OffsetToSpawnCharacters: 0.8
   StartCellColor: {r: 0.2516465, g: 0.2735849, b: 0.27204922, a: 1}
   ActiveCellColor: {r: 0.35307476, g: 0.5566038, b: 0.2756764, a: 1}

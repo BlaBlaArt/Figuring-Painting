@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -8,7 +9,12 @@ public class AllLevelData : ScriptableObject
     public float HeightOFBoxOffset;
     [BoxGroup("Assemble Stage")]
     public float DeltaTimeToMoveBox;
-    
+    [BoxGroup("Assemble Stage")]
+    public List<int> CountOfEnemiesPerLevel;
+
+    [BoxGroup("Assemble Stage")]
+    public List<AssemblyPrefData> AssemblyPrefDatas;
+
 
     [BoxGroup("Cell Stage")]
     public float OffsetToSpawnCharacters;
