@@ -28,6 +28,7 @@ public class FightCharacterController : MonoBehaviour
     [SerializeField] private GameObject myTrail;
 
     [SerializeField] private GameObject deathPartickles;
+    [SerializeField] private ParticleSystem dammageParticleSystem1, dammageParticleSystem2;
     
     private GameObject bulletPref;
     
@@ -140,6 +141,16 @@ public class FightCharacterController : MonoBehaviour
     public void TakeDammage(int dammage)
     {
             Health -= dammage;
+
+            if (dammage < 15)
+            {
+                dammageParticleSystem1.Play();
+            }
+            else
+            {
+                dammageParticleSystem2.Play();
+            }
+            
             if (Health <= 0)
             {
                 isDead = true;
