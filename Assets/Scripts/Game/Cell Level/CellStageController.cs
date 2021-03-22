@@ -51,7 +51,7 @@ public class CellStageController : MonoBehaviour
 
     private void OnStartStage()
     {
-        for (int i = 0; i < currentLevelData.CurretLevelCharacters.Length; i++)
+        for (int i = 0; i < currentLevelData.CurretLevelCharacters.Count; i++)
         {
             counts[i] = currentLevelData.CurretLevelCharacters[i].count;
             SpawnCharacters(currentLevelData.CurretLevelCharacters[i], PointsToSpawn[i],i);

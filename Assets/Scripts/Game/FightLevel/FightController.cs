@@ -359,7 +359,7 @@ public class FightController : MonoBehaviour
             DestroyImmediate(enemy);
         }
         Enemys.Clear();
-        AllLevelData.CountOfEnemiesPerLevel[MyLevelNum] = 0;
+        AllLevelData.CountOfEnemiesPerLevel[MyLevelNum-1] = 0;
     }
 
 
@@ -374,7 +374,7 @@ public class FightController : MonoBehaviour
         }
         
         Enemys.Clear();
-        AllLevelData.CountOfEnemiesPerLevel[MyLevelNum] = EnemyCount;
+        AllLevelData.CountOfEnemiesPerLevel[MyLevelNum-1] = EnemyCount;
         
        // int heroCount = 0;
        // int enemyCounts = 0;

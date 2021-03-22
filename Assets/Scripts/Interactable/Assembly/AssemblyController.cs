@@ -32,8 +32,8 @@ public class AssemblyController : MonoBehaviour
     [SerializeField] bool dontDisassemble;
 
    // int _currentStep;
-
-   [SerializeField] private Transform pointToMoveOnAssamble, pointToMoveAfterAllAssemble;
+   
+   public Transform pointToMoveOnAssamble, pointToMoveAfterAllAssemble;
    [SerializeField] private GameObject FullyAssemblePartickles;
 
 

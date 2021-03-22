@@ -393,6 +393,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SHIELD
       objectReference: {fileID: 0}
+    - target: {fileID: 873748857421193479, guid: e42ef0520d18ece4b9ad172a2deb6df5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 873748857421193481, guid: e42ef0520d18ece4b9ad172a2deb6df5,
         type: 3}
       propertyPath: pointToMoveOnAssamble
@@ -405,18 +410,6 @@ PrefabInstance:
       objectReference: {fileID: 572493358}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e42ef0520d18ece4b9ad172a2deb6df5, type: 3}
---- !u!114 &492789103 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 873748857421193481, guid: e42ef0520d18ece4b9ad172a2deb6df5,
-    type: 3}
-  m_PrefabInstance: {fileID: 492789102}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83a8c17f42abcaf45a9d6bf6895f5ad7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &552552150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -432,7 +425,7 @@ PrefabInstance:
     - target: {fileID: 347096106849681445, guid: feb1ef3dcb8fe8f4f8dd806a1627e8b1,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1124477952373955231, guid: feb1ef3dcb8fe8f4f8dd806a1627e8b1,
         type: 3}
@@ -491,18 +484,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feb1ef3dcb8fe8f4f8dd806a1627e8b1, type: 3}
---- !u!114 &552552151 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1997417798, guid: feb1ef3dcb8fe8f4f8dd806a1627e8b1,
-    type: 3}
-  m_PrefabInstance: {fileID: 552552150}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95b46302b829a0940acf0f1e0073c22b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &572493357
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,10 +543,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff4b31fc2bb3c3419c5604419ad5ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assemblyControllers:
-  - {fileID: 492789103}
-  Boxes:
-  - {fileID: 552552151}
+  currentLevelNum: 2
+  assemblyControllers: []
+  Boxes: []
+  PointsToMove:
+  - {fileID: 1658031224}
+  - {fileID: 1326425749}
+  - {fileID: 1667318664}
+  - {fileID: 1742599664}
+  PointToMoveOnAssemblingEnd: {fileID: 572493358}
   CurrentLevelData: {fileID: 11400000, guid: 3f1fec35f24af3b4f98ea5fb8d65d5a0, type: 2}
   StageNum: 1
 --- !u!4 &690105599

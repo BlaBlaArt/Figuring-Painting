@@ -326,7 +326,7 @@ PrefabInstance:
     - target: {fileID: 347096106849681445, guid: feb1ef3dcb8fe8f4f8dd806a1627e8b1,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1124477952373955231, guid: feb1ef3dcb8fe8f4f8dd806a1627e8b1,
         type: 3}
@@ -385,18 +385,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feb1ef3dcb8fe8f4f8dd806a1627e8b1, type: 3}
---- !u!114 &552552151 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1997417798, guid: feb1ef3dcb8fe8f4f8dd806a1627e8b1,
-    type: 3}
-  m_PrefabInstance: {fileID: 552552150}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95b46302b829a0940acf0f1e0073c22b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &572493357
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +497,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ARCHER
       objectReference: {fileID: 0}
+    - target: {fileID: 873748857421193479, guid: 322ebe803cad9e34f946f27013365b72,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 873748857421193481, guid: 322ebe803cad9e34f946f27013365b72,
         type: 3}
       propertyPath: pointToMoveOnAssamble
@@ -521,18 +514,6 @@ PrefabInstance:
       objectReference: {fileID: 572493358}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 322ebe803cad9e34f946f27013365b72, type: 3}
---- !u!114 &598351379 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 873748857421193481, guid: 322ebe803cad9e34f946f27013365b72,
-    type: 3}
-  m_PrefabInstance: {fileID: 598351378}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83a8c17f42abcaf45a9d6bf6895f5ad7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &690105597
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,12 +543,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff4b31fc2bb3c3419c5604419ad5ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assemblyControllers:
-  - {fileID: 2114902404}
-  - {fileID: 598351379}
-  Boxes:
-  - {fileID: 552552151}
-  - {fileID: 1276925531}
+  currentLevelNum: 5
+  assemblyControllers: []
+  Boxes: []
+  PointsToMove:
+  - {fileID: 1658031224}
+  - {fileID: 1326425749}
+  - {fileID: 1667318664}
+  - {fileID: 1742599664}
+  PointToMoveOnAssemblingEnd: {fileID: 572493358}
   CurrentLevelData: {fileID: 11400000, guid: 80dda76bd62ca164c891822d9aa32396, type: 2}
   StageNum: 1
 --- !u!4 &690105599
@@ -884,7 +868,7 @@ PrefabInstance:
     - target: {fileID: 347096106849681445, guid: feb1ef3dcb8fe8f4f8dd806a1627e8b1,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1124477952373955231, guid: feb1ef3dcb8fe8f4f8dd806a1627e8b1,
         type: 3}
@@ -958,18 +942,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feb1ef3dcb8fe8f4f8dd806a1627e8b1, type: 3}
---- !u!114 &1276925531 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1997417798, guid: feb1ef3dcb8fe8f4f8dd806a1627e8b1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1276925530}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95b46302b829a0940acf0f1e0073c22b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1326425748
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,6 +1431,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WARIOR
       objectReference: {fileID: 0}
+    - target: {fileID: 873748857421193479, guid: ea37acf10a90b8a4e9ce0905c640e202,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 873748857421193481, guid: ea37acf10a90b8a4e9ce0905c640e202,
         type: 3}
       propertyPath: pointToMoveOnAssamble
@@ -1471,15 +1448,3 @@ PrefabInstance:
       objectReference: {fileID: 572493358}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea37acf10a90b8a4e9ce0905c640e202, type: 3}
---- !u!114 &2114902404 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 873748857421193481, guid: ea37acf10a90b8a4e9ce0905c640e202,
-    type: 3}
-  m_PrefabInstance: {fileID: 2114902403}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83a8c17f42abcaf45a9d6bf6895f5ad7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

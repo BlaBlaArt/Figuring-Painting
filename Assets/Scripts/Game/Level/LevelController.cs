@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
+    public int currentLevelNum;
+    
     public static LevelController Instance;
 
    // [SerializeField] private GameObject SecondStagePref;
@@ -15,6 +17,10 @@ public class LevelController : MonoBehaviour
     
     public AssemblyController[] assemblyControllers;
     public UnboxController[] Boxes;
+
+    public Transform[] PointsToMove;
+    public Transform PointToMoveOnAssemblingEnd;
+    private int currentPointToMoveNum = 0;
    // public UnboxController unboxController;
 
     public LevelData CurrentLevelData;
@@ -28,6 +34,8 @@ public class LevelController : MonoBehaviour
     private List<Vector3> startPositions = new List<Vector3>();
 
     private GameObject tmpLevel;
+
+    private AllLevelData allLevelData;
     
     public event Action<int> OnStageStart;
     public Action<int> OnSpawnCharacter;
@@ -46,13 +54,15 @@ public class LevelController : MonoBehaviour
 
     private void Start()
     {
-        var data = GameC.Instance.AllLevelData;
-        HeightOffset = data.HeightOFBoxOffset;
-        deltaTimeMove = data.DeltaTimeToMoveBox;
+        allLevelData= GameC.Instance.AllLevelData;
+        HeightOffset = allLevelData.HeightOFBoxOffset;
+        deltaTimeMove = allLevelData.DeltaTimeToMoveBox;
         startPositions = new List<Vector3>();
         assemblyCount = 0;
         StageNum = 0;
         currentBox = 0;
+        
+        SpawnAssembling();
         
         PartController.OnGrabStart = new UnityEngine.Events.UnityEvent<PartController>();
         PartController.OnGrabStop = new UnityEngine.Events.UnityEvent<PartController>();
@@ -79,6 +89,78 @@ public class LevelController : MonoBehaviour
 
     }
 
+    private void SpawnAssembling()
+    {
+        int charactersCount = 0;
+        int storeCharacters = 0;
+
+        
+         var data = SLS.Data.Game.StoredCharacters.StoregeCharacters.FindAll((sc => sc.Counts.Value > 0));
+         foreach (var character in data)
+         {
+             storeCharacters += character.Counts.Value;
+         }
+
+         charactersCount = allLevelData.CountOfEnemiesPerLevel[currentLevelNum - 1] - storeCharacters;
+
+         Boxes = new UnboxController[charactersCount];
+         assemblyControllers = new AssemblyController[charactersCount];
+         
+         for (int i = 0; i < charactersCount; i++)
+         {
+             var tmpAss = Instantiate(allLevelData.AssemblyPrefDatas.GetRandom());
+             Boxes[i] = tmpAss.UnboxController;
+             assemblyControllers[i] = tmpAss.AssemblyController;
+
+             tmpAss.AssemblyController.pointToMoveOnAssamble = PointsToMove[currentPointToMoveNum];
+             tmpAss.AssemblyController.pointToMoveAfterAllAssemble = PointToMoveOnAssemblingEnd;
+             currentPointToMoveNum++;
+             
+             Character tmpCharacter = new Character();
+             tmpCharacter.count = 1;
+             tmpCharacter.CharacterClass = tmpAss.CharacterClass;
+             tmpCharacter.CharacterPref = GetCharacter(tmpAss.CharacterClass);
+
+             if (CurrentLevelData.CurretLevelCharacters.Contains(tmpCharacter))
+             {
+                 var character = CurrentLevelData.CurretLevelCharacters.Find(t => t.CharacterClass == tmpCharacter.CharacterClass);
+                 character.count++;
+             }
+             else
+             {
+                 CurrentLevelData.CurretLevelCharacters.Add(tmpCharacter);
+             }
+         }
+
+    }
+
+    private GameObject GetCharacter(CharacterClass characterClass)
+    {
+        switch (characterClass)
+        {
+            case CharacterClass.Archer:
+            {
+                return allLevelData.ArcherPref;
+            }
+            case CharacterClass.Warior:
+            {
+                return allLevelData.WariorPref;
+            }
+            case CharacterClass.Shield:
+            {
+                return allLevelData.ShieldPref;
+            }
+            case CharacterClass.Wizard:
+            {
+                return allLevelData.WizardPref;
+            }
+            default:
+            {
+                return null;
+            }
+        }
+    }
+    
     private void OnDestroy()
     {
         Destroy(tmpLevel);
