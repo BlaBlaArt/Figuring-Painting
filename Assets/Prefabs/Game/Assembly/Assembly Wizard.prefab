@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnboxController: {fileID: 163275269119061408}
   AssemblyController: {fileID: 1037019831551398329}
+  CharacterClass: 0
 --- !u!1001 &163275269142376624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -231,6 +232,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6271269160428445574, guid: feb1ef3dcb8fe8f4f8dd806a1627e8b1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 89f1ec8a183cf134c88cd5927e259a48, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feb1ef3dcb8fe8f4f8dd806a1627e8b1, type: 3}
 --- !u!4 &999486044669647481 stripped
