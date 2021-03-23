@@ -48,7 +48,7 @@ public class DragObject : MonoBehaviour
         //startCell = null;
         myTransform = transform;
         heightToMove = myTransform.position.y + deltaHeightOfLevel;
-        GameC.Instance.ShowFinishButton();
+        this.WaitAndDoCoroutine(1.75f, () => GameC.Instance.ShowFinishButton());
     }
     
 

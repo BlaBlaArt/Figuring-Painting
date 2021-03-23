@@ -23,8 +23,8 @@ public class UnboxController : MonoBehaviour
 
     [Space]
     [SerializeField] StepType stepType;
-    [SerializeField] [ShowIf("IsNumOfSteps")] int steps = 9;
-    [SerializeField] [HideIf("IsNumOfSteps")] float stepLength = .2f;
+    [SerializeField] [ShowIf("IsNumOfSteps")] int steps = 4;
+    [SerializeField] [HideIf("IsNumOfSteps")] float stepLength = .05f;
 
     [Space]
     public Transform partPositionsParent;
@@ -79,7 +79,8 @@ public class UnboxController : MonoBehaviour
     void StepComplete()
     {
         _startMousePos = LerpedMousePos();
-        DOTween.To(() => anim.GetFloat("Progress"), x => anim.SetFloat("Progress", x), anim.GetFloat("Progress") + stepLength, _stepTime);
+        DOTween.To(() => anim.GetFloat("Progress"), x => anim.SetFloat("Progress", x),
+            anim.GetFloat("Progress") + stepLength, _stepTime);
         Taptic.Light();
     }
 
