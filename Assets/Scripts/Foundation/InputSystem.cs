@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -18,6 +19,8 @@ public class InputSystem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	private Vector3 _startTouchPosition;
 	private Vector3 _endTouchPosition;
 
+	private bool canInputCheck;
+	
 	private void Awake()
 	{
 		if (Instance == null)
@@ -26,27 +29,46 @@ public class InputSystem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
 	private void Start()
 	{
+		StartCoroutine(DelayInput());
+	}
+
+	private IEnumerator DelayInput()
+	{
+		canInputCheck = false;
+		yield return new WaitUntil(() => LevelController.Instance != null);
+		canInputCheck = true;
 		_mainCamera = GameC.Instance.MainCamera;
 	}
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
-		OnTouch?.Invoke();
+		if (canInputCheck)
+		{
 
-		GetSwipePoints(ref _startTouchPosition);
+			OnTouch?.Invoke();
+
+			GetSwipePoints(ref _startTouchPosition);
+		}
 	}
 
 	public void OnPointerUp(PointerEventData eventData)
 	{
-		OnRelease?.Invoke();
+		if (canInputCheck)
+		{
 
-		GetSwipePoints(ref _endTouchPosition);
-		Swipe();
+			OnRelease?.Invoke();
+
+			GetSwipePoints(ref _endTouchPosition);
+			Swipe();
+		}
 	}
 
 	public void OnDrag(PointerEventData eventData)
 	{
-		OnDragAction?.Invoke(eventData.delta);
+		if (canInputCheck)
+		{
+			OnDragAction?.Invoke(eventData.delta);
+		}
 	}
 
 	private void GetSwipePoints(ref Vector3 point) => point = _mainCamera.ScreenToWorldPoint(
