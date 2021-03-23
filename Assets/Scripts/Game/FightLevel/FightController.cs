@@ -86,7 +86,7 @@ public class FightController : MonoBehaviour
             }
         });
 
-        //SpawnEnemies();
+        SpawnEnemies();
     }
     
     private void OnLevelEnd(bool isWin)
@@ -362,9 +362,18 @@ public class FightController : MonoBehaviour
         AllLevelData.CountOfEnemiesPerLevel[MyLevelNum-1] = 0;
     }
 
+    private void SpawnEnemies()
+    {
+        if (GameC.Instance.IsSpawnExtraEnemy)
+        {
+            SpawnEnemiesSetCell(1);
+            GameC.Instance.IsSpawnExtraEnemy = false;
+        }
+    }
+    
 
     [Button("Spawn Enemies")]
-    private void SpawnEnemies()
+    private void SpawnEnemiesFromButton()
     {
         var enemyCounts = EnemyCount;
         

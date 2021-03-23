@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
-using Newtonsoft.Json.Serialization;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
@@ -137,40 +136,50 @@ public class LevelController : MonoBehaviour
          Debug.Log("Character count " + charactersCount);
          if (charactersCount > 0)
          {
-
-             Boxes = new UnboxController[charactersCount];
-             assemblyControllers = new AssemblyController[charactersCount];
-
-             for (int i = 0; i < charactersCount; i++)
-             {
-
-                 var tmpAss = Instantiate(allLevelData.AssemblyPrefDatas.GetRandom());
-                 tmpAssembl.Add(tmpAss.gameObject);
-                 Boxes[i] = tmpAss.UnboxController;
-                 assemblyControllers[i] = tmpAss.AssemblyController;
-
-                 tmpAss.AssemblyController.pointToMoveOnAssamble = PointsToMove[currentPointToMoveNum];
-                 tmpAss.AssemblyController.pointToMoveAfterAllAssemble = PointToMoveOnAssemblingEnd;
-                 currentPointToMoveNum++;
-
-                 Character tmpCharacter = new Character();
-                 tmpCharacter.count = 1;
-                 tmpCharacter.CharacterClass = tmpAss.CharacterClass;
-                 tmpCharacter.CharacterPref = GetCharacter(tmpAss.CharacterClass);
-
-                 if (CurrentLevelData.CurretLevelCharacters.Any(t => t.CharacterClass == tmpAss.CharacterClass))
-                 {
-
-                     var character = CurrentLevelData.CurretLevelCharacters.First(t => t.CharacterClass == tmpCharacter.CharacterClass);
-                     character.count++;
-                 }
-                 else
-                 {
-                     CurrentLevelData.CurretLevelCharacters.Add(tmpCharacter);
-                 }
-             }
+             SpawnerAssembling(charactersCount);
+         }
+         else
+         {
+             SpawnerAssembling(1);
+             GameC.Instance.IsSpawnExtraEnemy = true;
          }
 
+    }
+
+    private void SpawnerAssembling(int charactersCount)
+    {
+        
+        Boxes = new UnboxController[charactersCount];
+        assemblyControllers = new AssemblyController[charactersCount];
+
+        for (int i = 0; i < charactersCount; i++)
+        {
+
+            var tmpAss = Instantiate(allLevelData.AssemblyPrefDatas.GetRandom());
+            tmpAssembl.Add(tmpAss.gameObject);
+            Boxes[i] = tmpAss.UnboxController;
+            assemblyControllers[i] = tmpAss.AssemblyController;
+
+            tmpAss.AssemblyController.pointToMoveOnAssamble = PointsToMove[currentPointToMoveNum];
+            tmpAss.AssemblyController.pointToMoveAfterAllAssemble = PointToMoveOnAssemblingEnd;
+            currentPointToMoveNum++;
+
+            Character tmpCharacter = new Character();
+            tmpCharacter.count = 1;
+            tmpCharacter.CharacterClass = tmpAss.CharacterClass;
+            tmpCharacter.CharacterPref = GetCharacter(tmpAss.CharacterClass);
+
+            if (CurrentLevelData.CurretLevelCharacters.Any(t => t.CharacterClass == tmpAss.CharacterClass))
+            {
+
+                var character = CurrentLevelData.CurretLevelCharacters.First(t => t.CharacterClass == tmpCharacter.CharacterClass);
+                character.count++;
+            }
+            else
+            {
+                CurrentLevelData.CurretLevelCharacters.Add(tmpCharacter);
+            }
+        }
     }
 
     private GameObject GetCharacter(CharacterClass characterClass)

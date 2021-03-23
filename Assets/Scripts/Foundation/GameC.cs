@@ -32,6 +32,8 @@ public class GameC : MonoBehaviour
 
 	public Camera MainCamera;
 
+	public bool IsSpawnExtraEnemy;
+
 	private void Awake()
 	{
 		if (Instance == null)
@@ -42,6 +44,8 @@ public class GameC : MonoBehaviour
 
 	private void Start()
 	{
+		IsSpawnExtraEnemy = false;
+		
 		Finish2StageButton.SetInactive();
 		
 		Application.targetFrameRate = 60;
