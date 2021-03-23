@@ -443,6 +443,7 @@ public class FightController : MonoBehaviour
             tmpEnemy.transform.rotation = cell.transform.rotation;
         
             cell.OnGetObject(tmpEnemy);
+            cell.MyObject = tmpEnemy;
             Enemys.Add(tmpEnemy);
         }
 
