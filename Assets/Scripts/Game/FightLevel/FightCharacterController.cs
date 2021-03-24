@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class FightCharacterController : MonoBehaviour
 {
     public bool IsHero;
@@ -38,10 +38,13 @@ public class FightCharacterController : MonoBehaviour
     public bool isDead;
 
     [SerializeField] private GameObject MyOutline;
+
+    private Image myOutlineImage;
     
     private void Start()
     {
         MyOutline.SetInactive();
+        myOutlineImage = MyOutline.GetComponent<Image>();
         if(myTrail != null)
             myTrail.SetInactive();
         isDead = false;
@@ -141,20 +144,9 @@ public class FightCharacterController : MonoBehaviour
     public void TakeDammage(int dammage)
     {
             Health -= dammage;
-
-           if (dammage < 15)
-           {
-               var tmpPArt = Instantiate(dammageParticleSystem1);
-               tmpPArt.transform.position = transform.position;
-               FightController.Instance.TmpObjects.Add(tmpPArt);
-           }
-           else
-           {
-               var tmpPArt = Instantiate(dammageParticleSystem2);
-               tmpPArt.transform.position = transform.position;
-               FightController.Instance.TmpObjects.Add(tmpPArt);
-           }
             
+            
+           
             if (Health <= 0)
             {
                 isDead = true;
@@ -171,6 +163,28 @@ public class FightCharacterController : MonoBehaviour
                 StopAllCoroutines();
                 StartCoroutine(OnDead());
             }
+            else
+            {
+                TakeDammageVisuals(dammage);
+            }
+    }
+
+    private void TakeDammageVisuals(int dammage)
+    {
+        myOutlineImage.DOFillAmount((float)(Health - dammage) / Health, 0.25f);
+                
+        if (dammage < 15)
+        {
+            var tmpPArt = Instantiate(dammageParticleSystem1);
+            tmpPArt.transform.position = transform.position;
+            FightController.Instance.TmpObjects.Add(tmpPArt);
+        }
+        else
+        {
+            var tmpPArt = Instantiate(dammageParticleSystem2);
+            tmpPArt.transform.position = transform.position;
+            FightController.Instance.TmpObjects.Add(tmpPArt);
+        }
     }
 
     private IEnumerator OnDead()
