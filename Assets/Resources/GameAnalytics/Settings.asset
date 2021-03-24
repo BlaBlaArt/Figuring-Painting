@@ -47,41 +47,8 @@ MonoBehaviour:
   SelectedOrganization: 0000000000000000
   SelectedStudio: 0000000000000000
   SelectedGame: 0000000000000000
-  NewVersion: 6.4.1
-  Changes: '6.4.1
-
-    - added idfa consent status field to events (ios)
-
-
-    6.4.0
-
-    -
-    added support for unity package manager
-
-
-    6.3.14
-
-    - fixed playmaker scripts
-
-
-    6.3.13
-
-    -
-    fixed compiler errors for 2017.1
-
-    - updated client ts validator
-
-
-    6.3.12
-
-    -
-    changed AppTrackingTransparency dependency to be optional for iOS
-
-
-    6.3.11
-
-    -
-    fixed dependencies for iOS (min. XCode 12 required)'
+  NewVersion: 
+  Changes: 
   SignUpOpen: 1
   StudioName: 
   GameName: 
