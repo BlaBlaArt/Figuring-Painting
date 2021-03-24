@@ -145,6 +145,7 @@ public class FightCharacterController : MonoBehaviour
     {
             
             myOutlineImage.DOFillAmount((float)(Health - dammage) / myData.Health, 0.35f);
+            TakeDammageVisuals(dammage);
 
             Health -= dammage;
 
@@ -164,10 +165,7 @@ public class FightCharacterController : MonoBehaviour
                 StopAllCoroutines();
                 StartCoroutine(OnDead());
             }
-            else
-            {
-                TakeDammageVisuals(dammage);
-            }
+ 
     }
 
     private void TakeDammageVisuals(int dammage)
