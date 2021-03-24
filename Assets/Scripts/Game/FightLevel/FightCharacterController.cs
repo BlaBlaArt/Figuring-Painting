@@ -143,10 +143,11 @@ public class FightCharacterController : MonoBehaviour
 
     public void TakeDammage(int dammage)
     {
+            
+            myOutlineImage.DOFillAmount((float)(Health - dammage) / myData.Health, 0.35f);
+
             Health -= dammage;
-            
-            
-           
+
             if (Health <= 0)
             {
                 isDead = true;
@@ -171,7 +172,7 @@ public class FightCharacterController : MonoBehaviour
 
     private void TakeDammageVisuals(int dammage)
     {
-        myOutlineImage.DOFillAmount((float)(Health - dammage) / Health, 0.25f);
+       // myOutlineImage.DOFillAmount((float)(Health - dammage) / Health, 0.25f);
                 
         if (dammage < 15)
         {
