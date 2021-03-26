@@ -52,17 +52,17 @@ namespace TFPlay.UI
 
 	private void OnSwipe(InputSystem.SwipeDirection obj)
 		{
-			Debug.Log("SWIPE");
+			//Debug.Log("SWIPE");
 			if (isSecondInput)
 			{
-				Debug.Log("SWIPE_1");
+				//Debug.Log("SWIPE_1");
 				isSecondInput = false;
 				OnDiableTutorial(1);
 				InputSystem.Instance.OnSwipe -= OnSwipe;
 			}
 			else if (is2Stage)
 			{
-				Debug.Log("SWIPE_2");
+				//Debug.Log("SWIPE_2");
 				is2Stage = false;
 				OnDiableTutorial(3);
 				InputSystem.Instance.OnSwipe -= OnSwipe;
@@ -96,7 +96,7 @@ namespace TFPlay.UI
 			}
 			else if (isAssembleStageInput)
 			{
-				Debug.Log("Assemble");
+				//Debug.Log("Assemble");
 				isAssembleStageInput = false;
 				OnDiableTutorial(2);
 				InputSystem.Instance.OnTouch -= OnTouch;

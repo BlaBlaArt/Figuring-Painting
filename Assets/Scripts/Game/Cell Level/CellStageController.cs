@@ -46,7 +46,7 @@ public class CellStageController : MonoBehaviour
     {
         if (obj == 1)
         {
-            Debug.Log("CellStage");
+            //Debug.Log("CellStage");
             OnStartStage();
         }
     }

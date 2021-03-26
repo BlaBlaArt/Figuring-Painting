@@ -100,7 +100,7 @@ public class DragObject : MonoBehaviour
         
         myAnimationController.OnDrag(true);
         
-        Debug.Log("DOWN");
+       // Debug.Log("DOWN");
     }
 
     private void OnMouseDrag()
@@ -125,12 +125,12 @@ public class DragObject : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit,50, CellLayer))
         {
-            Debug.Log("Cell");
+           // Debug.Log("Cell");
             cell = hit.transform.GetComponent<Cell>();
 
             if (cell.MyObject != null)
             {
-                Debug.Log("MergeEnter");
+             //   Debug.Log("MergeEnter");
                 CheckMergePosibility(cell.MyObject);
             }
             else
@@ -193,7 +193,7 @@ public class DragObject : MonoBehaviour
 
     private void ChangeObjectOnCellAndMe()
     {
-        Debug.Log("StartCell " + startCell);
+       // Debug.Log("StartCell " + startCell);
         if (startCell != null)
         {
             var dragObject = cell.MyObject.GetComponent<DragObject>();

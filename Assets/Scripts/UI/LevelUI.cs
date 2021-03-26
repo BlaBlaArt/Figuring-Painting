@@ -20,7 +20,7 @@ namespace TFPlay.UI
 
 		private void SetLevel(int levelNumber)
 		{
-			Debug.Log("Level Number" + levelNumber);
+			//Debug.Log("Level Number" + levelNumber);
 			levelText.text = string.Format(levelFormat, levelNumber);
 
 		}

@@ -133,7 +133,7 @@ public class LevelController : MonoBehaviour
 
          charactersCount = allLevelData.CountOfEnemiesPerLevel[currentLevelNum - 1] - storeCharacters;
 
-         Debug.Log("Character count " + charactersCount);
+//         Debug.Log("Character count " + charactersCount);
          if (charactersCount > 0)
          {
              SpawnerAssembling(charactersCount);
@@ -260,7 +260,7 @@ public class LevelController : MonoBehaviour
                 assembly.OnAllAssembleComplete();
             }
             OnStageComplete(0);
-            Debug.Log("StageComplete");
+            //Debug.Log("StageComplete");
         }
         else
         {
@@ -274,7 +274,8 @@ public class LevelController : MonoBehaviour
       //  tmpLevel = Instantiate(SecondStagePref);
       GameC.Instance.Load2Stage?.Invoke();
 
-
+      StartCoroutine(RestartButtonEnabledCheck());
+      
       StartCoroutine(DelayBetweenCall(stageNum));
       // this.WaitAndDoCoroutine(0.5f, () =>
       // {
@@ -283,6 +284,19 @@ public class LevelController : MonoBehaviour
       //     CameraController.Instance.OnStageComplete();
       //     GameC.Instance.OnShowTutorial?.Invoke(3);
       // });
+
+    }
+
+    private IEnumerator RestartButtonEnabledCheck()
+    {
+        MenuUI.Instance.restartButton.interactable = false;
+        
+        yield return new WaitUntil(() => FightController.Instance != null);
+        MenuUI.Instance.restartButton.interactable = false;
+
+        yield return new WaitForSeconds(0.75f);
+        
+        MenuUI.Instance.restartButton.interactable = true;
 
     }
     

@@ -192,7 +192,7 @@ public class FightCharacterController : MonoBehaviour
         MyOutline.SetInactive();
 
         
-        Debug.Log("End of Dead1");
+       // Debug.Log("End of Dead1");
 
         yield return new WaitForSeconds(3f);
 
@@ -200,7 +200,7 @@ public class FightCharacterController : MonoBehaviour
         tmpPart.transform.position = transform.position;
         FightController.Instance.TmpObjects.Add(tmpPart);
         
-        Debug.Log("End of Dead2");
+        //Debug.Log("End of Dead2");
 
         transform.DOMoveY(transform.position.y + Vector3.down.y * 0.1f, 0.5f).OnComplete(() =>
         {

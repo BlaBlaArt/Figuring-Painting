@@ -93,7 +93,7 @@ public class FightController : MonoBehaviour
     {
         if (isWin)
         {
-            Debug.Log(Characters.Print());
+            //Debug.Log(Characters.Print());
             
             SLS.Data.Game.StoredCharacters.StoregeCharacters.ForEach((sc => sc.Counts.Value = 0));
             foreach (var character in Characters)
@@ -107,9 +107,9 @@ public class FightController : MonoBehaviour
                 .Find(d => d.CharacterClass.Value == myID).Counts.Value++;
           //  SLS.Data.Game.StoredCharacters.Value.Counts[num]++;
                 SLS.Save();
-                Debug.Log("character class " + data.myCharacterClass + " CharacterData " +
-                          SLS.Data.Game.StoredCharacters.StoregeCharacters
-                              .Find(d => d.CharacterClass.Value == myID).Counts.Value);
+              //  Debug.Log("character class " + data.myCharacterClass + " CharacterData " +
+              //            SLS.Data.Game.StoredCharacters.StoregeCharacters
+              //                .Find(d => d.CharacterClass.Value == myID).Counts.Value);
             }
         }
     }
@@ -171,8 +171,8 @@ public class FightController : MonoBehaviour
         var data = SLS.Data.Game.StoredCharacters.StoregeCharacters.FindAll((sc => sc.Counts.Value > 0));
         for (int i = 0; i < data.Count; i++)
         {
-            Debug.Log("character class " + data[i].CharacterClass.Value + " CharacterData " +
-                      data[i].Counts.Value);
+           // Debug.Log("character class " + data[i].CharacterClass.Value + " CharacterData " +
+                  //    data[i].Counts.Value);
             var type = data[i].CharacterClass.Value;
             for (int j = 0; j < data[i].Counts.Value; j++)
             {
@@ -180,7 +180,7 @@ public class FightController : MonoBehaviour
                 if (cell != null)
                 {
                     var tmpCharacter = Instantiate(GetCharacter(type));
-                    Debug.Log("Cell " + cell.name + " Character " + tmpCharacter.name);
+                   // Debug.Log("Cell " + cell.name + " Character " + tmpCharacter.name);
                     tmpCharacter.transform.position = cell.transform.position;
                     tmpCharacter.transform.rotation = cell.transform.rotation;
                     tmpCharacter.GetComponent<DragObject>().OnSpawnOnCell(cell);
@@ -243,7 +243,7 @@ public class FightController : MonoBehaviour
 
     private void OnLevelUnload()
     {
-        Debug.Log("levelUnload");
+        //Debug.Log("levelUnload");
         
         foreach (var enemy in Enemys)
         {
@@ -264,7 +264,7 @@ public class FightController : MonoBehaviour
     
     private void OnStageComplete()
     {
-        Debug.Log("2 stagte Complete");
+       // Debug.Log("2 stagte Complete");
         DisactiveCells();
         GetCharacters();
         DestroyNotUsedCherecters();
