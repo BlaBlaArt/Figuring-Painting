@@ -1283,6 +1283,7 @@ MonoBehaviour:
   Characters: []
   EnemyCount: 0
   AllLevelData: {fileID: 0}
+  MyLevelNum: 0
 --- !u!1 &3204681194371248519
 GameObject:
   m_ObjectHideFlags: 0
@@ -4230,6 +4231,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cdbf73bf47486514e9ba4e2cc61afb3a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: daa3e158e18e41f4095c685848a9bae0, type: 2}
     - target: {fileID: 919132149155446097, guid: cdbf73bf47486514e9ba4e2cc61afb3a,
         type: 3}
       propertyPath: m_Name

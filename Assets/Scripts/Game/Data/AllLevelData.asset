@@ -23,7 +23,7 @@ MonoBehaviour:
   - {fileID: 1231961621818123394, guid: 5f1fd12be9392b9479c4225622d1841c, type: 3}
   - {fileID: 894141438528034435, guid: 1afe566dfabd18c43a4609c6520a5df8, type: 3}
   OffsetToSpawnCharacters: 0.8
-  StartCellColor: {r: 0.34117648, g: 0.3529412, b: 0.3529412, a: 1}
+  StartCellColor: {r: 0.5019608, g: 0.37254903, b: 0.2, a: 1}
   ActiveCellColor: {r: 0.35307476, g: 0.5566038, b: 0.2756764, a: 1}
   DeltaHeightOfLevel: 0.1
   OffsetToForward: 0.25
